@@ -5,4 +5,5 @@ abstract class BaseLanguage {
   String get game;
   String get gold;
   String get profile;
+  String get signIn;
 }

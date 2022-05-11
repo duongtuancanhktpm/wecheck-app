@@ -18,4 +18,7 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get service => 'Service';
+
+  @override
+  String get signIn => 'Sign In';
 }
