@@ -1,0 +1,12 @@
+
+
+import 'package:get/get.dart';
+
+class SignUpController extends GetxController {
+
+
+  void backToSignIn(){
+    Get.back();
+  }
+
+}
