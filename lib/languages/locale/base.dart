@@ -4,4 +4,6 @@ abstract class BaseLanguage {
   String get timeline;
   String get chat;
   String get setting;
+  String get service;
+  String get signIn;
 }

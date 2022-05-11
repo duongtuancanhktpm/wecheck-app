@@ -5,6 +5,8 @@ import 'package:wecheck/screens/home/home_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
 import 'package:wecheck/screens/root/root_screen.dart';
 import 'package:wecheck/screens/setting/binding/setting_binding.dart';
+import 'package:wecheck/screens/sign_in/binding/sign_in_binding.dart';
+import 'package:wecheck/screens/sign_in/sign_in_screen.dart';
 import 'package:wecheck/screens/splash/bindings/splash_binding.dart';
 import 'package:wecheck/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ class RouteName {
   static const String timeline = "timeline";
   static const String chat = "chat";
   static const String settings = "setting";
+  static const String signIn = "/signIn";
 }
 
 class AppRoutes {
@@ -31,6 +34,7 @@ class AppRoutes {
     RouteName.timeline: () => const TimeLineScreen(),
     RouteName.chat: () => const ChatScreen(),
     RouteName.settings: () => const SettingScreen(),
+    RouteName.signIn: () => const SignInScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -39,7 +43,8 @@ class AppRoutes {
     RouteName.home: () => [HomeBinding()],
     RouteName.timeline: () => [TimeLineBinding()],
     RouteName.chat: () => [ChatBinding()],
-    RouteName.settings: () => [SettingBinding()]
+    RouteName.settings: () => [SettingBinding()],
+    RouteName.signIn: () => [SignInBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {

@@ -29,4 +29,9 @@ class AppColors {
   static const Color lightStaleGrey2 = Color.fromRGBO(124, 135, 153, 1);
   static const Color aliceBlue2 = Color.fromRGBO(245, 246, 247, 1);
   static const Color ceruleanBlue = Color.fromRGBO(40, 89, 176, 1);
+
+  static const Color magicMint = Color(0xFF1B3553);
+  static const Color colorTextSignIn = Color(0xFFB1B1B1);
+  static const Color colorBtnSignIn = Color(0xFF295AB6);
+  static const Color colorBottomSignIn = Color(0xFF848484);
 }
