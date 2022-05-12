@@ -2,52 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
-import 'package:wecheck/screens/account/sign_up/controller/sign_up_controller.dart';
+import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class SignUpScreen extends GetView<SignUpController> {
-  const SignUpScreen({Key? key}) : super(key: key);
+class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
+  const PrivacyPolicyScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-          child: Stack(
-        children: [
+        backgroundColor: AppColors.white,
+        body: SafeArea(
+            child: Stack(children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 80, left: 50),
+                padding: const EdgeInsets.only(top: 50, left: 50),
                 child: Text(
-                  L.current.signIn.tr,
+                  L.current.privacyPolicy.tr,
                   style: const TextStyle(
                       color: AppColors.textColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 40, left: 50, right: 50),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      fillColor: AppColors.white,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: AppColors.colorTextSignIn),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide:
-                            BorderSide(color: AppColors.colorTextSignIn),
-                      ),
-                      labelText: 'Email',
-                      labelStyle: TextStyle(
-                          color: AppColors.colorTextSignIn,
-                          fontWeight: FontWeight.bold)),
+              const SizedBox(
+                width: double.infinity,
+                height: 300,
+                child: WebView(
+                  initialUrl: 'https://flutter.dev',
                 ),
               ),
-              const Padding(padding: EdgeInsets.all(20)),
+              Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 35, right: 50),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Checkbox(value: false, onChanged: (value) {}),
+                      const Text(
+                        'I have read and agreed the privacy policy',
+                        style: TextStyle(
+                            color: AppColors.colorTextSignIn,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      )
+                    ],
+                  )),
+              const Padding(padding: EdgeInsets.all(25)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -73,16 +77,18 @@ class SignUpScreen extends GetView<SignUpController> {
                             padding: const EdgeInsets.only(
                                 left: 30.0, right: 30, top: 10, bottom: 10),
                             primary: AppColors.white,
-                            textStyle: const TextStyle(fontSize: 16),
+                            textStyle: const TextStyle(fontSize: 20),
                           ),
-                          onPressed: () {},
-                          child: const Text('Send Email'),
+                          onPressed: () => controller.goToCreateAccount(),
+                          child: Text(L.current.next,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
-              ),
+              )
             ],
           ),
           Positioned(
@@ -96,21 +102,21 @@ class SignUpScreen extends GetView<SignUpController> {
                       child: Container(
                         padding: const EdgeInsets.only(
                             left: 20, bottom: 10, top: 10, right: 20),
-                        child: const Text(
-                          "Reset Password",
-                          style: TextStyle(
+                        child: Text(
+                          L.current.resetPassword,
+                          style: const TextStyle(
                               color: AppColors.colorBottomSignIn,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                     InkWell(
-                      onTap: () => controller.backToSignIn(),
+                      onTap: () => controller.goToCreateAccount(),
                       child: Container(
                         padding: const EdgeInsets.only(
                             left: 20, bottom: 10, top: 10, right: 20),
                         child: const Text(
-                          "Back to sign in",
+                          "Back",
                           style: TextStyle(
                               color: AppColors.colorBottomSignIn,
                               fontWeight: FontWeight.bold),
@@ -120,8 +126,6 @@ class SignUpScreen extends GetView<SignUpController> {
                   ],
                 )),
           )
-        ],
-      )),
-    );
+        ])));
   }
 }

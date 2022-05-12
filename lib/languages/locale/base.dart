@@ -6,4 +6,7 @@ abstract class BaseLanguage {
   String get gold;
   String get profile;
   String get signIn;
+  String get next;
+  String get resetPassword;
+  String get privacyPolicy;
 }

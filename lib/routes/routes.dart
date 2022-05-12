@@ -1,3 +1,7 @@
+import 'package:wecheck/screens/account/privacy_policy/binding/privacy_policy_binding.dart';
+import 'package:wecheck/screens/account/privacy_policy/privacy_policy_screen.dart';
+import 'package:wecheck/screens/account/reset_password/binding/reset_password_binding.dart';
+import 'package:wecheck/screens/account/reset_password/reset_password_screen.dart';
 import 'package:wecheck/screens/account/sign_up/binding/sign_up_binding.dart';
 import 'package:wecheck/screens/account/sign_up/sign_up_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
@@ -15,6 +19,8 @@ class RouteName {
   static const String home = "/home";
   static const String signIn = "/signIn";
   static const String signUp = "/signUp";
+  static const String resetPassword = "/resetPassword";
+  static const String privacyPolicy= "/privacyPolicy";
 }
 
 class AppRoutes {
@@ -23,6 +29,8 @@ class AppRoutes {
     RouteName.root: () => const RootScreen(),
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUp: () => const SignUpScreen(),
+    RouteName.resetPassword: () => const ResetPasswordScreen(),
+    RouteName.privacyPolicy: () => const PrivacyPolicyScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -30,6 +38,8 @@ class AppRoutes {
     RouteName.root: () => [RootBinding()],
     RouteName.signIn: () => [SignInBinding()],
     RouteName.signUp: () => [SignUpBinding()],
+    RouteName.resetPassword: () => [ResetPasswordBinding()],
+    RouteName.privacyPolicy: () => [PrivacyPolicyBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
