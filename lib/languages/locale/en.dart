@@ -30,4 +30,7 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get createYourProfile => 'Create Your Profile';
 }

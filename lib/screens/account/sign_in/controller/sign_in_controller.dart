@@ -18,6 +18,7 @@ class SignInController extends GetxController {
   }
 
   void goToHome() {
-    Get.toNamed(RouteName.home);
+   // Get.toNamed(RouteName.home);
+    Get.toNamed(RouteName.createProfile);
   }
 }
