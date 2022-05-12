@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
-import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy_controller.dart';
+import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
-class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
-  const PrivacyPolicyScreen({Key? key}) : super(key: key);
+class InputCodeScreen extends GetView<InputCodeController> {
+  const InputCodeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,43 +18,83 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 50, left: 50),
+              const Padding(
+                padding: EdgeInsets.only(top: 50, left: 50),
                 child: Text(
-                  L.current.privacyPolicy.tr,
-                  style: const TextStyle(
+                  'Input Code',
+                  style: TextStyle(
                       color: AppColors.textColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 width: double.infinity,
                 height: 300,
-                child: WebView(
-                  initialUrl: 'https://flutter.dev',
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 35, right: 50),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Obx(() => Checkbox(
-                          value: controller.isAgreePolicy.value,
-                          onChanged: (value) {
-                            controller.isAgreePolicy.value = value!;
-                          })),
-                      const Text(
-                        'I have read and agreed the privacy policy',
-                        style: TextStyle(
-                            color: AppColors.colorTextSignIn,
+                child: Form(
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 80.0, horizontal: 30),
+                        child: PinCodeTextField(
+                          appContext: context,
+                          pastedTextStyle: TextStyle(
+                            color: Colors.green.shade600,
                             fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      )
-                    ],
-                  )),
+                          ),
+                          length: 6,
+                          obscureText: true,
+                          obscuringCharacter: '*',
+                          obscuringWidget: const FlutterLogo(
+                            size: 24,
+                          ),
+                          blinkWhenObscuring: true,
+                          animationType: AnimationType.fade,
+                          validator: (v) {
+                            if (v!.length < 3) {
+                              return "I'm from validator";
+                            } else {
+                              return null;
+                            }
+                          },
+                          pinTheme: PinTheme(
+                            shape: PinCodeFieldShape.box,
+                            borderRadius: BorderRadius.circular(5),
+                            fieldHeight: 50,
+                            fieldWidth: 40,
+                            activeFillColor: Colors.white,
+                          ),
+                          cursorColor: Colors.black,
+                          animationDuration: const Duration(milliseconds: 300),
+                          enableActiveFill: true,
+                          errorAnimationController: controller.errorController.value,
+                          controller: controller.textEditingController.value,
+                          keyboardType: TextInputType.number,
+                          boxShadows: const [
+                            BoxShadow(
+                              offset: Offset(0, 1),
+                              color: Colors.black12,
+                              blurRadius: 10,
+                            )
+                          ],
+                          onCompleted: (v) {
+                            debugPrint("Completed");
+                          },
+                          // onTap: () {
+                          //   print("Pressed");
+                          // },
+                          onChanged: (value) {
+                            debugPrint(value);
+                              controller.currentText.value = value;
+                          },
+                          beforeTextPaste: (text) {
+                            debugPrint("Allowing to paste $text");
+                            //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                            //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                            return true;
+                          },
+                        )),
+                        ),
+              ),
               const Padding(padding: EdgeInsets.all(25)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

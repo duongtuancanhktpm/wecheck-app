@@ -75,7 +75,7 @@ class SignUpScreen extends GetView<SignUpController> {
                             primary: AppColors.white,
                             textStyle: const TextStyle(fontSize: 16),
                           ),
-                          onPressed: () {},
+                          onPressed: () => controller.goToInputCode(),
                           child: const Text('Send Email'),
                         ),
                       ],

@@ -4,6 +4,8 @@ import 'package:wecheck/routes/routes.dart';
 
 class PrivacyPolicyController extends GetxController {
 
+  Rx<bool> isAgreePolicy = false.obs;
+
   void backToSignIn() {
     Get.back();
   }
