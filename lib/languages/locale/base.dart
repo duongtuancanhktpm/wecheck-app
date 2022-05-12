@@ -9,4 +9,5 @@ abstract class BaseLanguage {
   String get next;
   String get resetPassword;
   String get privacyPolicy;
+  String get createYourProfile;
 }
