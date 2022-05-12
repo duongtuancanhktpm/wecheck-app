@@ -21,4 +21,13 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get signIn => 'Sign In';
+
+  @override
+  String get resetPassword => 'Reset password';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
 }

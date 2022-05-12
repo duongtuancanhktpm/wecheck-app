@@ -10,6 +10,14 @@ class SignInController extends GetxController {
 
 
   void goToCreateAccount(){
-    Get.toNamed(RouteName.signUp);
+   // Get.toNamed(RouteName.signUp);
+    Get.toNamed(RouteName.privacyPolicy);
+  }
+  void goToResetPassword() {
+    Get.toNamed(RouteName.resetPassword);
+  }
+
+  void goToHome() {
+    Get.toNamed(RouteName.home);
   }
 }
