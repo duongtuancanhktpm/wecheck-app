@@ -9,4 +9,7 @@ class SignUpController extends GetxController {
   void goToResetPassword() {
     Get.toNamed(RouteName.resetPassword);
   }
+  void goToInputCode() {
+    Get.toNamed(RouteName.inputCode);
+  }
 }

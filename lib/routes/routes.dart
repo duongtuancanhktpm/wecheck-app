@@ -1,3 +1,5 @@
+import 'package:wecheck/screens/account/input_code/binding/input_code_binding.dart';
+import 'package:wecheck/screens/account/input_code/input_code_screen.dart';
 import 'package:wecheck/screens/account/privacy_policy/binding/privacy_policy_binding.dart';
 import 'package:wecheck/screens/account/privacy_policy/privacy_policy_screen.dart';
 import 'package:wecheck/screens/account/reset_password/binding/reset_password_binding.dart';
@@ -21,6 +23,7 @@ class RouteName {
   static const String signUp = "/signUp";
   static const String resetPassword = "/resetPassword";
   static const String privacyPolicy= "/privacyPolicy";
+  static const String inputCode= "/inputCode";
 }
 
 class AppRoutes {
@@ -31,6 +34,7 @@ class AppRoutes {
     RouteName.signUp: () => const SignUpScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
     RouteName.privacyPolicy: () => const PrivacyPolicyScreen(),
+    RouteName.inputCode: () => const InputCodeScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -40,6 +44,7 @@ class AppRoutes {
     RouteName.signUp: () => [SignUpBinding()],
     RouteName.resetPassword: () => [ResetPasswordBinding()],
     RouteName.privacyPolicy: () => [PrivacyPolicyBinding()],
+    RouteName.inputCode: () => [InputCodeBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
