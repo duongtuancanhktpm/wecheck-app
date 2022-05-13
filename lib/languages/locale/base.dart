@@ -10,4 +10,5 @@ abstract class BaseLanguage {
   String get resetPassword;
   String get privacyPolicy;
   String get createYourProfile;
+  String get aboutYourDiabetes;
 }

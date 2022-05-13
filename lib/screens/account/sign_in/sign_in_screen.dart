@@ -88,7 +88,10 @@ class SignInScreen extends GetView<SignInController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Checkbox(value: false, onChanged: (value) {}),
+                        Obx(() => Checkbox(
+                            value: controller.isRememberId.value,
+                            onChanged: (value) =>
+                                controller.isRememberId.value = value!)),
                         const Text(
                           'Remember my ID',
                           style: TextStyle(
@@ -127,7 +130,9 @@ class SignInScreen extends GetView<SignInController> {
                               textStyle: const TextStyle(fontSize: 20),
                             ),
                             onPressed: () => controller.goToHome(),
-                            child: Text(L.current.signIn, style: const TextStyle(fontWeight: FontWeight.bold)),
+                            child: Text(L.current.signIn,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
                           ),
                         ],
                       ),
