@@ -33,4 +33,8 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get createYourProfile => 'Create Your Profile';
+
+  @override
+  // TODO: implement aboutYourDiabetes
+  String get aboutYourDiabetes => 'About Your Diabetes';
 }

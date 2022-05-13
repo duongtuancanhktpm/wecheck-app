@@ -15,6 +15,8 @@ import 'package:wecheck/screens/account/sign_up/binding/sign_up_binding.dart';
 import 'package:wecheck/screens/account/sign_up/sign_up_screen.dart';
 import 'package:wecheck/screens/profile/create/binding/create_profile_binding.dart';
 import 'package:wecheck/screens/profile/create/create_profile_screen.dart';
+import 'package:wecheck/screens/profile/diabetes/binding/diabetes_binding.dart';
+import 'package:wecheck/screens/profile/diabetes/diabetes_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
 import 'package:wecheck/screens/root/root_screen.dart';
 import 'package:wecheck/screens/account/sign_in/binding/sign_in_binding.dart';
@@ -41,6 +43,7 @@ class RouteName {
   static const String privacyPolicy= "/privacyPolicy";
   static const String inputCode= "/inputCode";
   static const String createProfile= "/createProfile";
+  static const String diabetesScreen= "/diabetesScreen";
 }
 
 class AppRoutes {
@@ -57,6 +60,7 @@ class AppRoutes {
     RouteName.privacyPolicy: () => const PrivacyPolicyScreen(),
     RouteName.inputCode: () => const InputCodeScreen(),
     RouteName.createProfile: () => const CreateProfileScreen(),
+    RouteName.diabetesScreen: () => const DiabetesScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -72,6 +76,7 @@ class AppRoutes {
     RouteName.privacyPolicy: () => [PrivacyPolicyBinding()],
     RouteName.inputCode: () => [InputCodeBinding()],
     RouteName.createProfile: () => [CreateProfileBinding()],
+    RouteName.diabetesScreen: () => [DiabetesBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {

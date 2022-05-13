@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:wecheck/routes/routes.dart';
 
 class CreateProfileController extends GetxController {
   Rx<String> valueCountry = 'Country'.obs;
@@ -14,4 +15,9 @@ class CreateProfileController extends GetxController {
   ];
 
   final List<String> listGender = ['Gender', 'Male', 'Female'];
+
+
+  void goToDiabetesScreen() {
+    Get.toNamed(RouteName.diabetesScreen);
+  }
 }

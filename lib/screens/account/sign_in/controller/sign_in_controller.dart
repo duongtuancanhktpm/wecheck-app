@@ -7,6 +7,7 @@ import 'package:wecheck/routes/routes.dart';
 class SignInController extends GetxController {
 
   var hidePassword = true.obs;
+  RxBool isRememberId = false.obs;
 
 
   void goToCreateAccount(){

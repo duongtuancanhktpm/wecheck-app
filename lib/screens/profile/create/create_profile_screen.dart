@@ -28,8 +28,8 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
+                padding: const EdgeInsets.only(
+                    top: 20, left: 30, right: 30, bottom: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
@@ -306,14 +306,17 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                   padding: const EdgeInsets.only(
                       top: 20, left: 30, right: 30, bottom: 20),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => controller.goToDiabetesScreen(),
                     child: Container(
                       alignment: Alignment.center,
                       width: double.infinity,
                       padding: const EdgeInsets.only(top: 12, bottom: 12),
                       child: const Text(
                         'Next',
-                        style: TextStyle(color: AppColors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                       decoration: BoxDecoration(
                         color: Colors.blueAccent,
