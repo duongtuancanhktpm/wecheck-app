@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:flutter/cupertino.dart';
@@ -69,4 +70,11 @@ class AppTextStyle {
   static TextStyle t18w700([Color? color, double? height]) {
     return common(18, FontWeight.w700, color, null, height);
   }
+
+  static TextStyle appBarTitle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 22.sp,
+    color: AppColors.labelSelectedColor
+  );
+
 }
