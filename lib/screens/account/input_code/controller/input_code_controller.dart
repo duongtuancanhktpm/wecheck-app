@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -10,6 +9,7 @@ class InputCodeController extends GetxController {
   Rx<TextEditingController> textEditingController = TextEditingController().obs;
   late Rx<StreamController<ErrorAnimationType>> errorController;
   Rx<String> currentText = "".obs;
+  Rx<bool> isActiveVerify = false.obs;
 
   @override
   void onInit() {
@@ -21,9 +21,12 @@ class InputCodeController extends GetxController {
     Get.back();
   }
 
-  void goToCreateAccount() {
-    Get.toNamed(RouteName.signUp);
+  void goToCreateProfile() {
+    if (isActiveVerify.value) {
+      Get.toNamed(RouteName.createProfile);
+    }
   }
+
   void goToResetPassword() {
     Get.toNamed(RouteName.resetPassword);
   }

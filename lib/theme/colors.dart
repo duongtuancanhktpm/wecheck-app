@@ -17,4 +17,5 @@ class AppColors {
   static const Color colorBtnSignIn = Color(0xFF295AB6);
   static const Color colorBlueLabel = Color(0xFF2A61B9);
   static const Color colorBottomSignIn = Color(0xFF848484);
+  static const Color colorDisable = Color(0xFFD8DEE6);
 }

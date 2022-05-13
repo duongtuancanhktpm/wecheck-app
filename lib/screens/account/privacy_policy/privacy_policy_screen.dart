@@ -15,11 +15,33 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
         backgroundColor: AppColors.white,
         body: SafeArea(
             child: Stack(children: [
+          InkWell(
+            onTap: () => controller.backToSignIn(),
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.arrow_back_ios,
+                    color: AppColors.colorBlueLabel,
+                  ),
+                  Text(
+                    L.current.back,
+                    style: const TextStyle(
+                        color: AppColors.colorBlueLabel,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50, left: 50),
+                padding: const EdgeInsets.only(top: 80, left: 50),
                 child: Text(
                   L.current.privacyPolicy.tr,
                   style: const TextStyle(
@@ -28,107 +50,77 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
                       fontSize: 20),
                 ),
               ),
-              const SizedBox(
-                width: double.infinity,
-                height: 300,
-                child: WebView(
-                  initialUrl: 'https://flutter.dev',
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 35, right: 50),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Obx(() => Checkbox(
-                          value: controller.isAgreePolicy.value,
-                          onChanged: (value) {
-                            controller.isAgreePolicy.value = value!;
-                          })),
-                      const Text(
-                        'I have read and agreed the privacy policy',
-                        style: TextStyle(
-                            color: AppColors.colorTextSignIn,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      )
-                    ],
-                  )),
-              const Padding(padding: EdgeInsets.all(25)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned.fill(
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: <Color>[
-                                  AppColors.colorBtnSignIn,
-                                  AppColors.colorBtnSignIn,
-                                  AppColors.colorBtnSignIn
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            padding: const EdgeInsets.only(
-                                left: 30.0, right: 30, top: 10, bottom: 10),
-                            primary: AppColors.white,
-                            textStyle: const TextStyle(fontSize: 20),
-                          ),
-                          onPressed: () => controller.goToCreateAccount(),
-                          child: Text(L.current.next,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold)),
-                        ),
-                      ],
-                    ),
+              Container(
+                child: const SizedBox(
+                  width: double.infinity,
+                  height: 430,
+                  child: WebView(
+                    initialUrl: 'https://flutter.dev',
                   ),
-                ],
-              )
+                ),
+                padding: const EdgeInsets.all(20),
+              ),
             ],
           ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-                padding: const EdgeInsets.all(30),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: EdgeInsets.only(left: 30, right: 30, bottom: 30),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    InkWell(
-                      onTap: () => controller.goToResetPassword(),
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                            left: 20, bottom: 10, top: 10, right: 20),
-                        child: Text(
-                          L.current.resetPassword,
-                          style: const TextStyle(
-                              color: AppColors.colorBottomSignIn,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () => controller.goToCreateAccount(),
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                            left: 20, bottom: 10, top: 10, right: 20),
-                        child: const Text(
-                          "Back",
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Obx(() => Checkbox(
+                            value: controller.isAgreePolicy.value,
+                            onChanged: (value) {
+                              controller.isAgreePolicy.value = value!;
+                            })),
+                        const Text(
+                          'I have read and agreed the privacy policy',
                           style: TextStyle(
-                              color: AppColors.colorBottomSignIn,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
+                              color: AppColors.colorTextSignIn,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14),
+                        )
+                      ],
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 10),
+                        child: Obx(() => InkWell(
+                              onTap: () => controller.goToCreateAccount(),
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: double.infinity,
+                                padding:
+                                    const EdgeInsets.only(top: 12, bottom: 12),
+                                child: Text(
+                                  L.current.next,
+                                  style: const TextStyle(
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: controller.isAgreePolicy.value
+                                      ? AppColors.colorBlueLabel
+                                      : AppColors.colorDisable,
+                                  border: Border.all(
+                                      color: controller.isAgreePolicy.value
+                                          ? AppColors.colorBlueLabel
+                                          : AppColors.colorDisable),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15.0)),
+                                ),
+                              ),
+                            ))),
                   ],
-                )),
+                ),
+              ),
+            ),
           )
         ])));
   }

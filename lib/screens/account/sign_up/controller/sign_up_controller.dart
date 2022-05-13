@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:wecheck/routes/routes.dart';
 
 class SignUpController extends GetxController {
+  RxBool isActiveSendEmail = false.obs;
+
   void backToSignIn() {
     Get.back();
   }
@@ -9,7 +11,10 @@ class SignUpController extends GetxController {
   void goToResetPassword() {
     Get.toNamed(RouteName.resetPassword);
   }
+
   void goToInputCode() {
-    Get.toNamed(RouteName.inputCode);
+    if (isActiveSendEmail.value) {
+      Get.toNamed(RouteName.inputCode);
+    }
   }
 }
