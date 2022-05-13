@@ -41,14 +41,22 @@ class SignInScreen extends GetView<SignInController> {
                           borderSide:
                               BorderSide(color: AppColors.colorTextSignIn),
                         ),
+                        floatingLabelStyle: TextStyle(
+                            height: 0.2,
+                            color: AppColors.colorBlueLabel,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                         labelText: 'Email',
                         labelStyle: TextStyle(
                             color: AppColors.colorTextSignIn,
                             fontWeight: FontWeight.bold)),
+                    onChanged: (value) {
+                      controller.isActiveLogin.value = true;
+                    },
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 50, right: 50),
+                  padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
                   child: Obx(
                     () => TextFormField(
                       onChanged: (value) {
@@ -74,6 +82,11 @@ class SignInScreen extends GetView<SignInController> {
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
                           ),
+                          floatingLabelStyle: const TextStyle(
+                              height: 0.2,
+                              color: AppColors.colorBlueLabel,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                           labelText: 'Password',
                           labelStyle: const TextStyle(
                               color: AppColors.colorTextSignIn,
@@ -101,81 +114,89 @@ class SignInScreen extends GetView<SignInController> {
                         )
                       ],
                     )),
-                const Padding(padding: EdgeInsets.all(25)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
+              ],
+            ),
+            Positioned.fill(
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 20, left: 50, right: 50),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 10),
+                              child: Obx(() => InkWell(
+                                    onTap: () => controller.goToHome(),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.only(
+                                          top: 12, bottom: 12),
+                                      child: Text(
+                                        L.current.signIn,
+                                        style: const TextStyle(
+                                            color: AppColors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: controller.isActiveLogin.value
+                                            ? AppColors.colorBlueLabel
+                                            : AppColors.colorDisable,
+                                        border: Border.all(
+                                            color:
+                                                controller.isActiveLogin.value
+                                                    ? AppColors.colorBlueLabel
+                                                    : AppColors.colorDisable),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(15.0)),
+                                      ),
+                                    ),
+                                  ))),
+                          InkWell(
+                            onTap: () => controller.goToResetPassword(),
                             child: Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: <Color>[
-                                    AppColors.colorBtnSignIn,
-                                    AppColors.colorBtnSignIn,
-                                    AppColors.colorBtnSignIn
-                                  ],
-                                ),
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20),
+                              child: Text(
+                                L.current.forgotPassword,
+                                style: const TextStyle(
+                                    color: AppColors.colorBlueLabel,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30, top: 10, bottom: 10),
-                              primary: AppColors.white,
-                              textStyle: const TextStyle(fontSize: 20),
-                            ),
-                            onPressed: () => controller.goToHome(),
-                            child: Text(L.current.signIn,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
-                          ),
+                          Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 20),
+                              child: InkWell(
+                                onTap: () => controller.goToCreateAccount(),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.only(
+                                      top: 12, bottom: 12),
+                                  child: const Text(
+                                    'Create Account',
+                                    style: TextStyle(
+                                        color: AppColors.colorBlueLabel,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: Colors.blueAccent),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15.0)),
+                                  ),
+                                ),
+                              ))
                         ],
                       ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                  padding: const EdgeInsets.all(30),
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () => controller.goToResetPassword(),
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              left: 20, bottom: 10, top: 10, right: 20),
-                          child: Text(
-                            L.current.resetPassword,
-                            style: const TextStyle(
-                                color: AppColors.colorBottomSignIn,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () => controller.goToCreateAccount(),
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              left: 20, bottom: 10, top: 10, right: 20),
-                          child: const Text(
-                            "Create Account",
-                            style: TextStyle(
-                                color: AppColors.colorBottomSignIn,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      )
-                    ],
-                  )),
-            )
+                    )))
           ],
         )));
   }

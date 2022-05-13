@@ -18,6 +18,28 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                InkWell(
+                  onTap: () => controller.backToSignIn(),
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.arrow_back_ios,
+                          color: AppColors.colorBlueLabel,
+                        ),
+                        Text(
+                          L.current.back,
+                          style: const TextStyle(
+                              color: AppColors.colorBlueLabel,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 80, left: 50),
                   child: Text(
@@ -33,7 +55,9 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                   child: Obx(
                     () => TextFormField(
                       onChanged: (value) {
-                        //print(value);
+
+                        controller.isActiveResetPassword.value = true;
+
                       },
                       obscureText: controller.hidePassword.value,
                       //show/hide password
@@ -47,6 +71,11 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                                 controller.hidePassword.value =
                                     !controller.hidePassword.value;
                               }),
+                          floatingLabelStyle: const TextStyle(
+                              height: 0.2,
+                              color: AppColors.colorBlueLabel,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                           enabledBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
@@ -62,65 +91,45 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                     ),
                   ),
                 ),
-                const Padding(padding: EdgeInsets.all(20)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: <Color>[
-                                    AppColors.colorBtnSignIn,
-                                    AppColors.colorBtnSignIn,
-                                    AppColors.colorBtnSignIn
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30, top: 10, bottom: 10),
-                              primary: AppColors.white,
-                              textStyle: const TextStyle(fontSize: 16),
-                            ),
-                            onPressed: () {},
-                            child: Text(L.current.resetPassword.tr, style: const TextStyle(fontWeight: FontWeight.bold),),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
               ],
             ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                  padding: const EdgeInsets.all(30),
-                  child: Column(
-                    children: [
-                      InkWell(
+            Positioned.fill(
+              child: Align(alignment: Alignment.bottomCenter,child: Container(padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                      padding:
+                      const EdgeInsets.only(top: 20, bottom: 10),
+                      child: Obx(() => InkWell(
                         onTap: () => controller.backToSignIn(),
                         child: Container(
+                          alignment: Alignment.center,
+                          width: double.infinity,
                           padding: const EdgeInsets.only(
-                              left: 20, bottom: 10, top: 10, right: 20),
-                          child: const Text(
-                            "Back to sign in",
-                            style: TextStyle(
-                                color: AppColors.colorBottomSignIn,
-                                fontWeight: FontWeight.bold),
+                              top: 12, bottom: 12),
+                          child: Text(
+                              L.current.resetPassword.tr,
+                            style: const TextStyle(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                          decoration: BoxDecoration(
+                            color: controller.isActiveResetPassword.value
+                                ? AppColors.colorBlueLabel
+                                : AppColors.colorDisable,
+                            border: Border.all(
+                                color:
+                                controller.isActiveResetPassword.value
+                                    ? AppColors.colorBlueLabel
+                                    : AppColors.colorDisable),
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(15.0)),
                           ),
                         ),
-                      )
-                    ],
-                  )),
+                      ))),
+                ],
+              ),),),
             )
           ],
         )));
