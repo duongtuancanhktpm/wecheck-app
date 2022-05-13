@@ -5,17 +5,15 @@ class LanguageEn extends BaseLanguage {
   String get appName => 'App Name';
 
   @override
-  String get game => 'Game';
-
-  @override
-  String get gold => 'Gold';
-
-  @override
   String get home => 'Home';
 
   @override
-  String get profile => 'Profile';
+  String get timeline => 'Timeline';
 
   @override
-  String get service => 'Service';
+  String get chat => 'Chat';
+
+  @override
+  String get setting => 'Setting';
+
 }

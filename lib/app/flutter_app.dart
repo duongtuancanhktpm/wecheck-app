@@ -22,7 +22,7 @@ class FlutterAppState extends State<FlutterApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: const Size(414, 896),
       builder: (child) {
         return GetMaterialApp(
           navigatorKey: Get.key,
