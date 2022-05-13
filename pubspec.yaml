@@ -40,6 +40,10 @@ dependencies:
   floor: ^1.2.0
   shared_preferences: ^2.0.13
   flutter_screenutil: 5.5.2
+  flutter_svg: 1.0.3
+  simple_gesture_detector: ^0.2.0
+  pull_to_refresh: ^2.0.0
+  table_calendar: ^3.0.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -69,9 +73,24 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-#  assets:
-#    - assets/icons/
-#    - assets/images/
+  assets:
+    - assets/timeline_assets/ic_chat_selected.svg
+    - assets/timeline_assets/ic_chat_unselected.svg
+    - assets/timeline_assets/ic_edit.svg
+    - assets/timeline_assets/ic_event_drink_water.svg
+    - assets/timeline_assets/ic_event_eat.svg
+    - assets/timeline_assets/ic_event_inject_medicines.svg
+    - assets/timeline_assets/ic_event_mask.svg
+    - assets/timeline_assets/ic_event_running.svg
+    - assets/timeline_assets/ic_event_stress_fill.svg
+    - assets/timeline_assets/ic_event_stress_stroke.svg
+    - assets/timeline_assets/ic_event_take_medicines.svg
+    - assets/timeline_assets/ic_home_selected.svg
+    - assets/timeline_assets/ic_home_unselected.svg
+    - assets/timeline_assets/ic_setting_selected.svg
+    - assets/timeline_assets/ic_setting_unselected.svg
+    - assets/timeline_assets/ic_timeline_selected.svg
+    - assets/timeline_assets/ic_timeline_unselected.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
