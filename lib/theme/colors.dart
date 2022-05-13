@@ -32,6 +32,8 @@ class AppColors {
 
   static const Color magicMint = Color(0xFF1B3553);
   static const Color colorTextSignIn = Color(0xFFB1B1B1);
+  static const Color textColor = Color(0xFF1B3553);
   static const Color colorBtnSignIn = Color(0xFF295AB6);
+  static const Color colorBlueLabel = Color(0xFF2A61B9);
   static const Color colorBottomSignIn = Color(0xFF848484);
 }
