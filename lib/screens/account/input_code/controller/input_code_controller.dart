@@ -21,9 +21,9 @@ class InputCodeController extends GetxController {
     Get.back();
   }
 
-  void goToCreateProfile() {
+  void goToSetPassword() {
     if (isActiveVerify.value) {
-      Get.toNamed(RouteName.createProfile);
+      Get.toNamed(RouteName.setPassword);
     }
   }
 

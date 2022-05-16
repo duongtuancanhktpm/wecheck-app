@@ -6,6 +6,8 @@ import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy
 import 'package:wecheck/theme/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../utils/widget/indicator_sign_in.dart';
+
 class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
   const PrivacyPolicyScreen({Key? key}) : super(key: key);
 
@@ -15,33 +17,40 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
         backgroundColor: AppColors.white,
         body: SafeArea(
             child: Stack(children: [
-          InkWell(
-            onTap: () => controller.backToSignIn(),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppColors.colorBlueLabel,
-                  ),
-                  Text(
-                    L.current.back,
-                    style: const TextStyle(
-                        color: AppColors.colorBlueLabel,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              InkWell(
+                onTap: () => controller.backToSignIn(),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.colorBlueLabel,
+                      ),
+                      Text(
+                        L.current.back,
+                        style: const TextStyle(
+                            color: AppColors.colorBlueLabel,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              indicatorSignIn(
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn),
               Padding(
-                padding: const EdgeInsets.only(top: 80, left: 50),
+                padding: const EdgeInsets.only(top: 20, left: 50),
                 child: Text(
                   L.current.privacyPolicy.tr,
                   style: const TextStyle(

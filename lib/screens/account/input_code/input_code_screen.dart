@@ -5,6 +5,7 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 class InputCodeScreen extends GetView<InputCodeController> {
   const InputCodeScreen({Key? key}) : super(key: key);
@@ -40,6 +41,13 @@ class InputCodeScreen extends GetView<InputCodeController> {
                   ),
                 ),
               ),
+              indicatorSignIn(
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn,
+                  AppColors.colorBottomSignIn),
               Padding(
                 padding: EdgeInsets.only(top: 50, left: 30),
                 child: Text(
@@ -69,16 +77,16 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           vertical: 80.0, horizontal: 30),
                       child: PinCodeTextField(
                         appContext: context,
-                        pastedTextStyle: TextStyle(
-                          color: Colors.green.shade600,
+                        pastedTextStyle: const TextStyle(
+                          color: AppColors.black,
                           fontWeight: FontWeight.bold,
                         ),
                         length: 6,
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        obscuringWidget: const FlutterLogo(
-                          size: 24,
-                        ),
+                        //obscureText: true,
+                        // obscuringCharacter: '*',
+                        // obscuringWidget: const FlutterLogo(
+                        //   size: 24,
+                        // ),
                         blinkWhenObscuring: true,
                         animationType: AnimationType.fade,
                         validator: (v) {
@@ -93,7 +101,13 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           borderRadius: BorderRadius.circular(5),
                           fieldHeight: 50,
                           fieldWidth: 40,
+                          borderWidth: 1,
                           activeFillColor: Colors.white,
+                          inactiveColor: AppColors.colorBottomSignIn,
+                          inactiveFillColor: AppColors.white,
+                          selectedColor: AppColors.white,
+                          selectedFillColor: AppColors.white,
+                          activeColor: Colors.white
                         ),
                         cursorColor: Colors.black,
                         animationDuration: const Duration(milliseconds: 300),
@@ -110,7 +124,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           )
                         ],
                         onCompleted: (v) {
-                          debugPrint("Completed");
+
                         },
                         // onTap: () {
                         //   print("Pressed");
@@ -125,9 +139,6 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           }
                         },
                         beforeTextPaste: (text) {
-                          debugPrint("Allowing to paste $text");
-                          //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                          //but you can show anything you want here, like your pop up saying wrong paste format or etc
                           return true;
                         },
                       )),
@@ -146,7 +157,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                     Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Obx(() => InkWell(
-                              onTap: () => controller.goToCreateProfile(),
+                              onTap: () => controller.goToSetPassword(),
                               child: Container(
                                 alignment: Alignment.center,
                                 width: double.infinity,

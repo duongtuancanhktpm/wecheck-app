@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/diabetes/controller/diabetes_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
+import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 class DiabetesScreen extends GetView<DiabetesController> {
   const DiabetesScreen({Key? key}) : super(key: key);
@@ -18,8 +20,16 @@ class DiabetesScreen extends GetView<DiabetesController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                backAndSkipSignIn(()=> controller.goToHomePage()),
+                indicatorSignIn(
+                    AppColors.colorBlueLabel,
+                    AppColors.colorBlueLabel,
+                    AppColors.colorBlueLabel,
+                    AppColors.colorBlueLabel,
+                    AppColors.colorBlueLabel,
+                    AppColors.colorBlueLabel),
                 Padding(
-                  padding: const EdgeInsets.only(top: 80, left: 40),
+                  padding: const EdgeInsets.only(top: 50, left: 40),
                   child: Text(
                     L.current.aboutYourDiabetes.tr,
                     style: const TextStyle(
