@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/sign_up/controller/sign_up_controller.dart';
 import 'package:wecheck/theme/colors.dart';
-
-import '../../../utils/widget/indicator_sign_in.dart';
+import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
+import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 class SignUpScreen extends GetView<SignUpController> {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -20,28 +19,7 @@ class SignUpScreen extends GetView<SignUpController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () => controller.backToSignIn(),
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColors.colorBlueLabel,
-                      ),
-                      Text(
-                        L.current.back,
-                        style: const TextStyle(
-                            color: AppColors.colorBlueLabel,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              backSignInButton(()=> controller.backToSignIn()),
               indicatorSignIn(
                   AppColors.colorBlueLabel,
                   AppColors.colorBlueLabel,
@@ -105,9 +83,9 @@ class SignUpScreen extends GetView<SignUpController> {
                                 width: double.infinity,
                                 padding:
                                     const EdgeInsets.only(top: 12, bottom: 12),
-                                child: const Text(
-                                  'Send Email',
-                                  style: TextStyle(
+                                child: Text(
+                                  L.current.sendEmail.tr,
+                                  style: const TextStyle(
                                       color: AppColors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),

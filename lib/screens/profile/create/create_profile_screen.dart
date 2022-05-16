@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
@@ -37,305 +36,27 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                       fontSize: 20),
                 ),
               ),
+              inputNameLayout(),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 20, left: 30, right: 30, bottom: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: EdgeInsets.only(right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              fillColor: AppColors.white,
-                              floatingLabelStyle: const TextStyle(
-                                  height: 0.2,
-                                  color: AppColors.colorBlueLabel,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              labelText: L.current.firstName.tr,
-                              labelStyle: const TextStyle(
-                                  color: AppColors.colorTextSignIn,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              floatingLabelStyle: const TextStyle(
-                                  height: 0.2,
-                                  color: AppColors.colorBlueLabel,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                              fillColor: AppColors.white,
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              labelText: L.current.lastName.tr,
-                              labelStyle: const TextStyle(
-                                  color: AppColors.colorTextSignIn,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Padding(
                 padding:
-                    EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 10),
+                    const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 10),
                 child: Text(
-                  'Date Of bird',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  L.current.dateOfBirth.tr,
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              fillColor: AppColors.white,
-                              floatingLabelStyle: const TextStyle(
-                                  height: 0.2,
-                                  color: AppColors.colorBlueLabel,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              labelText: L.current.day.tr,
-                              labelStyle: const TextStyle(
-                                  color: AppColors.colorTextSignIn,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: AppColors.white,
-                            floatingLabelStyle: const TextStyle(
-                                height: 0.2,
-                                color: AppColors.colorBlueLabel,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.colorTextSignIn),
-                            ),
-                            focusedBorder: const UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppColors.colorTextSignIn),
-                            ),
-                            labelText: L.current.month.tr,
-                            labelStyle: const TextStyle(
-                                color: AppColors.colorTextSignIn,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              fillColor: AppColors.white,
-                              floatingLabelStyle: const TextStyle(
-                                  height: 0.2,
-                                  color: AppColors.colorBlueLabel,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColors.colorTextSignIn),
-                              ),
-                              labelText: L.current.year.tr,
-                              labelStyle: const TextStyle(
-                                  color: AppColors.colorTextSignIn,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              dateOfBirthLayout(),
               Obx(() => Padding(
                   padding:
                       const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-                  child: DropdownButton<String>(
-                    value: controller.valueCountry.value,
-                    icon: const Icon(Icons.arrow_drop_down),
-                    iconSize: 24,
-                    elevation: 16,
-                    isExpanded: true,
-                    style: const TextStyle(
-                        color: AppColors.colorBottomSignIn, fontSize: 18),
-                    underline: Container(
-                      height: 1,
-                      color: AppColors.colorTextSignIn,
-                    ),
-                    onChanged: (data) {
-                      controller.valueCountry.value = data!;
-                    },
-                    items: controller.listCountry
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
+                  child: dropMenuCountry())),
               Obx(() => Padding(
                   padding:
                       const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-                  child: DropdownButton<String>(
-                    value: controller.valueGender.value,
-                    icon: const Icon(Icons.arrow_drop_down),
-                    iconSize: 24,
-                    elevation: 16,
-                    isExpanded: true,
-                    style: const TextStyle(
-                        color: AppColors.colorBottomSignIn, fontSize: 18),
-                    underline: Container(
-                      height: 1,
-                      color: AppColors.colorTextSignIn,
-                    ),
-                    onChanged: (data) {
-                      controller.valueGender.value = data!;
-                    },
-                    items: controller.listGender
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ))),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
-                child: Stack(
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                          fillColor: AppColors.white,
-                          floatingLabelStyle: TextStyle(
-                              height: 0.2,
-                              color: AppColors.colorBlueLabel,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
-                          ),
-                          labelText: L.current.height.tr,
-                          labelStyle: const TextStyle(
-                              color: AppColors.colorTextSignIn,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                    optionalWidget()
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
-                child: Stack(
-                  children: [
-                    TextFormField(
-                      style: const TextStyle(
-                          color: AppColors.textColor, fontSize: 16),
-                      decoration: InputDecoration(
-                          fillColor: AppColors.white,
-                          filled: true,
-                          //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
-                          floatingLabelStyle: const TextStyle(
-                              height: 0.2,
-                              color: AppColors.colorBlueLabel,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                          enabledBorder: const UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
-                          ),
-                          focusedBorder: const UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
-                          ),
-                          labelText: L.current.weight.tr,
-                          labelStyle: const TextStyle(
-                              height: 20,
-                              fontSize: 16,
-                              color: AppColors.colorTextSignIn,
-                              fontWeight: FontWeight.bold)),
-                    ),
-                    optionalWidget()
-                  ],
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(
-                      top: 20, left: 30, right: 30, bottom: 20),
-                  child: InkWell(
-                    onTap: () => controller.goToDiabetesScreen(),
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      padding: const EdgeInsets.only(top: 12, bottom: 12),
-                      child: Text(
-                        L.current.next.tr,
-                        style: const TextStyle(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        border: Border.all(color: Colors.blueAccent),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                    ),
-                  ))
+                  child: dropMenuGender())),
+              inputHeightWidget(),
+              inputWeightWidget(),
+              nextButton()
             ],
           ),
         ),
@@ -352,5 +73,311 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
             style: TextStyle(color: AppColors.colorBottomSignIn),
           )),
     );
+  }
+
+  Widget inputNameLayout() {
+    return Padding(
+      padding: const EdgeInsets.only(
+          top: 20, left: 30, right: 30, bottom: 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: const EdgeInsets.only(right: 10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    fillColor: AppColors.white,
+                    floatingLabelStyle: const TextStyle(
+                        height: 0.2,
+                        color: AppColors.colorBlueLabel,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    labelText: L.current.firstName.tr,
+                    labelStyle: const TextStyle(
+                        color: AppColors.colorTextSignIn,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    floatingLabelStyle: const TextStyle(
+                        height: 0.2,
+                        color: AppColors.colorBlueLabel,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    fillColor: AppColors.white,
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    labelText: L.current.lastName.tr,
+                    labelStyle: const TextStyle(
+                        color: AppColors.colorTextSignIn,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  dateOfBirthLayout() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: const EdgeInsets.only(right: 10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    fillColor: AppColors.white,
+                    floatingLabelStyle: const TextStyle(
+                        height: 0.2,
+                        color: AppColors.colorBlueLabel,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    labelText: L.current.day.tr,
+                    labelStyle: const TextStyle(
+                        color: AppColors.colorTextSignIn,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: TextFormField(
+              decoration: InputDecoration(
+                  fillColor: AppColors.white,
+                  floatingLabelStyle: const TextStyle(
+                      height: 0.2,
+                      color: AppColors.colorBlueLabel,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide:
+                    BorderSide(color: AppColors.colorTextSignIn),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide:
+                    BorderSide(color: AppColors.colorTextSignIn),
+                  ),
+                  labelText: L.current.month.tr,
+                  labelStyle: const TextStyle(
+                      color: AppColors.colorTextSignIn,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: const EdgeInsets.only(left: 10),
+              child: TextFormField(
+                decoration: InputDecoration(
+                    fillColor: AppColors.white,
+                    floatingLabelStyle: const TextStyle(
+                        height: 0.2,
+                        color: AppColors.colorBlueLabel,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    enabledBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors.colorTextSignIn),
+                    ),
+                    labelText: L.current.year.tr,
+                    labelStyle: const TextStyle(
+                        color: AppColors.colorTextSignIn,
+                        fontWeight: FontWeight.bold)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget dropMenuCountry() {
+    return DropdownButton<String>(
+      value: controller.valueCountry.value,
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      isExpanded: true,
+      style: const TextStyle(
+          color: AppColors.colorBottomSignIn, fontSize: 18),
+      underline: Container(
+        height: 1,
+        color: AppColors.colorTextSignIn,
+      ),
+      onChanged: (data) {
+        controller.valueCountry.value = data!;
+      },
+      items: controller.listCountry
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+
+  dropMenuGender() {
+    DropdownButton<String>(
+      value: controller.valueGender.value,
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      isExpanded: true,
+      style: const TextStyle(
+          color: AppColors.colorBottomSignIn, fontSize: 18),
+      underline: Container(
+        height: 1,
+        color: AppColors.colorTextSignIn,
+      ),
+      onChanged: (data) {
+        controller.valueGender.value = data!;
+      },
+      items: controller.listGender
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget inputHeightWidget() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+      child: Stack(
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+                fillColor: AppColors.white,
+                floatingLabelStyle: const TextStyle(
+                    height: 0.2,
+                    color: AppColors.colorBlueLabel,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.colorTextSignIn),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.colorTextSignIn),
+                ),
+                labelText: L.current.height.tr,
+                labelStyle: const TextStyle(
+                    color: AppColors.colorTextSignIn,
+                    fontWeight: FontWeight.bold)),
+          ),
+          optionalWidget()
+        ],
+      ),
+    );
+  }
+
+  Widget inputWeightWidget() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 20),
+      child: Stack(
+        children: [
+          TextFormField(
+            style: const TextStyle(
+                color: AppColors.textColor, fontSize: 16),
+            decoration: InputDecoration(
+                fillColor: AppColors.white,
+                filled: true,
+                //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
+                floatingLabelStyle: const TextStyle(
+                    height: 0.2,
+                    color: AppColors.colorBlueLabel,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.colorTextSignIn),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide:
+                  BorderSide(color: AppColors.colorTextSignIn),
+                ),
+                labelText: L.current.weight.tr,
+                labelStyle: const TextStyle(
+                    height: 20,
+                    fontSize: 16,
+                    color: AppColors.colorTextSignIn,
+                    fontWeight: FontWeight.bold)),
+          ),
+          optionalWidget()
+        ],
+      ),
+    );
+  }
+
+  Widget nextButton() {
+    return Padding(
+        padding: const EdgeInsets.only(
+            top: 20, left: 30, right: 30, bottom: 20),
+        child: InkWell(
+          onTap: () => controller.goToDiabetesScreen(),
+          child: Container(
+            alignment: Alignment.center,
+            width: double.infinity,
+            padding: const EdgeInsets.only(top: 12, bottom: 12),
+            child: Text(
+              L.current.next.tr,
+              style: const TextStyle(
+                  color: AppColors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blueAccent,
+              border: Border.all(color: Colors.blueAccent),
+              borderRadius:
+              const BorderRadius.all(Radius.circular(15.0)),
+            ),
+          ),
+        ));
   }
 }

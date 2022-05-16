@@ -101,4 +101,8 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get weight => 'Weight';
+  @override
+  String get sendEmail => 'Send Email';
+  @override
+  String get dateOfBirth => 'Date Of birth';
 }
