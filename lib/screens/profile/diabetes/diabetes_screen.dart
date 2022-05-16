@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/diabetes/controller/diabetes_controller.dart';
@@ -51,9 +50,9 @@ class DiabetesScreen extends GetView<DiabetesController> {
                               onChanged: (value) {
                                 controller.isHaveDiabetes.value = value!;
                               })),
-                          const Text(
-                            'I have diabetes',
-                            style: TextStyle(
+                          Text(
+                            L.current.iHaveDiabetes.tr,
+                            style: const TextStyle(
                                 color: AppColors.colorTextSignIn,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14),
@@ -100,9 +99,9 @@ class DiabetesScreen extends GetView<DiabetesController> {
                               onChanged: (value) {
                                 controller.isTakingMedicine.value = value!;
                               })),
-                          const Text(
-                            'I am taking medicine',
-                            style: TextStyle(
+                          Text(
+                            L.current.iAmTakingMedicine.tr,
+                            style: const TextStyle(
                                 color: AppColors.colorTextSignIn,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14),
@@ -149,9 +148,9 @@ class DiabetesScreen extends GetView<DiabetesController> {
                               onChanged: (value) {
                                 controller.isTakingInsulin.value = value!;
                               })),
-                          const Text(
-                            'I am taking insulin',
-                            style: TextStyle(
+                          Text(
+                            L.current.iAmTakingInsulin.tr,
+                            style: const TextStyle(
                                 color: AppColors.colorTextSignIn,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14),
@@ -222,12 +221,12 @@ class DiabetesScreen extends GetView<DiabetesController> {
   }
 
   optionalWidget() {
-    return const Positioned.fill(
+    return Positioned.fill(
       child: Align(
           alignment: Alignment.centerRight,
           child: Text(
-            'Optional',
-            style: TextStyle(color: AppColors.colorBottomSignIn),
+            L.current.optional.tr,
+            style: const TextStyle(color: AppColors.colorBottomSignIn),
           )),
     );
   }

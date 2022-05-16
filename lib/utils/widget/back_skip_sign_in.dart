@@ -39,7 +39,7 @@ Widget backAndSkipSignIn(GestureTapCallback onTabSkip){
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text(
-                L.current.skip,
+                L.current.skip.tr,
                 style: const TextStyle(
                     color: AppColors.colorBlueLabel,
                     fontSize: 20,

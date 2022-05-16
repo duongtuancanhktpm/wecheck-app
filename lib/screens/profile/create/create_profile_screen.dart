@@ -47,25 +47,25 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: 10),
                         child: TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                               fillColor: AppColors.white,
-                              floatingLabelStyle: TextStyle(
+                              floatingLabelStyle: const TextStyle(
                                   height: 0.2,
                                   color: AppColors.colorBlueLabel,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              labelText: 'First Name',
-                              labelStyle: TextStyle(
+                              labelText: L.current.firstName.tr,
+                              labelStyle: const TextStyle(
                                   color: AppColors.colorTextSignIn,
                                   fontWeight: FontWeight.bold)),
                         ),
@@ -76,23 +76,23 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                       child: Container(
                         padding: const EdgeInsets.only(left: 10),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                              floatingLabelStyle: TextStyle(
+                          decoration: InputDecoration(
+                              floatingLabelStyle: const TextStyle(
                                   height: 0.2,
                                   color: AppColors.colorBlueLabel,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
                               fillColor: AppColors.white,
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              labelText: 'Last Name',
-                              labelStyle: TextStyle(
+                              labelText: L.current.lastName.tr,
+                              labelStyle: const TextStyle(
                                   color: AppColors.colorTextSignIn,
                                   fontWeight: FontWeight.bold)),
                         ),
@@ -120,23 +120,23 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                       child: Container(
                         padding: const EdgeInsets.only(right: 10),
                         child: TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                               fillColor: AppColors.white,
-                              floatingLabelStyle: TextStyle(
+                              floatingLabelStyle: const TextStyle(
                                   height: 0.2,
                                   color: AppColors.colorBlueLabel,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              labelText: 'Day',
-                              labelStyle: TextStyle(
+                              labelText: L.current.day.tr,
+                              labelStyle: const TextStyle(
                                   color: AppColors.colorTextSignIn,
                                   fontWeight: FontWeight.bold)),
                         ),
@@ -145,23 +145,23 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     Expanded(
                       flex: 1,
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                             fillColor: AppColors.white,
-                            floatingLabelStyle: TextStyle(
+                            floatingLabelStyle: const TextStyle(
                                 height: 0.2,
                                 color: AppColors.colorBlueLabel,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: AppColors.colorTextSignIn),
                             ),
-                            focusedBorder: UnderlineInputBorder(
+                            focusedBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: AppColors.colorTextSignIn),
                             ),
-                            labelText: 'Month',
-                            labelStyle: TextStyle(
+                            labelText: L.current.month.tr,
+                            labelStyle: const TextStyle(
                                 color: AppColors.colorTextSignIn,
                                 fontWeight: FontWeight.bold)),
                       ),
@@ -171,23 +171,23 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                       child: Container(
                         padding: const EdgeInsets.only(left: 10),
                         child: TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                               fillColor: AppColors.white,
-                              floatingLabelStyle: TextStyle(
+                              floatingLabelStyle: const TextStyle(
                                   height: 0.2,
                                   color: AppColors.colorBlueLabel,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold),
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              focusedBorder: UnderlineInputBorder(
+                              focusedBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(
                                     color: AppColors.colorTextSignIn),
                               ),
-                              labelText: 'Year',
-                              labelStyle: TextStyle(
+                              labelText: L.current.year.tr,
+                              labelStyle: const TextStyle(
                                   color: AppColors.colorTextSignIn,
                                   fontWeight: FontWeight.bold)),
                         ),
@@ -253,7 +253,7 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                 child: Stack(
                   children: [
                     TextFormField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           fillColor: AppColors.white,
                           floatingLabelStyle: TextStyle(
                               height: 0.2,
@@ -268,8 +268,8 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
                           ),
-                          labelText: 'Height',
-                          labelStyle: TextStyle(
+                          labelText: L.current.height.tr,
+                          labelStyle: const TextStyle(
                               color: AppColors.colorTextSignIn,
                               fontWeight: FontWeight.bold)),
                     ),
@@ -284,25 +284,25 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     TextFormField(
                       style: const TextStyle(
                           color: AppColors.textColor, fontSize: 16),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                           fillColor: AppColors.white,
                           filled: true,
                           //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
-                          floatingLabelStyle: TextStyle(
+                          floatingLabelStyle: const TextStyle(
                               height: 0.2,
                               color: AppColors.colorBlueLabel,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
-                          enabledBorder: UnderlineInputBorder(
+                          enabledBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
                           ),
-                          labelText: 'Weight',
-                          labelStyle: TextStyle(
+                          labelText: L.current.weight.tr,
+                          labelStyle: const TextStyle(
                               height: 20,
                               fontSize: 16,
                               color: AppColors.colorTextSignIn,
@@ -321,9 +321,9 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                       alignment: Alignment.center,
                       width: double.infinity,
                       padding: const EdgeInsets.only(top: 12, bottom: 12),
-                      child: const Text(
-                        'Next',
-                        style: TextStyle(
+                      child: Text(
+                        L.current.next.tr,
+                        style: const TextStyle(
                             color: AppColors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16),

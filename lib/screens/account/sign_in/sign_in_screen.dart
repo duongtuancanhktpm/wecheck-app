@@ -32,23 +32,23 @@ class SignInScreen extends GetView<SignInController> {
                   padding: const EdgeInsets.only(top: 40, left: 50, right: 50),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         fillColor: AppColors.white,
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.colorTextSignIn),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide:
                               BorderSide(color: AppColors.colorTextSignIn),
                         ),
-                        floatingLabelStyle: TextStyle(
+                        floatingLabelStyle: const TextStyle(
                             height: 0.2,
                             color: AppColors.colorBlueLabel,
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
-                        labelText: 'Email',
-                        labelStyle: TextStyle(
+                        labelText: L.current.email.tr,
+                        labelStyle: const TextStyle(
                             color: AppColors.colorTextSignIn,
                             fontWeight: FontWeight.bold)),
                     onChanged: (value) {
@@ -94,7 +94,7 @@ class SignInScreen extends GetView<SignInController> {
                               color: AppColors.colorBlueLabel,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
-                          labelText: 'Password',
+                          labelText: L.current.password.tr,
                           labelStyle: const TextStyle(
                               color: AppColors.colorTextSignIn,
                               fontWeight: FontWeight.bold)),
@@ -112,9 +112,9 @@ class SignInScreen extends GetView<SignInController> {
                             value: controller.isRememberId.value,
                             onChanged: (value) =>
                                 controller.isRememberId.value = value!)),
-                        const Text(
-                          'Remember my ID',
-                          style: TextStyle(
+                        Text(
+                          L.current.rememberMyID.tr,
+                          style: const TextStyle(
                               color: AppColors.colorTextSignIn,
                               fontWeight: FontWeight.bold,
                               fontSize: 14),
