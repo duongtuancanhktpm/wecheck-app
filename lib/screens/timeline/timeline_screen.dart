@@ -27,41 +27,38 @@ class TimeLineScreen extends GetView<TimeLineController> {
         }
         return true;
       },
-      child: Container(
-        color: AppColors.aliceBlue,
-        child: SafeArea(
-          child: Scaffold(
-            appBar: AppBarWidget(
-              title: Obx(
-                () => Text(
-                  controller.titleAppBar.value,
-                  style: AppTextStyle.t22w700,
-                ),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBarWidget(
+            title: Obx(
+              () => Text(
+                controller.titleAppBar.value,
+                style: AppTextStyle.t22w700(AppColors.catalinaBlue),
               ),
-              action: [
-                SvgPicture.asset(
-                  AppIcons.icEdit,
-                ),
-              ],
-              onBackPressed: () {
-                if (controller.calendarFormat.value == CalendarFormat.month) {
-                  SystemNavigator.pop();
-                } else {
-                  controller.onChangeCalendarFormat();
-                }
-              },
             ),
-            backgroundColor: Colors.white,
-            body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    _buildCalendarEvent(),
-                    _buildListEventData(),
-                  ],
-                ),
+            action: [
+              SvgPicture.asset(
+                AppIcons.icEdit,
+              ),
+            ],
+            onBackPressed: () {
+              if (controller.calendarFormat.value == CalendarFormat.month) {
+                SystemNavigator.pop();
+              } else {
+                controller.onChangeCalendarFormat();
+              }
+            },
+          ),
+          backgroundColor: Colors.white,
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  _buildCalendarEvent(),
+                  _buildListEventData(),
+                ],
               ),
             ),
           ),
@@ -165,11 +162,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
       DateFormat.E().format(
         dateTime,
       ),
-      style: TextStyle(
-        fontSize: 15.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.catalinaBlue,
-      ),
+      style: AppTextStyle.t16w700(AppColors.catalinaBlue),
       textAlign: TextAlign.center,
     );
   }
@@ -181,11 +174,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         alignment: Alignment.topCenter,
         child: Text(
           dateTime.day.toString(),
-          style: TextStyle(
-            color: AppColors.lightStaleGrey2,
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
-          ),
+          style: AppTextStyle.t16w700(AppColors.lightStaleGrey2),
         ),
       ),
     );
@@ -198,11 +187,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         alignment: Alignment.topCenter,
         child: Text(
           dateTime.day.toString(),
-          style: TextStyle(
-            color: AppColors.hawkesBlue,
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
-          ),
+          style: AppTextStyle.t16w700(AppColors.hawkesBlue),
         ),
       ),
     );
@@ -217,11 +202,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         alignment: Alignment.topCenter,
         child: Text(
           dateTime.day.toString(),
-          style: TextStyle(
-            color: AppColors.lightStaleGrey2,
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
-          ),
+          style: AppTextStyle.t16w700(AppColors.lightStaleGrey2),
         ),
       ),
     );
@@ -241,11 +222,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         alignment: Alignment.topCenter,
         child: Text(
           dateTime.day.toString(),
-          style: TextStyle(
-            color: AppColors.lightStaleGrey2,
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
-          ),
+          style: AppTextStyle.t16w700(AppColors.lightStaleGrey2),
         ),
       ),
     );
@@ -314,11 +291,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
                       DateFormat.E().format(
                         daySelected,
                       ),
-                      style: TextStyle(
-                        color: AppColors.lightSlateGrey,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppTextStyle.t18w700(AppColors.lightSlateGrey),
                     ),
                   ),
                 ),
@@ -365,21 +338,14 @@ class TimeLineScreen extends GetView<TimeLineController> {
             flex: 8,
             child: Text(
               data.value,
-              style: TextStyle(
-                color: AppColors.ceruleanBlue,
-                fontSize: 30.sp,
-                fontWeight: FontWeight.bold,
-              ),
+              style: AppTextStyle.t30w700(AppColors.ceruleanBlue),
             ),
           ),
           Expanded(
             flex: 2,
             child: Text(
               DateFormat.Hm().format(time),
-              style: TextStyle(
-                color: AppColors.lightSlateGrey,
-                fontSize: 16.sp,
-              ),
+              style: AppTextStyle.t18w700(AppColors.lightSlateGrey),
             ),
           ),
         ],

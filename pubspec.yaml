@@ -74,23 +74,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/icons/ic_chat_selected.svg
-    - assets/icons/ic_chat_unselected.svg
-    - assets/icons/ic_edit.svg
-    - assets/icons/ic_event_drink_water.svg
-    - assets/icons/ic_event_eat.svg
-    - assets/icons/ic_event_inject_medicines.svg
-    - assets/icons/ic_event_mask.svg
-    - assets/icons/ic_event_running.svg
-    - assets/icons/ic_event_stress_fill.svg
-    - assets/icons/ic_event_stress_stroke.svg
-    - assets/icons/ic_event_take_medicines.svg
-    - assets/icons/ic_home_selected.svg
-    - assets/icons/ic_home_unselected.svg
-    - assets/icons/ic_setting_selected.svg
-    - assets/icons/ic_setting_unselected.svg
-    - assets/icons/ic_timeline_selected.svg
-    - assets/icons/ic_timeline_unselected.svg
+    - assets/icons/
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

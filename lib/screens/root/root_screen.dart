@@ -4,6 +4,7 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/routes/routes.dart';
 import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
+import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,62 +84,44 @@ class _RootScreenState extends State<RootScreen> {
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppIcons.icHomeUnSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            activeIcon: SvgPicture.asset(
-              AppIcons.icHomeSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            label: L.current.home.tr,
-            backgroundColor: Colors.white,
+          _buildItem(
+            AppIcons.icHomeSelected,
+            AppIcons.icHomeUnSelected,
+            L.current.home.tr,
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppIcons.icTimelineUnSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            activeIcon: SvgPicture.asset(
-              AppIcons.icTimelineSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            label: L.current.timeline.tr,
-            backgroundColor: Colors.white,
+          _buildItem(
+            AppIcons.icTimelineSelected,
+            AppIcons.icTimelineUnSelected,
+            L.current.timeline.tr,
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppIcons.icChatUnSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            activeIcon: SvgPicture.asset(
-              AppIcons.icChatSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            label: L.current.chat.tr,
-            backgroundColor: Colors.white,
+          _buildItem(
+            AppIcons.icChatSelected,
+            AppIcons.icChatUnSelected,
+            L.current.chat.tr,
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppIcons.icSettingUnSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            activeIcon: SvgPicture.asset(
-              AppIcons.icSettingSelected,
-              width: 26.w,
-              height: 26.w,
-            ),
-            label: L.current.setting.tr,
-            backgroundColor: Colors.white,
+          _buildItem(
+            AppIcons.icSettingSelected,
+            AppIcons.icSettingUnSelected,
+            L.current.setting.tr,
           ),
         ],
       );
+
+  BottomNavigationBarItem _buildItem(
+      String activeIcon, String icon, String name) {
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        icon,
+        width: 26.w,
+        height: 26.w,
+      ),
+      activeIcon: SvgPicture.asset(
+        activeIcon,
+        width: 26.w,
+        height: 26.w,
+      ),
+      label: name,
+      backgroundColor: Colors.white,
+    );
+  }
 }
