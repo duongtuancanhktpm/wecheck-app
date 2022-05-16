@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
+import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 class CreateProfileScreen extends GetView<CreateProfileController> {
   const CreateProfileScreen({Key? key}) : super(key: key);
@@ -17,8 +19,16 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              backAndSkipSignIn(()=> controller.goToHomePage()),
+              indicatorSignIn(
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBlueLabel,
+                  AppColors.colorBottomSignIn),
               Padding(
-                padding: const EdgeInsets.only(top: 80, left: 40),
+                padding: const EdgeInsets.only(top: 50, left: 40),
                 child: Text(
                   L.current.createYourProfile.tr,
                   style: const TextStyle(

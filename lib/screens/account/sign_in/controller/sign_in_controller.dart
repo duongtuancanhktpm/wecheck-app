@@ -8,20 +8,21 @@ class SignInController extends GetxController {
 
   void goToCreateAccount() {
     // Get.toNamed(RouteName.signUp);
-    if (isActiveLogin.value) {
-      Get.toNamed(RouteName.privacyPolicy);
-    }
+    Get.toNamed(RouteName.privacyPolicy);
   }
 
   void backToSignIn() {
     Get.back();
   }
+
   void goToResetPassword() {
     Get.toNamed(RouteName.resetPassword);
   }
 
   void goToHome() {
-    // Get.toNamed(RouteName.home);
-    Get.toNamed(RouteName.createProfile);
+    if (isActiveLogin.value) {
+      Get.toNamed(RouteName.home);
+    }
+    // Get.toNamed(RouteName.createProfile);
   }
 }

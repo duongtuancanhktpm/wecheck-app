@@ -31,6 +31,7 @@ class SignInScreen extends GetView<SignInController> {
                 Padding(
                   padding: const EdgeInsets.only(top: 40, left: 50, right: 50),
                   child: TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                         fillColor: AppColors.white,
                         enabledBorder: UnderlineInputBorder(
@@ -51,7 +52,13 @@ class SignInScreen extends GetView<SignInController> {
                             color: AppColors.colorTextSignIn,
                             fontWeight: FontWeight.bold)),
                     onChanged: (value) {
-                      controller.isActiveLogin.value = true;
+                      if (value.isNotEmpty) {
+                        controller.isActiveLogin.value = true;
+                      } else {
+                        controller.isActiveLogin.value = false;
+                      }
+
+
                     },
                   ),
                 ),
@@ -120,8 +127,8 @@ class SignInScreen extends GetView<SignInController> {
                 child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, left: 50, right: 50),
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 50, right: 50),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -159,8 +166,8 @@ class SignInScreen extends GetView<SignInController> {
                           InkWell(
                             onTap: () => controller.goToResetPassword(),
                             child: Container(
-                              padding: const EdgeInsets.only(
-                                  left: 20, right: 20),
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
                               child: Text(
                                 L.current.forgotPassword,
                                 style: const TextStyle(

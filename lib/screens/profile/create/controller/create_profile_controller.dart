@@ -20,4 +20,7 @@ class CreateProfileController extends GetxController {
   void goToDiabetesScreen() {
     Get.toNamed(RouteName.diabetesScreen);
   }
+  void goToHomePage() {
+    Get.toNamed(RouteName.home);
+  }
 }
