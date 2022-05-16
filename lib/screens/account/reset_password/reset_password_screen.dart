@@ -25,7 +25,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                   child: Text(
                     L.current.resetPassword.tr,
                     style: const TextStyle(
-                        color: AppColors.textColor,
+                        color: AppColors.textRegalBlue,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
@@ -53,20 +53,20 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                               }),
                           floatingLabelStyle: const TextStyle(
                               height: 0.2,
-                              color: AppColors.colorBlueLabel,
+                              color: AppColors.colorCeruleanBlue,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
                           enabledBorder: const UnderlineInputBorder(
                             borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
+                                BorderSide(color: AppColors.colorDarkGrey),
                           ),
                           focusedBorder: const UnderlineInputBorder(
                             borderSide:
-                                BorderSide(color: AppColors.colorTextSignIn),
+                                BorderSide(color: AppColors.colorDarkGrey),
                           ),
                           labelText: L.current.password.tr,
                           labelStyle: const TextStyle(
-                              color: AppColors.colorTextSignIn,
+                              color: AppColors.colorDarkGrey,
                               fontWeight: FontWeight.bold)),
                     ),
                   ),
@@ -96,13 +96,13 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                           ),
                           decoration: BoxDecoration(
                             color: controller.isActiveResetPassword.value
-                                ? AppColors.colorBlueLabel
-                                : AppColors.colorDisable,
+                                ? AppColors.colorCeruleanBlue
+                                : AppColors.colorHawkesBlue,
                             border: Border.all(
                                 color:
                                 controller.isActiveResetPassword.value
-                                    ? AppColors.colorBlueLabel
-                                    : AppColors.colorDisable),
+                                    ? AppColors.colorCeruleanBlue
+                                    : AppColors.colorHawkesBlue),
                             borderRadius: const BorderRadius.all(
                                 Radius.circular(15.0)),
                           ),

@@ -20,18 +20,18 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
             children: [
               backAndSkipSignIn(()=> controller.goToHomePage()),
               indicatorSignIn(
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBottomSignIn),
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorGrey),
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 40),
                 child: Text(
                   L.current.createYourProfile.tr,
                   style: const TextStyle(
-                      color: AppColors.textColor,
+                      color: AppColors.textRegalBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -70,7 +70,7 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
           alignment: Alignment.centerRight,
           child: Text(
             'Optional',
-            style: TextStyle(color: AppColors.colorBottomSignIn),
+            style: TextStyle(color: AppColors.colorGrey),
           )),
     );
   }
@@ -92,20 +92,20 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     fillColor: AppColors.white,
                     floatingLabelStyle: const TextStyle(
                         height: 0.2,
-                        color: AppColors.colorBlueLabel,
+                        color: AppColors.colorCeruleanBlue,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.firstName.tr,
                     labelStyle: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold)),
               ),
             ),
@@ -118,21 +118,21 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                 decoration: InputDecoration(
                     floatingLabelStyle: const TextStyle(
                         height: 0.2,
-                        color: AppColors.colorBlueLabel,
+                        color: AppColors.colorCeruleanBlue,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     fillColor: AppColors.white,
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.lastName.tr,
                     labelStyle: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold)),
               ),
             ),
@@ -158,20 +158,20 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     fillColor: AppColors.white,
                     floatingLabelStyle: const TextStyle(
                         height: 0.2,
-                        color: AppColors.colorBlueLabel,
+                        color: AppColors.colorCeruleanBlue,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.day.tr,
                     labelStyle: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold)),
               ),
             ),
@@ -183,20 +183,20 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                   fillColor: AppColors.white,
                   floatingLabelStyle: const TextStyle(
                       height: 0.2,
-                      color: AppColors.colorBlueLabel,
+                      color: AppColors.colorCeruleanBlue,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                   enabledBorder: const UnderlineInputBorder(
                     borderSide:
-                    BorderSide(color: AppColors.colorTextSignIn),
+                    BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   focusedBorder: const UnderlineInputBorder(
                     borderSide:
-                    BorderSide(color: AppColors.colorTextSignIn),
+                    BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   labelText: L.current.month.tr,
                   labelStyle: const TextStyle(
-                      color: AppColors.colorTextSignIn,
+                      color: AppColors.colorDarkGrey,
                       fontWeight: FontWeight.bold)),
             ),
           ),
@@ -209,20 +209,20 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                     fillColor: AppColors.white,
                     floatingLabelStyle: const TextStyle(
                         height: 0.2,
-                        color: AppColors.colorBlueLabel,
+                        color: AppColors.colorCeruleanBlue,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
-                          color: AppColors.colorTextSignIn),
+                          color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.year.tr,
                     labelStyle: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold)),
               ),
             ),
@@ -240,10 +240,10 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
       elevation: 16,
       isExpanded: true,
       style: const TextStyle(
-          color: AppColors.colorBottomSignIn, fontSize: 18),
+          color: AppColors.colorGrey, fontSize: 18),
       underline: Container(
         height: 1,
-        color: AppColors.colorTextSignIn,
+        color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {
         controller.valueCountry.value = data!;
@@ -266,10 +266,10 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
       elevation: 16,
       isExpanded: true,
       style: const TextStyle(
-          color: AppColors.colorBottomSignIn, fontSize: 18),
+          color: AppColors.colorGrey, fontSize: 18),
       underline: Container(
         height: 1,
-        color: AppColors.colorTextSignIn,
+        color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {
         controller.valueGender.value = data!;
@@ -294,20 +294,20 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
                 fillColor: AppColors.white,
                 floatingLabelStyle: const TextStyle(
                     height: 0.2,
-                    color: AppColors.colorBlueLabel,
+                    color: AppColors.colorCeruleanBlue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
                 enabledBorder: const UnderlineInputBorder(
                   borderSide:
-                  BorderSide(color: AppColors.colorTextSignIn),
+                  BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 focusedBorder: const UnderlineInputBorder(
                   borderSide:
-                  BorderSide(color: AppColors.colorTextSignIn),
+                  BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 labelText: L.current.height.tr,
                 labelStyle: const TextStyle(
-                    color: AppColors.colorTextSignIn,
+                    color: AppColors.colorDarkGrey,
                     fontWeight: FontWeight.bold)),
           ),
           optionalWidget()
@@ -323,29 +323,29 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
         children: [
           TextFormField(
             style: const TextStyle(
-                color: AppColors.textColor, fontSize: 16),
+                color: AppColors.textRegalBlue, fontSize: 16),
             decoration: InputDecoration(
                 fillColor: AppColors.white,
                 filled: true,
                 //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
                 floatingLabelStyle: const TextStyle(
                     height: 0.2,
-                    color: AppColors.colorBlueLabel,
+                    color: AppColors.colorCeruleanBlue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
                 enabledBorder: const UnderlineInputBorder(
                   borderSide:
-                  BorderSide(color: AppColors.colorTextSignIn),
+                  BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 focusedBorder: const UnderlineInputBorder(
                   borderSide:
-                  BorderSide(color: AppColors.colorTextSignIn),
+                  BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 labelText: L.current.weight.tr,
                 labelStyle: const TextStyle(
                     height: 20,
                     fontSize: 16,
-                    color: AppColors.colorTextSignIn,
+                    color: AppColors.colorDarkGrey,
                     fontWeight: FontWeight.bold)),
           ),
           optionalWidget()

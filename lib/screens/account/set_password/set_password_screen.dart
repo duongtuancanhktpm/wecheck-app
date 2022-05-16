@@ -22,18 +22,18 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
               children: [
                 backSignInButton(() => controller.backToSignIn()),
                 indicatorSignIn(
-                    AppColors.colorBlueLabel,
-                    AppColors.colorBlueLabel,
-                    AppColors.colorBlueLabel,
-                    AppColors.colorBlueLabel,
-                    AppColors.colorBottomSignIn,
-                    AppColors.colorBottomSignIn),
+                    AppColors.colorCeruleanBlue,
+                    AppColors.colorCeruleanBlue,
+                    AppColors.colorCeruleanBlue,
+                    AppColors.colorCeruleanBlue,
+                    AppColors.colorGrey,
+                    AppColors.colorGrey),
                 Padding(
                   padding: const EdgeInsets.only(top: 50, left: 50),
                   child: Text(
                     L.current.setPassword.tr,
                     style: const TextStyle(
-                        color: AppColors.textColor,
+                        color: AppColors.textRegalBlue,
                         fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
@@ -77,12 +77,12 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
                 ),
                 decoration: BoxDecoration(
                   color: controller.isActiveResetPassword.value
-                      ? AppColors.colorBlueLabel
-                      : AppColors.colorDisable,
+                      ? AppColors.colorCeruleanBlue
+                      : AppColors.colorHawkesBlue,
                   border: Border.all(
                       color: controller.isActiveResetPassword.value
-                          ? AppColors.colorBlueLabel
-                          : AppColors.colorDisable),
+                          ? AppColors.colorCeruleanBlue
+                          : AppColors.colorHawkesBlue),
                   borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 ),
               ),
@@ -111,18 +111,18 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
                   }),
               floatingLabelStyle: const TextStyle(
                   height: 0.2,
-                  color: AppColors.colorBlueLabel,
+                  color: AppColors.colorCeruleanBlue,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorTextSignIn),
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorTextSignIn),
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.password.tr,
               labelStyle: const TextStyle(
-                  color: AppColors.colorTextSignIn,
+                  color: AppColors.colorDarkGrey,
                   fontWeight: FontWeight.bold)),
         ),
       ),
@@ -151,18 +151,18 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
                   }),
               floatingLabelStyle: const TextStyle(
                   height: 0.2,
-                  color: AppColors.colorBlueLabel,
+                  color: AppColors.colorCeruleanBlue,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorTextSignIn),
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               focusedBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorTextSignIn),
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.confirmPassword.tr,
               labelStyle: const TextStyle(
-                  color: AppColors.colorTextSignIn,
+                  color: AppColors.colorDarkGrey,
                   fontWeight: FontWeight.bold)),
         ),
       ),

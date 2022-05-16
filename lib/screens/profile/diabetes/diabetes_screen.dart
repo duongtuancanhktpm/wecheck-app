@@ -20,18 +20,18 @@ class DiabetesScreen extends GetView<DiabetesController> {
             children: [
               backAndSkipSignIn(() => controller.goToHomePage()),
               indicatorSignIn(
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel),
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue),
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 40),
                 child: Text(
                   L.current.aboutYourDiabetes.tr,
                   style: const TextStyle(
-                      color: AppColors.textColor,
+                      color: AppColors.textRegalBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -53,7 +53,7 @@ class DiabetesScreen extends GetView<DiabetesController> {
           alignment: Alignment.centerRight,
           child: Text(
             L.current.optional.tr,
-            style: const TextStyle(color: AppColors.colorBottomSignIn),
+            style: const TextStyle(color: AppColors.colorGrey),
           )),
     );
   }
@@ -77,7 +77,7 @@ class DiabetesScreen extends GetView<DiabetesController> {
                   Text(
                     L.current.iHaveDiabetes.tr,
                     style: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold,
                         fontSize: 14),
                   )
@@ -93,10 +93,10 @@ class DiabetesScreen extends GetView<DiabetesController> {
               elevation: 16,
               isExpanded: true,
               style: const TextStyle(
-                  color: AppColors.colorBottomSignIn, fontSize: 18),
+                  color: AppColors.colorGrey, fontSize: 18),
               underline: Container(
                 height: 1,
-                color: AppColors.colorTextSignIn,
+                color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
                 controller.valueHaveDiabetes.value = data!;
@@ -132,7 +132,7 @@ class DiabetesScreen extends GetView<DiabetesController> {
                   Text(
                     L.current.iAmTakingMedicine.tr,
                     style: const TextStyle(
-                        color: AppColors.colorTextSignIn,
+                        color: AppColors.colorDarkGrey,
                         fontWeight: FontWeight.bold,
                         fontSize: 14),
                   )
@@ -148,10 +148,10 @@ class DiabetesScreen extends GetView<DiabetesController> {
               elevation: 16,
               isExpanded: true,
               style: const TextStyle(
-                  color: AppColors.colorBottomSignIn, fontSize: 18),
+                  color: AppColors.colorGrey, fontSize: 18),
               underline: Container(
                 height: 1,
-                color: AppColors.colorTextSignIn,
+                color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
                 controller.valueTakingMedicine.value = data!;
@@ -186,7 +186,7 @@ class DiabetesScreen extends GetView<DiabetesController> {
                 Text(
                   L.current.iAmTakingInsulin.tr,
                   style: const TextStyle(
-                      color: AppColors.colorTextSignIn,
+                      color: AppColors.colorDarkGrey,
                       fontWeight: FontWeight.bold,
                       fontSize: 14),
                 )
@@ -202,10 +202,10 @@ class DiabetesScreen extends GetView<DiabetesController> {
             elevation: 16,
             isExpanded: true,
             style: const TextStyle(
-                color: AppColors.colorBottomSignIn, fontSize: 18),
+                color: AppColors.colorGrey, fontSize: 18),
             underline: Container(
               height: 1,
-              color: AppColors.colorTextSignIn,
+              color: AppColors.colorDarkGrey,
             ),
             onChanged: (data) {
               controller.valueTakingInsulin.value = data!;
@@ -240,8 +240,8 @@ class DiabetesScreen extends GetView<DiabetesController> {
                       color: AppColors.white, fontWeight: FontWeight.bold),
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.colorBlueLabel,
-                  border: Border.all(color: AppColors.colorBlueLabel),
+                  color: AppColors.colorCeruleanBlue,
+                  border: Border.all(color: AppColors.colorCeruleanBlue),
                   borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 ),
               ),

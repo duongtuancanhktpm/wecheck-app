@@ -19,12 +19,12 @@ Widget backAndSkipSignIn(GestureTapCallback onTabSkip){
             children: [
               const Icon(
                 Icons.arrow_back_ios,
-                color: AppColors.colorBlueLabel,
+                color: AppColors.colorCeruleanBlue,
               ),
               Text(
                 L.current.back,
                 style: const TextStyle(
-                    color: AppColors.colorBlueLabel,
+                    color: AppColors.colorCeruleanBlue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -41,7 +41,7 @@ Widget backAndSkipSignIn(GestureTapCallback onTabSkip){
               Text(
                 L.current.skip.tr,
                 style: const TextStyle(
-                    color: AppColors.colorBlueLabel,
+                    color: AppColors.colorCeruleanBlue,
                     fontSize: 20,
                     fontWeight: FontWeight.bold),
               ),
@@ -63,12 +63,12 @@ Widget backSignInButton(GestureTapCallback onTabSkip){
         children: [
           const Icon(
             Icons.arrow_back_ios,
-            color: AppColors.colorBlueLabel,
+            color: AppColors.colorCeruleanBlue,
           ),
           Text(
             L.current.back,
             style: const TextStyle(
-                color: AppColors.colorBlueLabel,
+                color: AppColors.colorCeruleanBlue,
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
           ),

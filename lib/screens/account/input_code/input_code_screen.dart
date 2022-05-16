@@ -22,18 +22,18 @@ class InputCodeScreen extends GetView<InputCodeController> {
             children: [
               backSignInButton(()=> controller.backToSignIn()),
               indicatorSignIn(
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn),
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey),
               Padding(
                 padding: EdgeInsets.only(top: 50, left: 30),
                 child: Text(
                   L.current.verifyEmailAddress,
                   style: const TextStyle(
-                      color: AppColors.textColor,
+                      color: AppColors.textRegalBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -43,7 +43,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                 child: Text(
                   L.current.verifyCode,
                   style: const TextStyle(
-                      color: AppColors.colorBottomSignIn,
+                      color: AppColors.colorGrey,
                       fontWeight: FontWeight.bold,
                       fontSize: 14),
                 ),
@@ -83,7 +83,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           fieldWidth: 40,
                           borderWidth: 1,
                           activeFillColor: Colors.white,
-                          inactiveColor: AppColors.colorBottomSignIn,
+                          inactiveColor: AppColors.colorGrey,
                           inactiveFillColor: AppColors.white,
                           selectedColor: AppColors.white,
                           selectedFillColor: AppColors.white,
@@ -152,12 +152,12 @@ class InputCodeScreen extends GetView<InputCodeController> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: controller.isActiveVerify.value
-                                      ? AppColors.colorBlueLabel
-                                      : AppColors.colorDisable,
+                                      ? AppColors.colorCeruleanBlue
+                                      : AppColors.colorHawkesBlue,
                                   border: Border.all(
                                       color: controller.isActiveVerify.value
-                                          ? AppColors.colorBlueLabel
-                                          : AppColors.colorDisable),
+                                          ? AppColors.colorCeruleanBlue
+                                          : AppColors.colorHawkesBlue),
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(15.0)),
                                 ),

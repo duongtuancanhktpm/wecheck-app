@@ -31,10 +31,10 @@ class AppColors {
   static const Color ceruleanBlue = Color.fromRGBO(40, 89, 176, 1);
 
   static const Color magicMint = Color(0xFF1B3553);
-  static const Color colorTextSignIn = Color(0xFFB1B1B1);
-  static const Color textColor = Color(0xFF1B3553);
-  static const Color colorBtnSignIn = Color(0xFF295AB6);
-  static const Color colorBlueLabel = Color(0xFF2A61B9);
-  static const Color colorBottomSignIn = Color(0xFF848484);
-  static const Color colorDisable = Color(0xFFD8DEE6);
+  static const Color colorDarkGrey = Color(0xFFB1B1B1);
+  static const Color textRegalBlue = Color(0xFF1B3553);
+  static const Color colorCeruleanBlue = Color(0xFF2A61B9);
+  static const Color colorGrey = Color(0xFF848484);
+  static const Color colorHawkesBlue = Color(0xFFD8DEE6);
 }
+// Regal Blue

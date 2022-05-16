@@ -21,18 +21,18 @@ class SignUpScreen extends GetView<SignUpController> {
             children: [
               backSignInButton(()=> controller.backToSignIn()),
               indicatorSignIn(
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn),
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey),
               Padding(
                 padding: const EdgeInsets.only(top: 80, left: 50),
                 child: Text(
                   L.current.signIn.tr,
                   style: const TextStyle(
-                      color: AppColors.textColor,
+                      color: AppColors.textRegalBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -47,20 +47,20 @@ class SignUpScreen extends GetView<SignUpController> {
                       fillColor: AppColors.white,
                       enabledBorder: const UnderlineInputBorder(
                         borderSide:
-                            BorderSide(color: AppColors.colorTextSignIn),
+                            BorderSide(color: AppColors.colorDarkGrey),
                       ),
                       focusedBorder: const UnderlineInputBorder(
                         borderSide:
-                            BorderSide(color: AppColors.colorTextSignIn),
+                            BorderSide(color: AppColors.colorDarkGrey),
                       ),
                       floatingLabelStyle: const TextStyle(
                           height: 0.2,
-                          color: AppColors.colorBlueLabel,
+                          color: AppColors.colorCeruleanBlue,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
                       labelText: L.current.email.tr,
                       labelStyle: const TextStyle(
-                          color: AppColors.colorTextSignIn,
+                          color: AppColors.colorDarkGrey,
                           fontWeight: FontWeight.bold)),
                 ),
               ),
@@ -92,12 +92,12 @@ class SignUpScreen extends GetView<SignUpController> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: controller.isActiveSendEmail.value
-                                      ? AppColors.colorBlueLabel
-                                      : AppColors.colorDisable,
+                                      ? AppColors.colorCeruleanBlue
+                                      : AppColors.colorHawkesBlue,
                                   border: Border.all(
                                       color: controller.isActiveSendEmail.value
-                                          ? AppColors.colorBlueLabel
-                                          : AppColors.colorDisable),
+                                          ? AppColors.colorCeruleanBlue
+                                          : AppColors.colorHawkesBlue),
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(15.0)),
                                 ),

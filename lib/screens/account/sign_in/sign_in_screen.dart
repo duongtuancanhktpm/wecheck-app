@@ -23,7 +23,7 @@ class SignInScreen extends GetView<SignInController> {
                       child: Text(
                         L.current.signIn.tr,
                         style: const TextStyle(
-                            color: AppColors.textColor,
+                            color: AppColors.textRegalBlue,
                             fontWeight: FontWeight.bold,
                             fontSize: 20),
                       ),
@@ -69,13 +69,13 @@ class SignInScreen extends GetView<SignInController> {
                     ),
                     decoration: BoxDecoration(
                       color: controller.isActiveLogin.value
-                          ? AppColors.colorBlueLabel
-                          : AppColors.colorDisable,
+                          ? AppColors.colorCeruleanBlue
+                          : AppColors.colorHawkesBlue,
                       border: Border.all(
                           color:
                           controller.isActiveLogin.value
-                              ? AppColors.colorBlueLabel
-                              : AppColors.colorDisable),
+                              ? AppColors.colorCeruleanBlue
+                              : AppColors.colorHawkesBlue),
                       borderRadius: const BorderRadius.all(
                           Radius.circular(15.0)),
                     ),
@@ -89,7 +89,7 @@ class SignInScreen extends GetView<SignInController> {
             child: Text(
               L.current.forgotPassword,
               style: const TextStyle(
-                  color: AppColors.colorBlueLabel,
+                  color: AppColors.colorCeruleanBlue,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -107,7 +107,7 @@ class SignInScreen extends GetView<SignInController> {
                 child: const Text(
                   'Create Account',
                   style: TextStyle(
-                      color: AppColors.colorBlueLabel,
+                      color: AppColors.colorCeruleanBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 16),
                 ),
@@ -132,20 +132,20 @@ class SignInScreen extends GetView<SignInController> {
             fillColor: AppColors.white,
             enabledBorder: const UnderlineInputBorder(
               borderSide:
-              BorderSide(color: AppColors.colorTextSignIn),
+              BorderSide(color: AppColors.colorDarkGrey),
             ),
             focusedBorder: const UnderlineInputBorder(
               borderSide:
-              BorderSide(color: AppColors.colorTextSignIn),
+              BorderSide(color: AppColors.colorDarkGrey),
             ),
             floatingLabelStyle: const TextStyle(
                 height: 0.2,
-                color: AppColors.colorBlueLabel,
+                color: AppColors.colorCeruleanBlue,
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
             labelText: L.current.email.tr,
             labelStyle: const TextStyle(
-                color: AppColors.colorTextSignIn,
+                color: AppColors.colorDarkGrey,
                 fontWeight: FontWeight.bold)),
         onChanged: (value) {
           if (value.isNotEmpty) {
@@ -181,20 +181,20 @@ class SignInScreen extends GetView<SignInController> {
                       }),
                   enabledBorder: const UnderlineInputBorder(
                     borderSide:
-                    BorderSide(color: AppColors.colorTextSignIn),
+                    BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   focusedBorder: const UnderlineInputBorder(
                     borderSide:
-                    BorderSide(color: AppColors.colorTextSignIn),
+                    BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   floatingLabelStyle: const TextStyle(
                       height: 0.2,
-                      color: AppColors.colorBlueLabel,
+                      color: AppColors.colorCeruleanBlue,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                   labelText: L.current.password.tr,
                   labelStyle: const TextStyle(
-                      color: AppColors.colorTextSignIn,
+                      color: AppColors.colorDarkGrey,
                       fontWeight: FontWeight.bold)),
             ),
       ),
@@ -217,7 +217,7 @@ class SignInScreen extends GetView<SignInController> {
             Text(
               L.current.rememberMyID.tr,
               style: const TextStyle(
-                  color: AppColors.colorTextSignIn,
+                  color: AppColors.colorDarkGrey,
                   fontWeight: FontWeight.bold,
                   fontSize: 14),
             )

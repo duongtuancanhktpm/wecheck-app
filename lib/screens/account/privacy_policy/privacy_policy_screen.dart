@@ -22,18 +22,18 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
             children: [
               backSignInButton(()=> controller.backToSignIn()),
               indicatorSignIn(
-                  AppColors.colorBlueLabel,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn,
-                  AppColors.colorBottomSignIn),
+                  AppColors.colorCeruleanBlue,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey,
+                  AppColors.colorGrey),
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 50),
                 child: Text(
                   L.current.privacyPolicy.tr,
                   style: const TextStyle(
-                      color: AppColors.textColor,
+                      color: AppColors.textRegalBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 20),
                 ),
@@ -77,7 +77,7 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
               const Text(
                 'I have read and agreed the privacy policy',
                 style: TextStyle(
-                    color: AppColors.colorTextSignIn,
+                    color: AppColors.colorDarkGrey,
                     fontWeight: FontWeight.bold,
                     fontSize: 14),
               )
@@ -101,12 +101,12 @@ class PrivacyPolicyScreen extends GetView<PrivacyPolicyController> {
                   ),
                   decoration: BoxDecoration(
                     color: controller.isAgreePolicy.value
-                        ? AppColors.colorBlueLabel
-                        : AppColors.colorDisable,
+                        ? AppColors.colorCeruleanBlue
+                        : AppColors.colorHawkesBlue,
                     border: Border.all(
                         color: controller.isAgreePolicy.value
-                            ? AppColors.colorBlueLabel
-                            : AppColors.colorDisable),
+                            ? AppColors.colorCeruleanBlue
+                            : AppColors.colorHawkesBlue),
                     borderRadius: const BorderRadius.all(
                         Radius.circular(15.0)),
                   ),
