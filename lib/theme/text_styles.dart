@@ -71,10 +71,10 @@ class AppTextStyle {
     return common(18, FontWeight.w700, color, null, height);
   }
 
-  static TextStyle appBarTitle = TextStyle(
+  static TextStyle t22w700 = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 22.sp,
-    color: AppColors.labelSelectedColor
+    color: AppColors.catalinaBlue
   );
 
 }

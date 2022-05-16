@@ -22,11 +22,11 @@ class AppColors {
     return col;
   }
 
-  static const Color labelColor = Color.fromRGBO(125, 136, 152, 1);
-  static const Color labelSelectedColor = Color.fromRGBO(33, 53, 80, 1);
-  static const Color appBarColor = Color.fromRGBO(234, 238, 240, 100);
-  static const Color previousMonthColor = Color.fromRGBO(212, 216, 222, 1);
-  static const Color currentMonthColor = Color.fromRGBO(124, 135, 153, 1);
-  static const Color todayColor = Color.fromRGBO(245, 246, 247, 1);
-  static const Color eventLabelColor = Color.fromRGBO(40, 89, 176, 1);
+  static const Color lightSlateGrey = Color.fromRGBO(125, 136, 152, 1);
+  static const Color catalinaBlue = Color.fromRGBO(33, 53, 80, 1);
+  static const Color aliceBlue = Color.fromRGBO(234, 238, 240, 1);
+  static const Color hawkesBlue = Color.fromRGBO(212, 216, 222, 1);
+  static const Color lightStaleGrey2 = Color.fromRGBO(124, 135, 153, 1);
+  static const Color aliceBlue2 = Color.fromRGBO(245, 246, 247, 1);
+  static const Color ceruleanBlue = Color.fromRGBO(40, 89, 176, 1);
 }
