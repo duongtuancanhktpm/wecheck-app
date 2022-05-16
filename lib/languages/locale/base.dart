@@ -33,4 +33,6 @@ abstract class BaseLanguage {
   String get year;
   String get height;
   String get weight;
+  String get sendEmail;
+  String get dateOfBirth;
 }

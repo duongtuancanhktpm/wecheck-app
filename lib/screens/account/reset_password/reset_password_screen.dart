@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/reset_password/controller/reset_password_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
 
 class ResetPasswordScreen extends GetView<ResetPasswordController> {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -18,28 +19,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                  onTap: () => controller.backToSignIn(),
-                  child: Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.arrow_back_ios,
-                          color: AppColors.colorBlueLabel,
-                        ),
-                        Text(
-                          L.current.back,
-                          style: const TextStyle(
-                              color: AppColors.colorBlueLabel,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                backSignInButton(()=> controller.backToSignIn()),
                 Padding(
                   padding: const EdgeInsets.only(top: 80, left: 50),
                   child: Text(

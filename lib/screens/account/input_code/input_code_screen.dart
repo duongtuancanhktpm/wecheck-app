@@ -5,6 +5,7 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
 import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 class InputCodeScreen extends GetView<InputCodeController> {
@@ -19,28 +20,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () => controller.backToSignIn(),
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.arrow_back_ios,
-                        color: AppColors.colorBlueLabel,
-                      ),
-                      Text(
-                        L.current.back,
-                        style: const TextStyle(
-                            color: AppColors.colorBlueLabel,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              backSignInButton(()=> controller.backToSignIn()),
               indicatorSignIn(
                   AppColors.colorBlueLabel,
                   AppColors.colorBlueLabel,
