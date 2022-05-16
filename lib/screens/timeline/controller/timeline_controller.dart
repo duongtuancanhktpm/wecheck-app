@@ -2,8 +2,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:wecheck/utils/constants.dart';
-import 'package:wecheck/screens/timeline/calendar/model/event_data.dart';
-import 'package:wecheck/screens/timeline/repository/timeline_repository.dart';
+import 'package:wecheck/model/event_data.dart';
+import 'package:wecheck/repository/timeline_repository.dart';
+import 'package:wecheck/utils/extensions.dart';
 
 class TimeLineController extends GetxController {
   var currentYear = 0.obs;
@@ -31,24 +32,18 @@ class TimeLineController extends GetxController {
     super.onInit();
   }
 
-  bool isSameDay(DateTime dayA, DateTime dayB) {
-    return dayA.year == dayB.year &&
-        dayA.month == dayB.month &&
-        dayA.day == dayB.day;
-  }
-
   bool selectedDayPredicate(DateTime selectedDay) {
-    return isSameDay(selectedDate.value, selectedDay);
+    return selectedDay.sameWith(selectedDate.value);
   }
 
   void onDaySelected(DateTime selectedDay, DateTime focusedDay) {
-    if (!isSameDay(selectedDate.value, selectedDay)) {
+    if (!selectedDay.sameWith(selectedDate.value)) {
         selectedDate.value = selectedDay;
         focusDate.value = focusedDay;
         calendarFormat.value = CalendarFormat.week;
         var listEventDetail = event.firstWhereOrNull((element) {
           var dayFilter = DateFormat(Constant.fullDataFormat).parse(element.dateTime);
-          return isSameDay(dayFilter, selectedDay);
+          return dayFilter.sameWith(selectedDay);
         })?.listEvent ?? [];
         eventDetailData.value = listEventDetail;
         titleAppBar.value = DateFormat.MMMM().format(selectedDay);
