@@ -4,10 +4,10 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:wecheck/screens/bslog/calendar/controller/calendar_controller.dart';
+import 'package:wecheck/screens/bslog/calendar/controller/interface/interface.dart';
 import 'package:wecheck/theme/icons.dart';
-import 'package:wecheck/screens/timeline/calendar/controller/calendar_controller.dart';
-import 'package:wecheck/screens/timeline/calendar/controller/interface/interface.dart';
-import 'package:wecheck/screens/timeline/calendar/model/health_data.dart';
+import 'package:wecheck/model/health_data.dart';
 
 
 class VerticalCalendarWidget extends StatefulWidget {

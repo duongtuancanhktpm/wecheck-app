@@ -78,8 +78,8 @@ class _RootScreenState extends State<RootScreen> {
         backgroundColor: Colors.white,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        unselectedItemColor: AppColors.labelColor,
-        selectedItemColor: AppColors.labelSelectedColor,
+        unselectedItemColor: AppColors.lightSlateGrey,
+        selectedItemColor: AppColors.catalinaBlue,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         items: [

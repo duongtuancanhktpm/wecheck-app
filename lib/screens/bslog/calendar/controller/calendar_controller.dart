@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:wecheck/screens/timeline/calendar/model/health_data.dart';
+import 'package:wecheck/model/health_data.dart';
 import 'interface/interface.dart';
 
 const double _dxMax = 1.2;
@@ -19,8 +19,6 @@ class CalendarController {
       ?.where((entry) {
     return visibleDays.any((element) => isSameDay(entry.dateTime, element));
   }).toList();
-
-
 
   List<HealthData>? healthData;
   late DateTime _focusedDay;

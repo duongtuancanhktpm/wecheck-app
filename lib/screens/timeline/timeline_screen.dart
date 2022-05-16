@@ -5,13 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:wecheck/screens/root/root_screen.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
+import 'package:wecheck/utils/extensions.dart';
 import 'package:wecheck/widgets/app_bar.dart';
 import 'package:wecheck/theme/colors.dart';
-import 'package:wecheck/screens/timeline/calendar/model/event_data.dart';
+import 'package:wecheck/model/event_data.dart';
 import 'package:wecheck/screens/timeline/controller/timeline_controller.dart';
 
 class TimeLineScreen extends GetView<TimeLineController> {
@@ -28,14 +28,14 @@ class TimeLineScreen extends GetView<TimeLineController> {
         return true;
       },
       child: Container(
-        color: Colors.white,
+        color: AppColors.aliceBlue,
         child: SafeArea(
           child: Scaffold(
             appBar: AppBarWidget(
               title: Obx(
                 () => Text(
                   controller.titleAppBar.value,
-                  style: AppTextStyle.appBarTitle,
+                  style: AppTextStyle.t22w700,
                 ),
               ),
               action: [
@@ -77,9 +77,8 @@ class TimeLineScreen extends GetView<TimeLineController> {
         var focusDay = controller.focusDate.value;
         var calendarFormat = controller.calendarFormat.value;
         return TableCalendar(
-          eventLoader: (day) => events
-              .where((element) => controller.isSameDay(element, day))
-              .toList(),
+          eventLoader: (day) =>
+              events.where((element) => day.sameWith(element)).toList(),
           firstDay: DateTime.utc(1900, 10, 16),
           lastDay: DateTime.utc(5000, 3, 14),
           focusedDay: focusDay,
@@ -92,7 +91,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
             titleTextStyle: TextStyle(
               fontSize: 15.sp,
               fontWeight: FontWeight.bold,
-              color: AppColors.labelSelectedColor,
+              color: AppColors.catalinaBlue,
             ),
           ),
           calendarStyle: CalendarStyle(
@@ -100,12 +99,12 @@ class TimeLineScreen extends GetView<TimeLineController> {
             markersOffset: PositionedOffset(top: 40.h),
             tableBorder: const TableBorder(
               horizontalInside: BorderSide(
-                color: AppColors.labelColor,
+                color: AppColors.lightSlateGrey,
                 width: 0.1,
               ),
             ),
             selectedDecoration: const BoxDecoration(
-              color: AppColors.todayColor,
+              color: AppColors.aliceBlue2,
             ),
           ),
           selectedDayPredicate: (selectedDay) {
@@ -169,7 +168,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
       style: TextStyle(
         fontSize: 15.sp,
         fontWeight: FontWeight.bold,
-        color: AppColors.labelSelectedColor,
+        color: AppColors.catalinaBlue,
       ),
       textAlign: TextAlign.center,
     );
@@ -183,7 +182,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         child: Text(
           dateTime.day.toString(),
           style: TextStyle(
-            color: AppColors.currentMonthColor,
+            color: AppColors.lightStaleGrey2,
             fontWeight: FontWeight.bold,
             fontSize: 15.sp,
           ),
@@ -200,7 +199,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         child: Text(
           dateTime.day.toString(),
           style: TextStyle(
-            color: AppColors.previousMonthColor,
+            color: AppColors.hawkesBlue,
             fontWeight: FontWeight.bold,
             fontSize: 15.sp,
           ),
@@ -212,14 +211,14 @@ class TimeLineScreen extends GetView<TimeLineController> {
   Widget _buildItemToday(DateTime dateTime) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 9.h, horizontal: 4.h),
-      color: AppColors.todayColor,
+      color: AppColors.aliceBlue2,
       padding: EdgeInsets.only(top: 9.h),
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(
           dateTime.day.toString(),
           style: TextStyle(
-            color: AppColors.currentMonthColor,
+            color: AppColors.lightStaleGrey2,
             fontWeight: FontWeight.bold,
             fontSize: 15.sp,
           ),
@@ -231,8 +230,8 @@ class TimeLineScreen extends GetView<TimeLineController> {
   Widget _buildItemSelected(DateTime dateTime) {
     var selectedDay = controller.selectedDate.value;
     Color color = Colors.white;
-    if (controller.isSameDay(dateTime, selectedDay)) {
-      color = AppColors.todayColor;
+    if (dateTime.sameWith(selectedDay)) {
+      color = AppColors.aliceBlue2;
     }
     return Container(
       margin: EdgeInsets.symmetric(vertical: 9.h, horizontal: 4.h),
@@ -243,7 +242,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
         child: Text(
           dateTime.day.toString(),
           style: TextStyle(
-            color: AppColors.currentMonthColor,
+            color: AppColors.lightStaleGrey2,
             fontWeight: FontWeight.bold,
             fontSize: 15.sp,
           ),
@@ -257,7 +256,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
       var newDateData = DateFormat(
         Constant.fullDataFormat,
       ).parse(element.dateTime);
-      return controller.isSameDay(newDateData, event);
+      return newDateData.sameWith(event);
     });
     return eventData != null
         ? SizedBox(
@@ -306,7 +305,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
               Container(
                 width: double.infinity,
                 height: 35.h,
-                color: AppColors.appBarColor,
+                color: AppColors.aliceBlue,
                 child: Padding(
                   padding: EdgeInsets.only(left: 10.w),
                   child: Align(
@@ -316,9 +315,10 @@ class TimeLineScreen extends GetView<TimeLineController> {
                         daySelected,
                       ),
                       style: TextStyle(
-                          color: AppColors.labelColor,
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold),
+                        color: AppColors.lightSlateGrey,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -335,7 +335,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
                 separatorBuilder: (BuildContext context, int index) {
                   return const Divider(
                     height: 1,
-                    color: AppColors.labelColor,
+                    color: AppColors.lightSlateGrey,
                   );
                 },
               ),
@@ -366,9 +366,10 @@ class TimeLineScreen extends GetView<TimeLineController> {
             child: Text(
               data.value,
               style: TextStyle(
-                  color: AppColors.eventLabelColor,
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.bold),
+                color: AppColors.ceruleanBlue,
+                fontSize: 30.sp,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Expanded(
@@ -376,7 +377,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
             child: Text(
               DateFormat.Hm().format(time),
               style: TextStyle(
-                color: AppColors.labelColor,
+                color: AppColors.lightSlateGrey,
                 fontSize: 16.sp,
               ),
             ),

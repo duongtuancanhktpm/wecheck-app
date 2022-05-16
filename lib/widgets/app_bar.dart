@@ -14,7 +14,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 84.h,
-      color: AppColors.appBarColor,
+      color: AppColors.aliceBlue,
       child: Stack(
         children: [
           Positioned(
@@ -27,7 +27,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
-                color: AppColors.labelSelectedColor,
+                color: AppColors.catalinaBlue,
                 size: 32,
               ),
             ),

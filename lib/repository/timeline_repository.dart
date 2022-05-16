@@ -1,7 +1,7 @@
 import 'package:wecheck/services/api/api_service.dart';
 import 'package:wecheck/theme/icons.dart';
 
-import '../calendar/model/event_data.dart';
+import '../model/event_data.dart';
 
 class TimelineRepository {
   ApiService apiService = ApiService();
