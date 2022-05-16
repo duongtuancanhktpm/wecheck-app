@@ -11,6 +11,9 @@ class LanguageEn extends BaseLanguage {
   String get timeline => 'Timeline';
 
   @override
+  String get email => 'Email';
+
+  @override
   String get chat => 'Chat';
 
   @override
@@ -41,14 +44,61 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get aboutYourDiabetes => 'About Your Diabetes';
+
   @override
   String get verify => 'Verify';
+
   @override
   String get verifyEmailAddress => 'Verify Email Address';
+
   @override
   String get verifyCode => 'Verify Code';
+
   @override
   String get back => 'Back';
+
   @override
   String get forgotPassword => 'Forgot Password';
+
+  @override
+  String get iHaveDiabetes => 'I have diabetes';
+
+  @override
+  String get iAmTakingMedicine => 'I am taking medicine';
+
+  @override
+  String get iAmTakingInsulin => 'I am taking insulin';
+
+  @override
+  String get optional => 'Optional';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get rememberMyID => 'Remember my ID';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get day => 'Day';
+
+  @override
+  String get month => 'Month';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get height => 'Height';
+
+  @override
+  String get weight => 'Weight';
 }

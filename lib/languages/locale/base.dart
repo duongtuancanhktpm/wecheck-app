@@ -5,6 +5,7 @@ abstract class BaseLanguage {
   String get chat;
   String get setting;
   String get service;
+  String get email;
   String get signIn;
   String get back;
   String get next;
@@ -12,10 +13,24 @@ abstract class BaseLanguage {
   String get verify;
   String get verifyEmailAddress;
   String get verifyCode;
+  String get password;
   String get resetPassword;
   String get setPassword;
+  String get confirmPassword;
   String get forgotPassword;
   String get privacyPolicy;
   String get createYourProfile;
   String get aboutYourDiabetes;
+  String get iHaveDiabetes;
+  String get iAmTakingMedicine;
+  String get iAmTakingInsulin;
+  String get optional;
+  String get rememberMyID;
+  String get firstName;
+  String get lastName;
+  String get day;
+  String get month;
+  String get year;
+  String get height;
+  String get weight;
 }

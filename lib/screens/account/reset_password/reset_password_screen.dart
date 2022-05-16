@@ -84,7 +84,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                             borderSide:
                                 BorderSide(color: AppColors.colorTextSignIn),
                           ),
-                          labelText: 'Password',
+                          labelText: L.current.password.tr,
                           labelStyle: const TextStyle(
                               color: AppColors.colorTextSignIn,
                               fontWeight: FontWeight.bold)),

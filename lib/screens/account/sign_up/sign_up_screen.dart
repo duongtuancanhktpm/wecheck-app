@@ -23,7 +23,7 @@ class SignUpScreen extends GetView<SignUpController> {
               InkWell(
                 onTap: () => controller.backToSignIn(),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
@@ -65,23 +65,23 @@ class SignUpScreen extends GetView<SignUpController> {
                   onChanged: (value) {
                     controller.isActiveSendEmail.value = true;
                   },
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                       fillColor: AppColors.white,
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: AppColors.colorTextSignIn),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: AppColors.colorTextSignIn),
                       ),
-                      floatingLabelStyle: TextStyle(
+                      floatingLabelStyle: const TextStyle(
                           height: 0.2,
                           color: AppColors.colorBlueLabel,
                           fontSize: 20,
                           fontWeight: FontWeight.bold),
-                      labelText: 'Email',
-                      labelStyle: TextStyle(
+                      labelText: L.current.email.tr,
+                      labelStyle: const TextStyle(
                           color: AppColors.colorTextSignIn,
                           fontWeight: FontWeight.bold)),
                 ),
