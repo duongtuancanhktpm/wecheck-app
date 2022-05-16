@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/routes/routes.dart';
+import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
 import 'package:wecheck/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _RootScreenState extends State<RootScreen> {
   static Future<bool> _onWillPopScope(
     GlobalKey<NavigatorState> globalKey,
   ) async {
-    return true;
+    return !await globalKey.currentState!.maybePop();
   }
 
   static Widget _buildNavigatorWidget(

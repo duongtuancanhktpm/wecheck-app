@@ -15,12 +15,12 @@ import 'package:wecheck/screens/timeline/timeline_screen.dart';
 import '../screens/setting/setting_screen.dart';
 
 class RouteName {
-  static const String splash = "/splash";
-  static const String root = "/root";
-  static const String home = "/home";
-  static const String timeline = "/timeline";
-  static const String chat = "/chat";
-  static const String settings = "/setting";
+  static const String splash = "splash";
+  static const String root = "root";
+  static const String home = "home";
+  static const String timeline = "timeline";
+  static const String chat = "chat";
+  static const String settings = "setting";
 }
 
 class AppRoutes {
@@ -43,6 +43,7 @@ class AppRoutes {
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
+    print("routeName: ${settings.name}");
     return GetPageRoute(
       settings: settings,
       page: screens[settings.name] ?? getDefaultScreen,
