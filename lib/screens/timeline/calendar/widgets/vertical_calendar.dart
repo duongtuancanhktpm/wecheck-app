@@ -1,16 +1,13 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
 import 'package:wecheck/theme/icons.dart';
-
-import '../controller/calendar_controller.dart';
-import '../controller/interface/interface.dart';
-import '../model/health_data.dart';
+import 'package:wecheck/screens/timeline/calendar/controller/calendar_controller.dart';
+import 'package:wecheck/screens/timeline/calendar/controller/interface/interface.dart';
+import 'package:wecheck/screens/timeline/calendar/model/health_data.dart';
 
 
 class VerticalCalendarWidget extends StatefulWidget {

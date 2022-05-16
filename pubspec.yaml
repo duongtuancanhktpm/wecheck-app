@@ -74,23 +74,23 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/timeline_assets/ic_chat_selected.svg
-    - assets/timeline_assets/ic_chat_unselected.svg
-    - assets/timeline_assets/ic_edit.svg
-    - assets/timeline_assets/ic_event_drink_water.svg
-    - assets/timeline_assets/ic_event_eat.svg
-    - assets/timeline_assets/ic_event_inject_medicines.svg
-    - assets/timeline_assets/ic_event_mask.svg
-    - assets/timeline_assets/ic_event_running.svg
-    - assets/timeline_assets/ic_event_stress_fill.svg
-    - assets/timeline_assets/ic_event_stress_stroke.svg
-    - assets/timeline_assets/ic_event_take_medicines.svg
-    - assets/timeline_assets/ic_home_selected.svg
-    - assets/timeline_assets/ic_home_unselected.svg
-    - assets/timeline_assets/ic_setting_selected.svg
-    - assets/timeline_assets/ic_setting_unselected.svg
-    - assets/timeline_assets/ic_timeline_selected.svg
-    - assets/timeline_assets/ic_timeline_unselected.svg
+    - assets/image/ic_chat_selected.svg
+    - assets/image/ic_chat_unselected.svg
+    - assets/image/ic_edit.svg
+    - assets/image/ic_event_drink_water.svg
+    - assets/image/ic_event_eat.svg
+    - assets/image/ic_event_inject_medicines.svg
+    - assets/image/ic_event_mask.svg
+    - assets/image/ic_event_running.svg
+    - assets/image/ic_event_stress_fill.svg
+    - assets/image/ic_event_stress_stroke.svg
+    - assets/image/ic_event_take_medicines.svg
+    - assets/image/ic_home_selected.svg
+    - assets/image/ic_home_unselected.svg
+    - assets/image/ic_setting_selected.svg
+    - assets/image/ic_setting_unselected.svg
+    - assets/image/ic_timeline_selected.svg
+    - assets/image/ic_timeline_unselected.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,11 +1,9 @@
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:wecheck/utils/constants.dart';
-
-import '../calendar/model/event_data.dart';
-import '../repository/timeline_repository.dart';
+import 'package:wecheck/screens/timeline/calendar/model/event_data.dart';
+import 'package:wecheck/screens/timeline/repository/timeline_repository.dart';
 
 class TimeLineController extends GetxController {
   var currentYear = 0.obs;

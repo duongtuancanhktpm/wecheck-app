@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controller/timeline_controller.dart';
+import 'package:wecheck/screens/timeline/controller/timeline_controller.dart';
 
 class TimeLineBinding extends Bindings {
   @override

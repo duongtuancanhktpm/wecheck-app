@@ -9,48 +9,50 @@ import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
 import 'package:wecheck/widgets/app_bar.dart';
-
-import '../../../../theme/colors.dart';
-import 'calendar/model/event_data.dart';
-import 'controller/timeline_controller.dart';
+import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/screens/timeline/calendar/model/event_data.dart';
+import 'package:wecheck/screens/timeline/controller/timeline_controller.dart';
 
 class TimeLineScreen extends GetView<TimeLineController> {
   const TimeLineScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBarWidget(
-          title: Obx(
-            () => Text(
-              controller.titleAppBar.value,
-              style: AppTextStyle.appBarTitle,
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBarWidget(
+            title: Obx(
+              () => Text(
+                controller.titleAppBar.value,
+                style: AppTextStyle.appBarTitle,
+              ),
             ),
+            action: [
+              SvgPicture.asset(
+                AppIcons.icEdit,
+              ),
+            ],
+            onBackPressed: () {
+              if (controller.calendarFormat.value == CalendarFormat.month) {
+                SystemNavigator.pop();
+              } else {
+                controller.onChangeCalendarFormat();
+              }
+            },
           ),
-          action: [
-            SvgPicture.asset(
-              AppIcons.icEdit,
-            ),
-          ],
-          onBackPressed: () {
-            if (controller.calendarFormat.value == CalendarFormat.month) {
-              SystemNavigator.pop();
-            } else {
-              controller.onChangeCalendarFormat();
-            }
-          },
-        ),
-        backgroundColor: Colors.white,
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                _buildCalendarEvent(),
-                _buildListEventData(),
-              ],
+          backgroundColor: Colors.white,
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  _buildCalendarEvent(),
+                  _buildListEventData(),
+                ],
+              ),
             ),
           ),
         ),

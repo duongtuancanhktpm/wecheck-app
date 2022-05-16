@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-
-import '../model/health_data.dart';
+import 'package:wecheck/screens/timeline/calendar/model/health_data.dart';
 import 'interface/interface.dart';
 
 const double _dxMax = 1.2;
