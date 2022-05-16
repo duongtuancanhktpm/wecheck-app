@@ -1,22 +1,27 @@
-import 'package:wecheck/screens/home/controller/home_controller.dart';
-import 'package:wecheck/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class HomeScreen extends GetView<HomeController> {
-  String screenName;
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
-  HomeScreen({Key? key, required this.screenName}) : super(key: key);
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  bool changed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: SizedBox(
-          height: Get.height,
-          child: Center(
-            child: Text(screenName, style: AppTextStyle.t18w700()),
+      body: Center(
+        child: Container(
+          color: Colors.yellow,
+          child: Switch(
+            value: changed,
+            onChanged: (change) {
+              setState(() {
+                changed = change;
+              });
+            },
           ),
         ),
       ),

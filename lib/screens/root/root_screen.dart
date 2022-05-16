@@ -1,67 +1,127 @@
-import 'package:wecheck/screens/home/home_screen.dart';
-import 'package:wecheck/screens/root/controller/root_controller.dart';
-import 'package:wecheck/screens/root/root_tab.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/routes/routes.dart';
+import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
+import 'package:wecheck/screens/timeline/timeline_screen.dart';
+import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/theme.dart';
-import 'package:wecheck/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RootScreen extends GetView<RootController> {
+final GlobalKey<NavigatorState> homeNavigator = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> timeLineNavigator = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> chatNavigator = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> settingNavigator = GlobalKey<NavigatorState>();
+
+class RootScreen extends StatefulWidget {
   const RootScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: SizedBox(
-          height: Get.height,
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              _buildContent(),
-              _buildBottomBar(),
-            ],
-          ),
-        ),
+  State<RootScreen> createState() => _RootScreenState();
+}
+
+class _RootScreenState extends State<RootScreen> {
+  var pageController = PageController();
+  var selectedIndex = 0;
+
+  static Future<bool> _onWillPopScope(
+    GlobalKey<NavigatorState> globalKey,
+  ) async {
+    return !await globalKey.currentState!.maybePop();
+  }
+
+  static Widget _buildNavigatorWidget(
+    GlobalKey<NavigatorState> globalKey,
+    String initRoute,
+  ) {
+    return WillPopScope(
+      onWillPop: () => _onWillPopScope(globalKey),
+      child: Navigator(
+        key: globalKey,
+        initialRoute: initRoute,
+        onGenerateRoute: AppRoutes.generateRoute,
       ),
     );
   }
 
-  Widget _buildContent() {
-    return Obx(() {
-      return SafeArea(
-        child: IndexedStack(
-          index: controller.currentTab.value.index,
-          children: [
-            HomeScreen(screenName: "Home"),
-            HomeScreen(screenName: "Service"),
-            HomeScreen(screenName: "Game"),
-            HomeScreen(screenName: "Gold"),
-            HomeScreen(screenName: "Profile"),
-          ],
-        ),
-      );
-    });
+  final pages = [
+    _buildNavigatorWidget(homeNavigator, RouteName.home),
+    _buildNavigatorWidget(timeLineNavigator, RouteName.timeline),
+    _buildNavigatorWidget(chatNavigator, RouteName.chat),
+    _buildNavigatorWidget(settingNavigator, RouteName.settings),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: SizedBox(
+        height: 84.h,
+        child: _bottomNavigationBar(),
+      ),
+      body: PageView(
+        controller: pageController,
+        children: pages,
+      ),
+    );
   }
 
-  Widget _buildBottomBar() {
-    return FlutterBottomBar(
-      onHomeClick: () {
-        controller.currentTab.value = RootTab.Home;
-      },
-      onServiceClick: () {
-        controller.currentTab.value = RootTab.Service;
-      },
-      onGameClick: () {
-        controller.currentTab.value = RootTab.Game;
-      },
-      onGoldClick: () {
-        controller.currentTab.value = RootTab.Gold;
-      },
-      onProfileClick: () {
-        controller.currentTab.value = RootTab.Profile;
-      },
+  Widget _bottomNavigationBar() => BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+            pageController.jumpToPage(index);
+          });
+        },
+        elevation: 30,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        unselectedItemColor: AppColors.lightSlateGrey,
+        selectedItemColor: AppColors.catalinaBlue,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        items: [
+          _buildItem(
+            AppIcons.icHomeSelected,
+            AppIcons.icHomeUnSelected,
+            L.current.home.tr,
+          ),
+          _buildItem(
+            AppIcons.icTimelineSelected,
+            AppIcons.icTimelineUnSelected,
+            L.current.timeline.tr,
+          ),
+          _buildItem(
+            AppIcons.icChatSelected,
+            AppIcons.icChatUnSelected,
+            L.current.chat.tr,
+          ),
+          _buildItem(
+            AppIcons.icSettingSelected,
+            AppIcons.icSettingUnSelected,
+            L.current.setting.tr,
+          ),
+        ],
+      );
+
+  BottomNavigationBarItem _buildItem(
+      String activeIcon, String icon, String name) {
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        icon,
+        width: 26.w,
+        height: 26.w,
+      ),
+      activeIcon: SvgPicture.asset(
+        activeIcon,
+        width: 26.w,
+        height: 26.w,
+      ),
+      label: name,
+      backgroundColor: Colors.white,
     );
   }
 }
