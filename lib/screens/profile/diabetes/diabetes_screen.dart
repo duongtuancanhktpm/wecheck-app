@@ -10,7 +10,7 @@ class DiabetesScreen extends GetView {
   late DiabetesController controller;
   late Function onTapNext;
 
-  DiabetesScreen(this.onTapNext, {Key? key}) : super(key: key);
+  DiabetesScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

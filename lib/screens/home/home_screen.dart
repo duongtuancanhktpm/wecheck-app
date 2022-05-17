@@ -1,168 +1,195 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/flutter_chart/chart_app_icons.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 import 'package:wecheck/flutter_chart/common/src/common/symbol_renderer.dart';
+import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/model/home/chart_entity.dart';
+import 'package:wecheck/screens/home/controller/home_controller.dart';
+import 'package:wecheck/screens/home/widget/item_blood_sugar.dart';
+import 'package:wecheck/screens/home/widget/item_insulin.dart';
+import 'package:wecheck/screens/home/widget/item_meals.dart';
+import 'package:wecheck/screens/home/widget/item_steps.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends GetView<HomeController> {
   bool changed = false;
   var valueShow = CustomCircleSymbolRenderer('44').obs;
+
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.colorPattensBlue,
       body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [_homeChart()],
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _homeChart(),
+                  _gridMenuIndex(),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          L.current.menu.tr,
+                          style:
+                              AppTextStyle.t18w700(AppColors.colorCatalinaBlue),
+                        ),
+                      )
+                    ],
+                  ),
+                  _gridMenu()
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _homeChart() {
-    return Card(
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
-            height: 220,
-            child: Obx(() => Stack(
-                  children: [
-                    //SmoothLineChart.withRandomData(),
-                    charts.NumericComboChart(
-                      _createSampleData2(),
-                      domainAxis: charts.NumericAxisSpec(
-                          renderSpec: charts.GridlineRendererSpec(
-                              lineStyle: charts.LineStyleSpec(
-                            color: charts.MaterialPalette.gray.shade200,
-                            thickness: 1,
-                          )),
-                          tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(0,
-                                  label: '03:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(3,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(6,
-                                  label: '9:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(9,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(12,
-                                  label: '15:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(15,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(18,
-                                  label: '21:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(21,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(24,
-                                  label: '3:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
-                      primaryMeasureAxis: charts.NumericAxisSpec(
-                          renderSpec: charts.GridlineRendererSpec(
-                              labelOffsetFromAxisPx: -20,
-                              labelAnchor: charts.TickLabelAnchor.after,
-                              lineStyle: charts.LineStyleSpec(
-                                color: charts.MaterialPalette.gray.shade200,
-                                thickness: 1,
-                              )),
-                          tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            // Create the ticks to be used the domain axis.
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(300,
-                                  label: '300',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(200,
-                                  label: '200',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(100,
-                                  label: '100',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
-                      secondaryMeasureAxis: charts.NumericAxisSpec(
-                          renderSpec: charts.GridlineRendererSpec(
-                              labelOffsetFromAxisPx: -20,
-                              labelAnchor: charts.TickLabelAnchor.after,
-                              lineStyle: charts.LineStyleSpec(
-                                color: charts.MaterialPalette.gray.shade200,
-                                thickness: 1,
-                              )),
-                          tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            // Create the ticks to be used the domain axis.
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(6000,
-                                  label: '6000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(4000,
-                                  label: '4000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(2000,
-                                  label: '2000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(0,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
-                      animate: true,
-                      defaultRenderer: charts.LineRendererConfig(
-                        includePoints: true,
-                        symbolRenderer: charts.RectSymbolRenderer(),
-                      ),
-                      customSeriesRenderers: [
-                        charts.BarRendererConfig(customRendererId: 'customBar'),
-                        charts.LineRendererConfig(
-                            smoothLine: true, customRendererId: 'SmoothLine'),
-                      ],
-                      behaviors: listBehaviors(),
-                      selectionModels: [
-                        charts.SelectionModelConfig(
-                            changedListener: (charts.SelectionModel model) {
-                          if (model.hasDatumSelection) {
-                            if (model.selectedDatum.length >= 2) {
-                              valueShow.value.valueShow =
-                                  '${model.selectedDatum[1].series.data[model.selectedDatum[1].index!].sales}';
-                            } else {
-                              valueShow.value.valueShow =
-                                  '${model.selectedSeries[0].data[model.selectedDatum[0].index!].sales}';
+    return Container(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
+              height: 220.h,
+              child: Obx(() => Stack(
+                    children: [
+                      //SmoothLineChart.withRandomData(),
+                      charts.NumericComboChart(
+                        _createSampleData2(),
+                        domainAxis: charts.NumericAxisSpec(
+                            renderSpec: charts.GridlineRendererSpec(
+                                lineStyle: charts.LineStyleSpec(
+                              color: charts.MaterialPalette.gray.shade200,
+                              thickness: 1,
+                            )),
+                            tickProviderSpec:
+                                const charts.StaticNumericTickProviderSpec(
+                              <charts.TickSpec<num>>[
+                                charts.TickSpec(0,
+                                    label: '03:00',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(3,
+                                    label: '',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(6,
+                                    label: '9:00',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(9,
+                                    label: '',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(12,
+                                    label: '15:00',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(15,
+                                    label: '',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(18,
+                                    label: '21:00',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(21,
+                                    label: '',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(24,
+                                    label: '3:00',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                              ],
+                            )),
+                        primaryMeasureAxis: charts.NumericAxisSpec(
+                            renderSpec: charts.GridlineRendererSpec(
+                                labelOffsetFromAxisPx: -20,
+                                labelAnchor: charts.TickLabelAnchor.after,
+                                lineStyle: charts.LineStyleSpec(
+                                  color: charts.MaterialPalette.gray.shade200,
+                                  thickness: 1,
+                                )),
+                            tickProviderSpec:
+                                const charts.StaticNumericTickProviderSpec(
+                              // Create the ticks to be used the domain axis.
+                              <charts.TickSpec<num>>[
+                                charts.TickSpec(300,
+                                    label: '300',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(200,
+                                    label: '200',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(100,
+                                    label: '100',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                              ],
+                            )),
+                        secondaryMeasureAxis: charts.NumericAxisSpec(
+                            renderSpec: charts.GridlineRendererSpec(
+                                labelOffsetFromAxisPx: -20,
+                                labelAnchor: charts.TickLabelAnchor.after,
+                                lineStyle: charts.LineStyleSpec(
+                                  color: charts.MaterialPalette.gray.shade200,
+                                  thickness: 1,
+                                )),
+                            tickProviderSpec:
+                                const charts.StaticNumericTickProviderSpec(
+                              // Create the ticks to be used the domain axis.
+                              <charts.TickSpec<num>>[
+                                charts.TickSpec(6000,
+                                    label: '6000',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(4000,
+                                    label: '4000',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(2000,
+                                    label: '2000',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                                charts.TickSpec(0,
+                                    label: '',
+                                    style: charts.TextStyleSpec(fontSize: 10)),
+                              ],
+                            )),
+                        animate: true,
+                        defaultRenderer: charts.LineRendererConfig(
+                          includePoints: true,
+                          symbolRenderer: charts.RectSymbolRenderer(),
+                        ),
+                        customSeriesRenderers: [
+                          charts.BarRendererConfig(
+                              customRendererId: 'customBar'),
+                          charts.LineRendererConfig(
+                              smoothLine: true, customRendererId: 'SmoothLine'),
+                        ],
+                        behaviors: listBehaviors(),
+                        selectionModels: [
+                          charts.SelectionModelConfig(
+                              changedListener: (charts.SelectionModel model) {
+                            if (model.hasDatumSelection) {
+                              if (model.selectedDatum.length >= 2) {
+                                valueShow.value.valueShow =
+                                    '${model.selectedDatum[1].series.data[model.selectedDatum[1].index!].sales}';
+                              } else {
+                                valueShow.value.valueShow =
+                                    '${model.selectedSeries[0].data[model.selectedDatum[0].index!].sales}';
+                              }
                             }
-                          }
-                        })
-                      ],
-                    ),
-                  ],
-                )),
-          )
-        ],
+                          })
+                        ],
+                      ),
+                    ],
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -380,12 +407,31 @@ class _HomeScreenState extends State<HomeScreen> {
       ], defaultLabelPosition: charts.AnnotationLabelPositionCustom.margin),
     ];
   }
-}
 
-class LinearSales {
-  final int year;
-  final int sales;
-  final List<int> dashPattern;
+  _gridMenuIndex() {
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, childAspectRatio: 7 / 5),
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: controller.listMenuIndex.length,
+        shrinkWrap: true,
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+        itemBuilder: (BuildContext context, int pos) {
+          var indexEn = controller.listMenuIndex[pos];
+          if (pos == 0) {
+            return itemBloodSugar();
+          } else if (pos == 1) {
+            return itemMeals();
+          } else if (pos == 2) {
+            return itemInsulin();
+          } else if (pos == 3) {
+            return itemSteps();
+          }
+          return Container();
+        });
+  }
 
-  LinearSales(this.year, this.sales, this.dashPattern);
+  _gridMenu() {
+    return Container();
+  }
 }

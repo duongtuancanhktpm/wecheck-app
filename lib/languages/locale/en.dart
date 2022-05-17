@@ -113,4 +113,7 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get createAccount => 'Create Account';
+
+  @override
+  String get menu => 'Menu';
 }

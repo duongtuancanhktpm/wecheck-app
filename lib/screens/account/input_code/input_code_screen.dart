@@ -9,9 +9,9 @@ class InputCodeScreen extends GetView {
 
   @override
   late InputCodeController controller;
-
   late Function onTapNext;
-  InputCodeScreen(this.onTapNext, {Key? key}) : super(key: key);
+
+  InputCodeScreen({Key? key,  required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +58,6 @@ class InputCodeScreen extends GetView {
                           fontWeight: FontWeight.bold,
                         ),
                         length: 6,
-                        //obscureText: true,
-                        // obscuringCharacter: '*',
-                        // obscuringWidget: const FlutterLogo(
-                        //   size: 24,
-                        // ),
                         autoFocus: true,
                         blinkWhenObscuring: true,
                         animationType: AnimationType.fade,
@@ -88,9 +83,6 @@ class InputCodeScreen extends GetView {
                         cursorColor: Colors.black,
                         animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
-                        // errorAnimationController:
-                        //     controller.errorController.value,
-                        // controller: controller.textEditingController.value,
                         keyboardType: TextInputType.number,
                         boxShadows: const [
                           BoxShadow(
@@ -100,9 +92,6 @@ class InputCodeScreen extends GetView {
                           )
                         ],
                         onCompleted: (v) {},
-                        // onTap: () {
-                        //   print("Pressed");
-                        // },
                         onChanged: (value) {
                           debugPrint(value);
                           controller.currentText.value = value;

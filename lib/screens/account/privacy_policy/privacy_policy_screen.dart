@@ -7,7 +7,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrivacyPolicyScreen extends GetView {
-  PrivacyPolicyScreen(this.onTapNext, {Key? key}) : super(key: key);
+
+  PrivacyPolicyScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   late PrivacyPolicyController controller;

@@ -6,7 +6,7 @@ import 'package:wecheck/theme/colors.dart';
 
 class InputEmailScreen extends GetView {
 
-  InputEmailScreen(this.onTapNext, {Key? key}) : super(key: key);
+  InputEmailScreen({Key? key,  required this.onTapNext}) : super(key: key);
 
   late Function onTapNext;
 

@@ -11,7 +11,7 @@ class SetPasswordScreen extends GetView {
 
   late Function onTapNext;
 
-  SetPasswordScreen(this.onTapNext, {Key? key}) : super(key: key);
+  SetPasswordScreen({Key? key,  required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

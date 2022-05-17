@@ -11,7 +11,7 @@ class CreateProfileScreen extends GetView {
 
   late Function onTapNext;
 
-  CreateProfileScreen(this.onTapNext, {Key? key}) : super(key: key);
+  CreateProfileScreen({Key? key,  required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

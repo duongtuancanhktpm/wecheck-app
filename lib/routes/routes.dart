@@ -1,5 +1,5 @@
-import 'package:wecheck/screens/account/sign_up/binding/sign_up_main_binding.dart';
-import 'package:wecheck/screens/account/sign_up/sign_up_main_screen.dart';
+import 'package:wecheck/screens/account/sign_up/binding/sign_up_binding.dart';
+import 'package:wecheck/screens/account/sign_up/sign_up_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
 import 'package:wecheck/screens/home/binding/home_binding.dart';
@@ -36,12 +36,12 @@ class AppRoutes {
   static final screens = <String, Widget Function()>{
     RouteName.splash: () => SplashScreen(),
     RouteName.root: () => const RootScreen(),
-    RouteName.home: () => const HomeScreen(),
+    RouteName.home: () => HomeScreen(),
     RouteName.timeline: () => const TimeLineScreen(),
     RouteName.chat: () => const ChatScreen(),
     RouteName.settings: () => const SettingScreen(),
     RouteName.signIn: () => const SignInScreen(),
-    RouteName.signUpMain: () => const SignUpMainScreen(),
+    RouteName.signUpMain: () => const SignUpScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
   };
 

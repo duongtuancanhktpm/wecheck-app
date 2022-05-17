@@ -37,4 +37,5 @@ abstract class BaseLanguage {
   String get sendEmail;
   String get dateOfBirth;
   String get createAccount;
+  String get menu;
 }
