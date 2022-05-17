@@ -29,6 +29,7 @@ class RouteName {
   static const String chat = "chat";
   static const String chatDetail = "chat/details";
   static const String settings = "setting";
+  static const String bsLog = "home/bsLog";
   static const String signIn = "/signIn";
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
