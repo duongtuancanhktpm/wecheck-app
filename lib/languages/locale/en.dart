@@ -16,4 +16,7 @@ class LanguageEn extends BaseLanguage {
   @override
   String get setting => 'Setting';
 
+  @override
+  String get bsLogTitle => "Blood Sugar Log";
+
 }
