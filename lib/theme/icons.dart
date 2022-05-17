@@ -16,4 +16,12 @@ class AppIcons {
   static const String icEventStressFill = "assets/icons/ic_event_stress_fill.svg";
   static const String icEventStressStroke = "assets/icons/ic_event_stress_stroke.svg";
   static const String icEventTakeMedicines = "assets/icons/ic_event_take_medicines.svg";
+  static const String icBeforeBreakfast = "assets/icons/ic_before_breakfast.svg";
+  static const String icAfterBreakfast = "assets/icons/ic_after_breakfast.svg";
+  static const String icBeforeLunch = "assets/icons/ic_before_lunch.svg";
+  static const String icAfterLunch = "assets/icons/ic_after_lunch.svg";
+  static const String icBeforeDinner = "assets/icons/ic_before_dinner.svg";
+  static const String icAfterDinner = "assets/icons/ic_after_dinner.svg";
+  static const String icBeforeBedtime = "assets/icons/ic_before_bedtime.svg";
+  static const String icAfterBedtime = "assets/icons/ic_after_bedtime.svg";
 }
