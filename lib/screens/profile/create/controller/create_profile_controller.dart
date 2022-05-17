@@ -16,10 +16,6 @@ class CreateProfileController extends GetxController {
 
   final List<String> listGender = ['Gender', 'Male', 'Female'];
 
-
-  void goToDiabetesScreen() {
-    Get.toNamed(RouteName.diabetesScreen);
-  }
   void goToHomePage() {
     Get.toNamed(RouteName.home);
   }

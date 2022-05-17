@@ -3,14 +3,19 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
 import 'package:wecheck/theme/colors.dart';
-import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
-import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
-class CreateProfileScreen extends GetView<CreateProfileController> {
-  const CreateProfileScreen({Key? key}) : super(key: key);
+class CreateProfileScreen extends GetView {
+
+  @override
+  late CreateProfileController controller;
+
+  late Function onTapNext;
+
+  CreateProfileScreen(this.onTapNext, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    controller = Get.put(CreateProfileController());
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
@@ -18,14 +23,6 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              backAndSkipSignIn(()=> controller.goToHomePage()),
-              indicatorSignIn(
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorGrey),
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 40),
                 child: Text(
@@ -359,7 +356,7 @@ class CreateProfileScreen extends GetView<CreateProfileController> {
         padding: const EdgeInsets.only(
             top: 20, left: 30, right: 30, bottom: 20),
         child: InkWell(
-          onTap: () => controller.goToDiabetesScreen(),
+         onTap: () => onTapNext(),
           child: Container(
             alignment: Alignment.center,
             width: double.infinity,

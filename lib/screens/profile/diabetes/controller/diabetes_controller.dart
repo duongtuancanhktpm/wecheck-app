@@ -30,10 +30,7 @@ class DiabetesController extends GetxController {
   ];
 
   void goToHomeScreen() {
-    Get.toNamed(RouteName.home);
+    Get.offAndToNamed(RouteName.root);
   }
 
-  void goToHomePage() {
-    Get.toNamed(RouteName.home);
-  }
 }

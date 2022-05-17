@@ -7,8 +7,8 @@ class SignInController extends GetxController {
   RxBool isActiveLogin = false.obs;
 
   void goToCreateAccount() {
-    // Get.toNamed(RouteName.signUp);
-    Get.toNamed(RouteName.privacyPolicy);
+    //Get.toNamed(RouteName.privacyPolicy);
+    Get.toNamed(RouteName.signUpMain);
   }
 
   void backToSignIn() {
@@ -21,7 +21,7 @@ class SignInController extends GetxController {
 
   void goToHome() {
     if (isActiveLogin.value) {
-      Get.toNamed(RouteName.home);
+      Get.toNamed(RouteName.root);
     }
     // Get.toNamed(RouteName.createProfile);
   }

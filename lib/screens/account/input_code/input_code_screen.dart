@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
-import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
-class InputCodeScreen extends GetView<InputCodeController> {
-  const InputCodeScreen({Key? key}) : super(key: key);
+class InputCodeScreen extends GetView {
+
+  @override
+  late InputCodeController controller;
+
+  late Function onTapNext;
+  InputCodeScreen(this.onTapNext, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    controller = Get.put(InputCodeController());
+
     return Scaffold(
         backgroundColor: AppColors.white,
         body: SafeArea(
@@ -20,16 +24,8 @@ class InputCodeScreen extends GetView<InputCodeController> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              backSignInButton(()=> controller.backToSignIn()),
-              indicatorSignIn(
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorCeruleanBlue,
-                  AppColors.colorGrey,
-                  AppColors.colorGrey,
-                  AppColors.colorGrey),
               Padding(
-                padding: EdgeInsets.only(top: 50, left: 30),
+                padding: const EdgeInsets.only(top: 50, left: 30),
                 child: Text(
                   L.current.verifyEmailAddress,
                   style: const TextStyle(
@@ -39,7 +35,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 30, left: 30),
+                padding: const EdgeInsets.only(top: 30, left: 30),
                 child: Text(
                   L.current.verifyCode,
                   style: const TextStyle(
@@ -67,6 +63,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                         // obscuringWidget: const FlutterLogo(
                         //   size: 24,
                         // ),
+                        autoFocus: true,
                         blinkWhenObscuring: true,
                         animationType: AnimationType.fade,
                         validator: (v) {
@@ -77,24 +74,23 @@ class InputCodeScreen extends GetView<InputCodeController> {
                           }
                         },
                         pinTheme: PinTheme(
-                          shape: PinCodeFieldShape.box,
-                          borderRadius: BorderRadius.circular(5),
-                          fieldHeight: 50,
-                          fieldWidth: 40,
-                          borderWidth: 1,
-                          activeFillColor: Colors.white,
-                          inactiveColor: AppColors.colorGrey,
-                          inactiveFillColor: AppColors.white,
-                          selectedColor: AppColors.white,
-                          selectedFillColor: AppColors.white,
-                          activeColor: Colors.white
-                        ),
+                            shape: PinCodeFieldShape.box,
+                            borderRadius: BorderRadius.circular(5),
+                            fieldHeight: 50,
+                            fieldWidth: 40,
+                            borderWidth: 1,
+                            activeFillColor: Colors.white,
+                            inactiveColor: AppColors.colorGrey,
+                            inactiveFillColor: AppColors.white,
+                            selectedColor: AppColors.white,
+                            selectedFillColor: AppColors.white,
+                            activeColor: Colors.white),
                         cursorColor: Colors.black,
                         animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
-                        errorAnimationController:
-                            controller.errorController.value,
-                        controller: controller.textEditingController.value,
+                        // errorAnimationController:
+                        //     controller.errorController.value,
+                        // controller: controller.textEditingController.value,
                         keyboardType: TextInputType.number,
                         boxShadows: const [
                           BoxShadow(
@@ -103,9 +99,7 @@ class InputCodeScreen extends GetView<InputCodeController> {
                             blurRadius: 10,
                           )
                         ],
-                        onCompleted: (v) {
-
-                        },
+                        onCompleted: (v) {},
                         // onTap: () {
                         //   print("Pressed");
                         // },
@@ -137,7 +131,9 @@ class InputCodeScreen extends GetView<InputCodeController> {
                     Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Obx(() => InkWell(
-                              onTap: () => controller.goToSetPassword(),
+                             onTap: () {
+                               onTapNext();
+                             },
                               child: Container(
                                 alignment: Alignment.center,
                                 width: double.infinity,

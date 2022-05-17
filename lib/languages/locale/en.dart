@@ -17,6 +17,9 @@ class LanguageEn extends BaseLanguage {
   String get chat => 'Chat';
 
   @override
+  String get cancel => 'Cancel';
+
+  @override
   String get setting => 'Setting';
 
   @override
@@ -58,7 +61,7 @@ class LanguageEn extends BaseLanguage {
   String get back => 'Back';
 
   @override
-  String get forgotPassword => 'Forgot Password';
+  String get forgetPassword => 'Forget Password';
 
   @override
   String get iHaveDiabetes => 'I have diabetes';
@@ -101,8 +104,13 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get weight => 'Weight';
+
   @override
   String get sendEmail => 'Send Email';
+
   @override
   String get dateOfBirth => 'Date Of birth';
+
+  @override
+  String get createAccount => 'Create Account';
 }

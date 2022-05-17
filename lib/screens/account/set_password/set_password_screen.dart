@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
-import 'package:wecheck/utils/widget/back_skip_sign_in.dart';
-import 'package:wecheck/utils/widget/indicator_sign_in.dart';
 
 import 'controller/set_password_controller.dart';
 
-class SetPasswordScreen extends GetView<SetPasswordController> {
-  const SetPasswordScreen({Key? key}) : super(key: key);
+class SetPasswordScreen extends GetView {
+  @override
+  late SetPasswordController controller;
+
+  late Function onTapNext;
+
+  SetPasswordScreen(this.onTapNext, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    controller = Get.put(SetPasswordController());
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
@@ -20,14 +24,6 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                backSignInButton(() => controller.backToSignIn()),
-                indicatorSignIn(
-                    AppColors.colorCeruleanBlue,
-                    AppColors.colorCeruleanBlue,
-                    AppColors.colorCeruleanBlue,
-                    AppColors.colorCeruleanBlue,
-                    AppColors.colorGrey,
-                    AppColors.colorGrey),
                 Padding(
                   padding: const EdgeInsets.only(top: 50, left: 50),
                   child: Text(
@@ -63,7 +59,8 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
     return Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 10),
         child: Obx(() => InkWell(
-              onTap: () => controller.goToCreateProfile(),
+              onTap: () =>
+                  {if (controller.isActiveResetPassword.value) onTapNext()},
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,
@@ -122,8 +119,7 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
               ),
               labelText: L.current.password.tr,
               labelStyle: const TextStyle(
-                  color: AppColors.colorDarkGrey,
-                  fontWeight: FontWeight.bold)),
+                  color: AppColors.colorDarkGrey, fontWeight: FontWeight.bold)),
         ),
       ),
     );
@@ -162,8 +158,7 @@ class SetPasswordScreen extends GetView<SetPasswordController> {
               ),
               labelText: L.current.confirmPassword.tr,
               labelStyle: const TextStyle(
-                  color: AppColors.colorDarkGrey,
-                  fontWeight: FontWeight.bold)),
+                  color: AppColors.colorDarkGrey, fontWeight: FontWeight.bold)),
         ),
       ),
     );

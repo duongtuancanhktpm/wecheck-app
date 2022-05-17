@@ -13,7 +13,7 @@ class SetPasswordController extends GetxController {
 
   void goToCreateProfile() {
     if (isActiveResetPassword.value) {
-      Get.toNamed(RouteName.createProfile);
+      // Get.toNamed(RouteName.createProfile);
     }
   }
 

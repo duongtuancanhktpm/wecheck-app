@@ -3,6 +3,7 @@ abstract class BaseLanguage {
   String get home;
   String get timeline;
   String get chat;
+  String get cancel;
   String get setting;
   String get service;
   String get email;
@@ -17,7 +18,7 @@ abstract class BaseLanguage {
   String get resetPassword;
   String get setPassword;
   String get confirmPassword;
-  String get forgotPassword;
+  String get forgetPassword;
   String get privacyPolicy;
   String get createYourProfile;
   String get aboutYourDiabetes;
@@ -35,4 +36,5 @@ abstract class BaseLanguage {
   String get weight;
   String get sendEmail;
   String get dateOfBirth;
+  String get createAccount;
 }

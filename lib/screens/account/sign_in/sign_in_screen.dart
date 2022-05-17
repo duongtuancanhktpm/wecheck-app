@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/sign_in/controller/sign_in_controller.dart';
@@ -87,7 +86,7 @@ class SignInScreen extends GetView<SignInController> {
             padding:
             const EdgeInsets.only(left: 20, right: 20),
             child: Text(
-              L.current.forgotPassword,
+              L.current.forgetPassword,
               style: const TextStyle(
                   color: AppColors.colorCeruleanBlue,
                   fontWeight: FontWeight.bold),
@@ -104,9 +103,9 @@ class SignInScreen extends GetView<SignInController> {
                 width: double.infinity,
                 padding: const EdgeInsets.only(
                     top: 12, bottom: 12),
-                child: const Text(
-                  'Create Account',
-                  style: TextStyle(
+                child: Text(
+                  L.current.createAccount.tr,
+                  style: const TextStyle(
                       color: AppColors.colorCeruleanBlue,
                       fontWeight: FontWeight.bold,
                       fontSize: 16),
