@@ -12,3 +12,10 @@ class FiguresHealthData {
 
   FiguresHealthData(this.count, this.data, this.type);
 }
+
+class BsLogTimeMilestone {
+  final String imgUrl;
+  final int type;
+
+  BsLogTimeMilestone(this.imgUrl, this.type);
+}
