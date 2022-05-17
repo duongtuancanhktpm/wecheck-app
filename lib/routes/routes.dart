@@ -1,3 +1,4 @@
+import 'package:wecheck/screens/bslog/bslog_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
 import 'package:wecheck/screens/home/binding/home_binding.dart';
@@ -21,16 +22,18 @@ class RouteName {
   static const String timeline = "timeline";
   static const String chat = "chat";
   static const String settings = "setting";
+  static const String bsLog = "home/bsLog";
 }
 
 class AppRoutes {
   static final screens = <String, Widget Function()>{
-    RouteName.splash: () => SplashScreen(),
+    RouteName.splash: () => const SplashScreen(),
     RouteName.root: () => const RootScreen(),
     RouteName.home: () => const HomeScreen(),
     RouteName.timeline: () => const TimeLineScreen(),
     RouteName.chat: () => const ChatScreen(),
     RouteName.settings: () => const SettingScreen(),
+    RouteName.bsLog: () => BloodSugarLogScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -43,7 +46,6 @@ class AppRoutes {
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
-    print("routeName: ${settings.name}");
     return GetPageRoute(
       settings: settings,
       page: screens[settings.name] ?? getDefaultScreen,
