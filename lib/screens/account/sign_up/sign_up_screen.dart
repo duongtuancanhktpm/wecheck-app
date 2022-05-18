@@ -9,6 +9,7 @@ import 'package:wecheck/screens/account/sign_up/controller/sign_up_controller.da
 import 'package:wecheck/screens/profile/create/create_profile_screen.dart';
 import 'package:wecheck/screens/profile/diabetes/diabetes_screen.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/widgets/indicator_sign_in.dart';
 
 class SignUpScreen extends GetView<SignUpController> {
@@ -84,10 +85,8 @@ class SignUpScreen extends GetView<SignUpController> {
                 child: controller.currentPosition.value == 0
                     ? Text(
                         L.current.cancel.tr,
-                        style: const TextStyle(
-                            color: AppColors.colorCeruleanBlue,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                        style:
+                            AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
                       )
                     : Wrap(
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -98,10 +97,8 @@ class SignUpScreen extends GetView<SignUpController> {
                           ),
                           Text(
                             L.current.back.tr,
-                            style: const TextStyle(
-                                color: AppColors.colorCeruleanBlue,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                            style: AppTextStyle.t16w700(
+                                AppColors.colorCeruleanBlue),
                           ),
                         ],
                       ),
@@ -121,10 +118,7 @@ class SignUpScreen extends GetView<SignUpController> {
                     children: [
                       Text(
                         L.current.skip.tr,
-                        style: const TextStyle(
-                            color: AppColors.colorCeruleanBlue,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                        style: AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
                       ),
                     ],
                   ),

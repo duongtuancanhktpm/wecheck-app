@@ -5,12 +5,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyle {
-
   static TextStyle get button => t14w700();
 
   static TextStyle get appbar => t16w700(AppColors.black);
 
   static TextStyle common(
+    double? fontSize,
+    FontWeight? fontWeight,
+    Color? color, [
+    TextDecoration? decoration = TextDecoration.none,
+    double? height = 1.25,
+  ]) {
+    return TextStyle(
+      color: color ?? AppColors.black,
+      fontWeight: fontWeight,
+      fontSize: fontSize?.dp,
+      decoration: decoration,
+      height: height,
+      fontFamily: 'Poppins',
+    );
+  }
+
+  static TextStyle commonLabel(
     double? fontSize,
     FontWeight? fontWeight,
     Color? color, [
@@ -71,6 +87,10 @@ class AppTextStyle {
     return common(18.sp, FontWeight.w700, color, null, height);
   }
 
+  static TextStyle t20w700([Color? color, double? height]) {
+    return common(20.sp, FontWeight.w700, color, null, height);
+  }
+
   static TextStyle t22w700([Color? color, double? height]) {
     return common(22.sp, FontWeight.w700, color, null, height);
   }
@@ -82,5 +102,4 @@ class AppTextStyle {
   static TextStyle t40w700([Color? color, double? height]) {
     return common(40.sp, FontWeight.w700, color, null, height);
   }
-
 }

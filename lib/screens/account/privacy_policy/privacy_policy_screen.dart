@@ -5,6 +5,7 @@ import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy
 import 'package:wecheck/theme/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class PrivacyPolicyScreen extends GetView {
 
@@ -30,10 +31,7 @@ class PrivacyPolicyScreen extends GetView {
                   padding: const EdgeInsets.only(top: 20, left: 50),
                   child: Text(
                     L.current.privacyPolicy.tr,
-                    style: const TextStyle(
-                        color: AppColors.textRegalBlue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                    style: AppTextStyle.t20w700(AppColors.textRegalBlue),
                   ),
                 ),
                 Container(
@@ -75,12 +73,9 @@ class PrivacyPolicyScreen extends GetView {
                   onChanged: (value) {
                     controller.isAgreePolicy.value = value!;
                   })),
-              const Text(
+              Text(
                 'I have read and agreed the privacy policy',
-                style: TextStyle(
-                    color: AppColors.colorDarkGrey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14),
+                style: AppTextStyle.t14w500(AppColors.colorDarkGrey),
               )
             ],
           ),
@@ -95,10 +90,7 @@ class PrivacyPolicyScreen extends GetView {
                       padding: const EdgeInsets.only(top: 12, bottom: 12),
                       child: Text(
                         L.current.next,
-                        style: const TextStyle(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
+                        style: AppTextStyle.t16w700(AppColors.white),
                       ),
                       decoration: BoxDecoration(
                         color: controller.isAgreePolicy.value

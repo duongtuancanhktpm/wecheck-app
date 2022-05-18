@@ -4,6 +4,7 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class InputCodeScreen extends GetView {
 
@@ -28,20 +29,14 @@ class InputCodeScreen extends GetView {
                 padding: const EdgeInsets.only(top: 50, left: 30),
                 child: Text(
                   L.current.verifyEmailAddress,
-                  style: const TextStyle(
-                      color: AppColors.textRegalBlue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                  style: AppTextStyle.t20w700(AppColors.textRegalBlue)
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30, left: 30),
                 child: Text(
                   L.current.verifyCode,
-                  style: const TextStyle(
-                      color: AppColors.colorGrey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
+                  style: AppTextStyle.t14w700(AppColors.colorGrey),
                 ),
               ),
               SizedBox(
@@ -130,10 +125,7 @@ class InputCodeScreen extends GetView {
                                     const EdgeInsets.only(top: 12, bottom: 12),
                                 child: Text(
                                   L.current.verify,
-                                  style: const TextStyle(
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                  style: AppTextStyle.t16w700(AppColors.white),
                                 ),
                                 decoration: BoxDecoration(
                                   color: controller.isActiveVerify.value

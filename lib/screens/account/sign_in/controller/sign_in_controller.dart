@@ -21,7 +21,7 @@ class SignInController extends GetxController {
 
   void goToHome() {
     if (isActiveLogin.value) {
-      Get.toNamed(RouteName.root);
+      Get.offAndToNamed(RouteName.root);
     }
     // Get.toNamed(RouteName.createProfile);
   }

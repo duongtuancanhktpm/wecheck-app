@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class CreateProfileScreen extends GetView {
 
@@ -87,11 +88,7 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: const TextStyle(
-                        height: 0.2,
-                        color: AppColors.colorCeruleanBlue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: AppColors.colorDarkGrey),
@@ -113,11 +110,7 @@ class CreateProfileScreen extends GetView {
               padding: const EdgeInsets.only(left: 10),
               child: TextFormField(
                 decoration: InputDecoration(
-                    floatingLabelStyle: const TextStyle(
-                        height: 0.2,
-                        color: AppColors.colorCeruleanBlue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     fillColor: AppColors.white,
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -153,11 +146,7 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: const TextStyle(
-                        height: 0.2,
-                        color: AppColors.colorCeruleanBlue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: AppColors.colorDarkGrey),
@@ -178,11 +167,7 @@ class CreateProfileScreen extends GetView {
             child: TextFormField(
               decoration: InputDecoration(
                   fillColor: AppColors.white,
-                  floatingLabelStyle: const TextStyle(
-                      height: 0.2,
-                      color: AppColors.colorCeruleanBlue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                   enabledBorder: const UnderlineInputBorder(
                     borderSide:
                     BorderSide(color: AppColors.colorDarkGrey),
@@ -204,11 +189,7 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: const TextStyle(
-                        height: 0.2,
-                        color: AppColors.colorCeruleanBlue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: AppColors.colorDarkGrey),
@@ -289,11 +270,7 @@ class CreateProfileScreen extends GetView {
           TextFormField(
             decoration: InputDecoration(
                 fillColor: AppColors.white,
-                floatingLabelStyle: const TextStyle(
-                    height: 0.2,
-                    color: AppColors.colorCeruleanBlue,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                 enabledBorder: const UnderlineInputBorder(
                   borderSide:
                   BorderSide(color: AppColors.colorDarkGrey),
@@ -325,11 +302,7 @@ class CreateProfileScreen extends GetView {
                 fillColor: AppColors.white,
                 filled: true,
                 //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
-                floatingLabelStyle: const TextStyle(
-                    height: 0.2,
-                    color: AppColors.colorCeruleanBlue,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                 enabledBorder: const UnderlineInputBorder(
                   borderSide:
                   BorderSide(color: AppColors.colorDarkGrey),

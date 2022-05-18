@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_email/controller/input_email_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class InputEmailScreen extends GetView {
 
@@ -28,10 +29,7 @@ class InputEmailScreen extends GetView {
                 padding: const EdgeInsets.only(top: 80, left: 50),
                 child: Text(
                   L.current.signIn.tr,
-                  style: const TextStyle(
-                      color: AppColors.textRegalBlue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                  style: AppTextStyle.t20w700(AppColors.textRegalBlue),
                 ),
               ),
               Padding(
@@ -48,15 +46,9 @@ class InputEmailScreen extends GetView {
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: AppColors.colorDarkGrey),
                       ),
-                      floatingLabelStyle: const TextStyle(
-                          height: 0.2,
-                          color: AppColors.colorCeruleanBlue,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                      floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                       labelText: L.current.email.tr,
-                      labelStyle: const TextStyle(
-                          color: AppColors.colorDarkGrey,
-                          fontWeight: FontWeight.bold)),
+                      labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
                 ),
               ),
             ],

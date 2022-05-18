@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/flutter_chart/chart_app_icons.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 import 'package:wecheck/flutter_chart/common/src/common/symbol_renderer.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/model/home/chart_entity.dart';
+import 'package:wecheck/model/home/small_menu.dart';
 import 'package:wecheck/screens/home/controller/home_controller.dart';
 import 'package:wecheck/screens/home/widget/item_blood_sugar.dart';
+import 'package:wecheck/screens/home/widget/item_grid_menu.dart';
 import 'package:wecheck/screens/home/widget/item_insulin.dart';
 import 'package:wecheck/screens/home/widget/item_meals.dart';
 import 'package:wecheck/screens/home/widget/item_steps.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -432,6 +436,20 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   _gridMenu() {
-    return Container();
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, childAspectRatio: 3 / 2),
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: controller.listMenuBottom.length,
+        shrinkWrap: true,
+        padding:
+            const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+        itemBuilder: (BuildContext context, int pos) {
+          SmallMenu indexEn = controller.listMenuBottom[pos];
+          if (pos == controller.listMenuBottom.length - 1)
+            return itemMenuSmallFinal(indexEn);
+          else
+            return itemMenuSmall(indexEn);
+        });
   }
 }
