@@ -103,14 +103,13 @@ class SetPasswordScreen extends GetView {
                   }),
               floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
               enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorDarkGrey),
+                borderSide: BorderSide(color: AppColors.white),
               ),
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.password.tr,
-              labelStyle: const TextStyle(
-                  color: AppColors.colorDarkGrey, fontWeight: FontWeight.bold)),
+              labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         ),
       ),
     );
@@ -144,7 +143,7 @@ class SetPasswordScreen extends GetView {
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.confirmPassword.tr,
-              labelStyle: AppTextStyle.t14w400(AppColors.colorDarkGrey)),
+              labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         ),
       ),
     );

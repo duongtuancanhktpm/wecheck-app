@@ -152,7 +152,7 @@ class SignInScreen extends GetView<SignInController> {
                         !controller.hidePassword.value;
                   }),
               enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.colorDarkGrey),
+                borderSide: BorderSide(color: AppColors.white),
               ),
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),

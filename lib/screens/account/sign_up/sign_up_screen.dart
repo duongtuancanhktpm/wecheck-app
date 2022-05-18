@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/input_code_screen.dart';
@@ -73,15 +74,17 @@ class SignUpScreen extends GetView<SignUpController> {
 
   _appBarSignUp() {
     return AppBar(
+      leadingWidth: 100,
       leading: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
-            onTap: () => _clickBackButton(),
-            child: Obx(
-              () => Padding(
+          Obx(
+            () => InkWell(
+              onTap: () => _clickBackButton(),
+              child: Container(
                 padding: const EdgeInsets.only(
-                    left: 20, top: 10, bottom: 10, right: 10),
+                    left: 20, bottom: 10, top: 10, right: 10),
                 child: controller.currentPosition.value == 0
                     ? Text(
                         L.current.cancel.tr,
@@ -112,15 +115,13 @@ class SignUpScreen extends GetView<SignUpController> {
             ? InkWell(
                 onTap: () => controller.goToHome(),
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Text(
-                        L.current.skip.tr,
-                        style: AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
-                      ),
-                    ],
+                  padding: const EdgeInsets.only(
+                      top: 10, bottom: 10, right: 20, left: 10),
+                  child: Center(
+                    child: Text(
+                      L.current.skip.tr,
+                      style: AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
+                    ),
                   ),
                 ),
               )
