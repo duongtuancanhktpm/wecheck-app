@@ -18,6 +18,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
+import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
+
+import '../screens/today_input/today_input_screen.dart';
 
 class RouteName {
   static const String splash = "splash";
@@ -30,6 +33,7 @@ class RouteName {
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
   static const String resetPassword = "/resetPassword";
+  static const String todayInput = "/todayinput";
 }
 
 class AppRoutes {
@@ -43,6 +47,7 @@ class AppRoutes {
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUpMain: () => const SignUpMainScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
+    RouteName.todayInput: () => const TodayInputScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -55,6 +60,7 @@ class AppRoutes {
     RouteName.signIn: () => [SignInBinding()],
     RouteName.signUpMain: () => [SignUpBinding()],
     RouteName.resetPassword: () => [ResetPasswordBinding()],
+    RouteName.todayInput: () => [TodayInputBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
