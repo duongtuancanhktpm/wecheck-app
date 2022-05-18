@@ -103,7 +103,7 @@ class SetPasswordScreen extends GetView {
                   }),
               floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
               enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.white),
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),

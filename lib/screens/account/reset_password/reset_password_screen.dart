@@ -52,7 +52,6 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                         controller.isActiveResetPassword.value = true;
                       },
                       obscureText: controller.hidePassword.value,
-                      //show/hide password
                       decoration: InputDecoration(
                           fillColor: AppColors.white,
                           suffixIcon: IconButton(

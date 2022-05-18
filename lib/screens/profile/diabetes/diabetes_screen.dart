@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/diabetes/controller/diabetes_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class DiabetesScreen extends GetView {
 
@@ -85,13 +87,12 @@ class DiabetesScreen extends GetView {
             child: DropdownButton<String>(
               value: controller.valueHaveDiabetes.value,
               icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24,
+              iconSize: 24.h,
               elevation: 16,
               isExpanded: true,
-              style: const TextStyle(
-                  color: AppColors.colorGrey, fontSize: 18),
+              style: AppTextStyle.t18w500(AppColors.colorGrey),
               underline: Container(
-                height: 1,
+                height: 1.h,
                 color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
@@ -140,13 +141,12 @@ class DiabetesScreen extends GetView {
             child: DropdownButton<String>(
               value: controller.valueTakingMedicine.value,
               icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24,
+              iconSize: 24.h,
               elevation: 16,
               isExpanded: true,
-              style: const TextStyle(
-                  color: AppColors.colorGrey, fontSize: 18),
+              style: AppTextStyle.t18w500(AppColors.colorGrey),
               underline: Container(
-                height: 1,
+                height: 1.h,
                 color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
@@ -197,10 +197,9 @@ class DiabetesScreen extends GetView {
             iconSize: 24,
             elevation: 16,
             isExpanded: true,
-            style: const TextStyle(
-                color: AppColors.colorGrey, fontSize: 18),
+            style: AppTextStyle.t18w500(AppColors.colorGrey),
             underline: Container(
-              height: 1,
+              height: 1.h,
               color: AppColors.colorDarkGrey,
             ),
             onChanged: (data) {
@@ -227,13 +226,12 @@ class DiabetesScreen extends GetView {
               onTap: () => controller.goToHomeScreen(),
               child: Container(
                 alignment: Alignment.center,
-                width: double.infinity,
-                height: 45,
+               width: double.infinity,
+                height: 45.h,
                 padding: const EdgeInsets.only(top: 12, bottom: 12),
                 child: Text(
                   L.current.signIn,
-                  style: const TextStyle(
-                      color: AppColors.white, fontWeight: FontWeight.bold),
+                  style: AppTextStyle.t14w700(AppColors.white),
                 ),
                 decoration: BoxDecoration(
                   color: AppColors.colorCeruleanBlue,

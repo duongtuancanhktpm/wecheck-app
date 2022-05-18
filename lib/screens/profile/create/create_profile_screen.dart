@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
@@ -199,9 +200,7 @@ class CreateProfileScreen extends GetView {
                           color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.year.tr,
-                    labelStyle: const TextStyle(
-                        color: AppColors.colorDarkGrey,
-                        fontWeight: FontWeight.bold)),
+                    labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
               ),
             ),
           ),
@@ -217,10 +216,9 @@ class CreateProfileScreen extends GetView {
       iconSize: 24,
       elevation: 16,
       isExpanded: true,
-      style: const TextStyle(
-          color: AppColors.colorGrey, fontSize: 18),
+      style: AppTextStyle.t18w500(AppColors.colorGrey),
       underline: Container(
-        height: 1,
+        height: 1.h,
         color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {
@@ -240,13 +238,12 @@ class CreateProfileScreen extends GetView {
     DropdownButton<String>(
       value: controller.valueGender.value,
       icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24,
+      iconSize: 24.h,
       elevation: 16,
       isExpanded: true,
-      style: const TextStyle(
-          color: AppColors.colorGrey, fontSize: 18),
+      style: AppTextStyle.t18w500(AppColors.colorGrey),
       underline: Container(
-        height: 1,
+        height: 1.h,
         color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {
@@ -280,9 +277,7 @@ class CreateProfileScreen extends GetView {
                   BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 labelText: L.current.height.tr,
-                labelStyle: const TextStyle(
-                    color: AppColors.colorDarkGrey,
-                    fontWeight: FontWeight.bold)),
+                labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
           ),
           optionalWidget()
         ],
@@ -336,10 +331,7 @@ class CreateProfileScreen extends GetView {
             padding: const EdgeInsets.only(top: 12, bottom: 12),
             child: Text(
               L.current.next.tr,
-              style: const TextStyle(
-                  color: AppColors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16),
+              style: AppTextStyle.t16w700(AppColors.white),
             ),
             decoration: BoxDecoration(
               color: Colors.blueAccent,

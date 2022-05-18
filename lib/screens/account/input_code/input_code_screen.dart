@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
@@ -41,7 +42,7 @@ class InputCodeScreen extends GetView {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 250,
+                height: 250.h,
                 child: Form(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -66,8 +67,8 @@ class InputCodeScreen extends GetView {
                         pinTheme: PinTheme(
                             shape: PinCodeFieldShape.box,
                             borderRadius: BorderRadius.circular(5),
-                            fieldHeight: 50,
-                            fieldWidth: 40,
+                            fieldHeight: 50.h,
+                            fieldWidth: 40.h,
                             borderWidth: 1,
                             activeFillColor: Colors.white,
                             inactiveColor: AppColors.colorGrey,

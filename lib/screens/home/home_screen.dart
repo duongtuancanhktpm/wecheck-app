@@ -27,6 +27,21 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.colorPattensBlue,
+        title: Text('Sunday, April 10',
+            style: AppTextStyle.t18w700(AppColors.colorCatalinaBlue)),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: SvgPicture.asset(
+              AppIcons.icChatUnSelected,
+              width: 25.h,
+              height: 25.h,
+            ),
+          )
+        ],
+      ),
       backgroundColor: AppColors.colorPattensBlue,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -40,7 +55,7 @@ class HomeScreen extends GetView<HomeController> {
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Text(
                           L.current.menu.tr,
                           style:
@@ -67,6 +82,23 @@ class HomeScreen extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                  child: SvgPicture.asset(
+                    AppIcons.icChatUnSelected,
+                    width: 20.h,
+                    height: 20.h,
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.all(5),),
+                Text(
+                  L.current.dailyGraph.tr,
+                  style: AppTextStyle.t14w500(AppColors.colorGrey),
+                )
+              ],
+            ),
             Container(
               margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
               height: 220.h,

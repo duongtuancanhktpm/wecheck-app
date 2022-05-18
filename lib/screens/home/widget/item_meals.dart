@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
@@ -26,7 +28,7 @@ itemMeals() {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Text(
-                  'Meals',
+                L.current.meals.tr,
                   style: AppTextStyle.t16w700(AppColors.colorGrey),
                 ),
               ),
@@ -63,7 +65,7 @@ itemMeals() {
                 style: AppTextStyle.t12w700(AppColors.colorGrey),
               ),
               Text(
-                'kcal/day',
+                L.current.kcalDay.tr,
                 style: AppTextStyle.t14w700(AppColors.lightStaleGrey2),
               )
             ],

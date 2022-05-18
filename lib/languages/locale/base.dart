@@ -38,4 +38,13 @@ abstract class BaseLanguage {
   String get dateOfBirth;
   String get createAccount;
   String get menu;
+  String get insulin;
+  String get bloodSugar;
+  String get meals;
+  String get steps;
+  String get stepsDay;
+  String get kcalDay;
+  String get unit;
+  String get mgDL;
+  String get dailyGraph;
 }

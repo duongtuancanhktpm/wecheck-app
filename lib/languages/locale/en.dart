@@ -30,6 +30,7 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get resetPassword => 'Reset password';
+
   @override
   String get setPassword => 'Set password';
 
@@ -116,4 +117,31 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get menu => 'Menu';
+
+  @override
+  String get insulin => 'Insulin';
+
+  @override
+  String get bloodSugar => 'Blood Sugar';
+
+  @override
+  String get meals => 'Meals';
+
+  @override
+  String get steps => 'Steps';
+
+  @override
+  String get stepsDay => 'step/day';
+
+  @override
+  String get kcalDay => 'kcal/day';
+
+  @override
+  String get unit => 'unit';
+
+  @override
+  String get mgDL => 'mg/dl';
+
+  @override
+  String get dailyGraph => 'Daily Graph';
 }

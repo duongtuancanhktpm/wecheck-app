@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
@@ -26,7 +28,7 @@ itemInsulin() {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Text(
-                  'Insulin',
+                  L.current.insulin.tr,
                   style: AppTextStyle.t16w700(AppColors.colorGrey),
                 ),
               ),
@@ -73,7 +75,7 @@ itemInsulin() {
                   ),
                   const Padding(padding: EdgeInsets.all(2)),
                   Text(
-                    'unit',
+                    L.current.unit.tr,
                     style: AppTextStyle.t14w700(AppColors.lightStaleGrey2),
                   )
                 ],
