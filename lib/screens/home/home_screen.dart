@@ -415,7 +415,7 @@ class HomeScreen extends GetView<HomeController> {
   _gridMenuIndex() {
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 7 / 5),
+            crossAxisCount: 2, childAspectRatio: 8 / 6),
         physics: const NeverScrollableScrollPhysics(),
         itemCount: controller.listMenuIndex.length,
         shrinkWrap: true,
@@ -438,7 +438,7 @@ class HomeScreen extends GetView<HomeController> {
   _gridMenu() {
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 3 / 2),
+            crossAxisCount: 3, childAspectRatio: 7 / 5),
         physics: const NeverScrollableScrollPhysics(),
         itemCount: controller.listMenuBottom.length,
         shrinkWrap: true,
@@ -446,10 +446,11 @@ class HomeScreen extends GetView<HomeController> {
             const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
         itemBuilder: (BuildContext context, int pos) {
           SmallMenu indexEn = controller.listMenuBottom[pos];
-          if (pos == controller.listMenuBottom.length - 1)
+          if (pos == controller.listMenuBottom.length - 1) {
             return itemMenuSmallFinal(indexEn);
-          else
+          } else {
             return itemMenuSmall(indexEn);
+          }
         });
   }
 }

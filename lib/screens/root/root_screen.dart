@@ -56,7 +56,6 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SizedBox(
-        height: 84.h,
         child: _bottomNavigationBar(),
       ),
       body: PageView(
