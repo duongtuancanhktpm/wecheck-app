@@ -37,4 +37,11 @@ abstract class BaseLanguage {
   String get sendEmail;
   String get dateOfBirth;
   String get createAccount;
+  String get todayInputTitle;
+  String get condition;
+  String get time;
+  String get dateAndTime;
+  String get tag;
+  String get main;
+  String get other;
 }

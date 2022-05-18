@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../theme/colors.dart';
+
 enum Condition{
   HightBloodSugar,
   LowBloodSugar,
@@ -13,8 +15,12 @@ enum Condition{
 
 class ConditionItem{
   late String label;
-  late IconData icon;
-  late String? iconPath = "";
+  //late IconData icon;
+  String? iconPath = "";
+  late Color backgroundColor;
+  late Color itemColor;
+  late Color borderColor;
+  late Color textColor;
   Map<Condition, String> conditionLabel = {
     Condition.HightBloodSugar: "Hight Blood Sugar",
     Condition.LowBloodSugar: "Low Blood Sugar",
@@ -41,10 +47,12 @@ class ConditionItem{
     List<ConditionItem> list = [];
     conditionLabel.forEach((key, value) {
       ConditionItem newItem = ConditionItem();
-      newItem.icon = Icons.person;
       newItem.label = value;
       newItem.iconPath = conditionIconPath[key];
-
+      newItem.itemColor = AppColors.lightSlateGrey;
+      newItem.borderColor = AppColors.pattensBlue;
+      newItem.textColor = AppColors.lightSlateGrey;
+      newItem.backgroundColor = AppColors.pattensBlue;
       list.add(newItem);
     });
 

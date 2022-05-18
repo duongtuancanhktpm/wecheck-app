@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
+import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
 import 'package:wecheck/screens/today_input/controller/today_input_controller.dart';
+import 'package:wecheck/screens/today_input/today_input_models/condition_item.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
@@ -11,12 +13,6 @@ class TodayInputScreen extends GetView<TodayInputController> {
   static const Color itemTextColor = AppColors.lightSlateGrey;
   static const Color valueTextColor = AppColors.ceruleanBlue;
   static const Color itemBackgrouncolor = AppColors.pattensBlue;
-
-  // final TextStyle titleTextStyle =
-  //     AppTextStyle.t18w700(AppColors.textRegalBlue);
-  // final TextStyle AppTextStyle.t16w700(AppColors.lightSlateGrey) =
-  //     AppTextStyle.t16w700(AppColors.lightSlateGrey);
-  // final TextStyle AppTextStyle.t22w700(AppColors.ceruleanBlue) = AppTextStyle.t22w700(AppColors.ceruleanBlue);
 
   const TodayInputScreen({Key? key}) : super(key: key);
 
@@ -39,31 +35,41 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _conditionItem(String iconPath, String label) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.all(12),
-          width: 60,
-          height: 60,
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle, color: itemBackgrouncolor),
-          child: SvgPicture.asset(
-            iconPath,
-            color: itemTextColor,
+  Widget _conditionItem(ConditionItem condition, int index) {
+    return Obx(() => InkWell(
+          onTap: () {
+            controller.onConditionTap(index);
+          },
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: controller.conditions.value[index].backgroundColor,
+                    border: Border.all(
+                        width: 2,
+                        color: controller.conditions.value[index].borderColor)),
+                child: SvgPicture.asset(
+                  condition.iconPath ?? "",
+                  color: controller.conditions.value[index].itemColor,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(3),
+                child: Text(
+                  condition.label,
+                  style: AppTextStyle.t14w700(
+                      controller.conditions.value[index].textColor),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                ),
+              ),
+            ],
           ),
-        ),
-        Container(
-          padding: const EdgeInsets.all(3),
-          child: Text(
-            label,
-            style: AppTextStyle.t14w700(AppColors.lightSlateGrey),
-            textAlign: TextAlign.center,
-            maxLines: 2,
-          ),
-        ),
-      ],
-    );
+        ));
   }
 
   Widget _condition() {
@@ -72,15 +78,14 @@ class TodayInputScreen extends GetView<TodayInputController> {
         child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return _conditionItem(controller.conditions[index].iconPath ?? "",
-                  controller.conditions[index].label);
+              return _conditionItem(controller.conditions[index], index);
             },
             itemCount: controller.conditions.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
               childAspectRatio: 0.8,
             )));
-    return _todayInputItem("Condition", body);
+    return _todayInputItem(L.current.condition, body);
   }
 
   Widget _time() {
@@ -91,7 +96,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
           child: Row(
             children: [
               Text(
-                "Date & Time",
+                L.current.dateAndTime,
                 style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
               ),
               const Spacer(),
@@ -108,14 +113,11 @@ class TodayInputScreen extends GetView<TodayInputController> {
           child: Row(
             children: [
               Text(
-                "Tag",
+                L.current.tag,
                 style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
               ),
               const Spacer(),
-              const Icon(
-                Icons.question_mark,
-                color: itemTextColor,
-              ),
+              SvgPicture.asset("assets/icons/ic_event_drink_water.svg"),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: Text(
@@ -128,11 +130,10 @@ class TodayInputScreen extends GetView<TodayInputController> {
         ),
       ],
     );
-    return _todayInputItem("Time", body);
+    return _todayInputItem(L.current.time, body);
   }
 
-  Widget _itemRow(
-      String pathIcon, String label, double value, String unit, bool expanded) {
+  Widget _itemRow(String pathIcon, String label, Widget detail, bool expanded) {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Row(
@@ -146,20 +147,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
             style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
           ),
           const Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Text(
-              value.toString(),
-              style: AppTextStyle.t22w700(AppColors.ceruleanBlue),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Text(
-              unit,
-              style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-            ),
-          ),
+          detail,
           if (expanded)
             const Icon(
               Icons.chevron_right_outlined,
@@ -170,19 +158,48 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
+  Widget _detail(String? value, String? unit, {String? imagePath}) {
+    return Row(
+      children: [
+        SizedBox(
+            //color: Colors.red,
+            width: 40,
+            height: 40,
+            child: imagePath != null
+                ? Image.asset(
+                    imagePath,
+                    fit: BoxFit.contain,
+                  )
+                : Container()),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            value ?? "null",
+            style: AppTextStyle.t22w700(valueTextColor),
+          ),
+        ),
+        Text(
+          unit ?? "null",
+          style: AppTextStyle.t16w700(itemTextColor),
+        )
+      ],
+    );
+  }
+
   Widget _main() {
     Widget body = Column(
       children: [
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Sugar", 155,
-            "mg/dl", false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Sugar",
+            _detail("7.9", "%"), false),
         _divider(),
-        _itemRow("assets/icons/ic_event_eat.svg", "Meal", 3, "kcal", true),
+        _itemRow("assets/icons/ic_event_eat.svg", "Meal",
+            _detail("3", "kcal", imagePath: "assets/images/meal.jpg"), true),
         _divider(),
-        _itemRow("assets/icons/ic_event_inject_medicines.svg", "Insulin", 3,
-            "unit", true),
+        _itemRow("assets/icons/ic_event_inject_medicines.svg", "Insulin",
+            _detail("3", "unit"), true),
         _divider(),
-        _itemRow("assets/icons/ic_event_take_medicines.svg", "Medicine", 2,
-            "pills", true),
+        _itemRow("assets/icons/ic_event_take_medicines.svg", "Medicine",
+            _detail("2", "pills"), true),
       ],
     );
     return _todayInputItem("Main", body);
@@ -191,20 +208,20 @@ class TodayInputScreen extends GetView<TodayInputController> {
   Widget _other() {
     Widget body = Column(
       children: [
-        _itemRow(
-            "assets/icons/ic_event_drink_water.svg", "HbA1c", 7.9, "%", false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "HbA1c",
+            _detail("7.9", "%"), false),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Steps", 6500,
-            "steps", false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "Steps",
+            _detail("6500", "steps"), false),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Pressure", 100,
-            "mmhg", false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Pressure",
+            _detail("100", "mmhg"), false),
         _divider(),
-        _itemRow(
-            "assets/icons/ic_event_drink_water.svg", "TIR", 54, "%", false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "TIR",
+            _detail("54", "%"), false),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Weight", 75.4, "kg",
-            false),
+        _itemRow("assets/icons/ic_event_drink_water.svg", "Weight",
+            _detail("75", "kg"), false),
       ],
     );
     return _todayInputItem("Other", body);
@@ -244,7 +261,16 @@ class TodayInputScreen extends GetView<TodayInputController> {
                   style: AppTextStyle.t18w700(AppColors.textRegalBlue),
                 ),
                 const Spacer(),
-                if (title == "Condition") const Icon(Icons.question_mark),
+                if (title == "Condition")
+                  Container(
+                      width: 30,
+                      height: 30,
+                      padding: EdgeInsets.all(0),
+                      margin: EdgeInsets.all(0),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: itemTextColor)),
+                      child: const Icon(Icons.question_mark)),
               ])),
           body,
         ],
@@ -262,7 +288,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Today's Input",
+                L.current.todayInputTitle,
                 style: AppTextStyle.t22w700(titleTextColor),
                 textAlign: TextAlign.center,
               ),
