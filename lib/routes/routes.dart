@@ -6,12 +6,12 @@ import 'package:wecheck/screens/home/binding/home_binding.dart';
 import 'package:wecheck/screens/home/home_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
 import 'package:wecheck/screens/root/root_screen.dart';
-import 'package:wecheck/screens/setting/binding/setting_binding.dart';
 import 'package:wecheck/screens/account/reset_password/binding/reset_password_binding.dart';
 import 'package:wecheck/screens/account/reset_password/reset_password_screen.dart';
 import 'package:wecheck/screens/account/sign_in/binding/sign_in_binding.dart';
 import 'package:wecheck/screens/account/sign_in/sign_in_screen.dart';
-import 'package:wecheck/screens/setting/setting_screen.dart';
+import 'package:wecheck/screens/settings/binding/setting_binding.dart';
+import 'package:wecheck/screens/settings/setting_screen.dart';
 import 'package:wecheck/screens/splash/bindings/splash_binding.dart';
 import 'package:wecheck/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class AppRoutes {
     RouteName.home: () => [HomeBinding()],
     RouteName.timeline: () => [TimeLineBinding()],
     RouteName.chat: () => [ChatBinding()],
-    RouteName.settings: () => [SettingBinding()],
+    RouteName.settings: () => [SettingsBinding()],
     RouteName.signIn: () => [SignInBinding()],
     RouteName.signUpMain: () => [SignUpBinding()],
     RouteName.resetPassword: () => [ResetPasswordBinding()],
