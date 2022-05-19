@@ -11,11 +11,6 @@ import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
 
 class TodayInputScreen extends GetView<TodayInputController> {
-  static const Color titleTextColor = AppColors.textRegalBlue;
-  static const Color itemTextColor = AppColors.lightSlateGrey;
-  static const Color valueTextColor = AppColors.ceruleanBlue;
-  static const Color itemBackgrouncolor = AppColors.pattensBlue;
-
   const TodayInputScreen({Key? key}) : super(key: key);
 
   @override
@@ -48,18 +43,18 @@ class TodayInputScreen extends GetView<TodayInputController> {
             height: 60,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: itemBackgrouncolor,
-                border: Border.all(width: 2, color: itemBackgrouncolor)),
+                color: AppColors.pattensBlue,
+                border: Border.all(width: 2, color: AppColors.pattensBlue)),
             child: SvgPicture.asset(
               condition.icon,
-              color: itemTextColor,
+              color: AppColors.lightSlateGrey,
             ),
           ),
           Container(
             padding: const EdgeInsets.all(3),
             child: Text(
               condition.label,
-              style: AppTextStyle.t14w700(itemTextColor),
+              style: AppTextStyle.t14w700(AppColors.lightSlateGrey),
               textAlign: TextAlign.center,
               maxLines: 2,
             ),
@@ -188,7 +183,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
             children: [
               Text(
                 L.current.todayInputTitle,
-                style: AppTextStyle.t22w700(titleTextColor),
+                style: AppTextStyle.t22w700(AppColors.textRegalBlue),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -199,7 +194,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
                 onTap: () {},
                 child: SvgPicture.asset(
                   AppIcons.icEdit,
-                  color: titleTextColor,
+                  color: AppColors.textRegalBlue,
                 ),
               ))
         ],
@@ -247,7 +242,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
                       height: 30,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: itemTextColor)),
+                          border: Border.all(color: AppColors.lightSlateGrey)),
                       child: const Icon(Icons.question_mark)),
               ])),
           body,
@@ -295,14 +290,14 @@ class TodayInputScreen extends GetView<TodayInputController> {
                 height: 40,
                 child: SvgPicture.asset(
                   icon,
-                  color: itemTextColor,
+                  color: AppColors.lightSlateGrey,
                 )),
           if (value != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
                 value,
-                style: AppTextStyle.t22w700(valueTextColor),
+                style: AppTextStyle.t22w700(AppColors.ceruleanBlue),
               ),
             ),
           if (initial == true)
@@ -310,17 +305,17 @@ class TodayInputScreen extends GetView<TodayInputController> {
               padding: const EdgeInsets.only(right: 8),
               child: Text(
                 "-",
-                style: AppTextStyle.t22w700(itemTextColor),
+                style: AppTextStyle.t22w700(AppColors.lightSlateGrey),
               ),
             ),
           Text(
             unit ?? "null",
-            style: AppTextStyle.t16w700(itemTextColor),
+            style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
           ),
           if (expanded == true)
             const Icon(
               Icons.chevron_right_outlined,
-              color: itemTextColor,
+              color: AppColors.lightSlateGrey,
             )
         ],
       ),
@@ -329,7 +324,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
 
   Widget _divider() {
     return const Divider(
-      color: titleTextColor,
+      color: AppColors.textRegalBlue,
       height: 2,
       thickness: 0.3,
     );
