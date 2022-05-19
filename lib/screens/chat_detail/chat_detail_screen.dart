@@ -81,14 +81,12 @@ class ChatDetailScreen extends StatelessWidget {
   Widget _buildInputChat(BuildContext context) {
     return Container(
       color: Colors.white,
-      constraints: BoxConstraints(
-        minHeight: 84.h
-      ),
+      constraints: BoxConstraints(minHeight: 84.h),
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).padding.bottom,
         left: 18.w,
         right: 18.w,
-        top: 8.h
+        top: 8.h,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -153,9 +151,9 @@ class ChatDetailScreen extends StatelessWidget {
   Widget _buildItemChat(UserMessage userMessage) {
     var type = userMessage.type;
     switch (type) {
-      case 1:
+      case "1":
         return _buildItemChatTypeReceiver(userMessage);
-      case 2:
+      case "2":
         return _buildItemChatTypeSend(userMessage);
       default:
         return const SizedBox();
@@ -163,10 +161,6 @@ class ChatDetailScreen extends StatelessWidget {
   }
 
   Widget _buildItemChatTypeReceiver(UserMessage userMessage) {
-    var dateTime = DateFormat(Constant.fullDataFormat).parse(
-      userMessage.timestamp,
-    );
-    var dateTimeDisplay = DateFormat.Hm().format(dateTime);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Column(
@@ -175,7 +169,7 @@ class ChatDetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildAvatar(userMessage.user.avatarUrl),
+              _buildAvatar(userMessage.user?.avatarUrl),
               _buildTriangleWidget(270),
               Flexible(
                 flex: 7,
@@ -183,50 +177,22 @@ class ChatDetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Flexible(
-                      flex: 8,
-                      child: Container(
-                        constraints: BoxConstraints(maxWidth: 250.w),
-                        padding: EdgeInsets.all(20.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.r),
-                          color: Colors.white,
-                        ),
-                        child: Text(
-                          userMessage.body,
-                          style: AppTextStyle.t14w500(AppColors.catalinaBlue),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8),
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            dateTimeDisplay,
-                            style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
-                          ),
-                        ),
-                      ),
-                    ),
+                    _buildChatBody(userMessage.body),
+                    _buildChatTimestamp(userMessage.timestamp),
                   ],
                 ),
               ),
             ],
           ),
-          SizedBox(height: 20.h,)
+          SizedBox(
+            height: 20.h,
+          )
         ],
       ),
     );
   }
 
   Widget _buildItemChatTypeSend(UserMessage userMessage) {
-    var dateTime = DateFormat(Constant.fullDataFormat).parse(
-      userMessage.timestamp,
-    );
-    var dateTimeDisplay = DateFormat.Hm().format(dateTime);
     return Column(
       children: [
         Row(
@@ -239,42 +205,59 @@ class ChatDetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Flexible(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          dateTimeDisplay,
-                          style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 8,
-                    child: Container(
-                      constraints: BoxConstraints(maxWidth: 250.w),
-                      padding: EdgeInsets.all(20.w),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: Colors.white,
-                      ),
-                      child: Text(
-                        userMessage.body,
-                        style: AppTextStyle.t14w500(AppColors.catalinaBlue),
-                      ),
-                    ),
-                  ),
+                  _buildChatTimestamp(userMessage.timestamp),
+                  _buildChatBody(userMessage.body)
                 ],
               ),
             ),
             _buildTriangleWidget(0)
           ],
         ),
-        SizedBox(height: 20.h,)
+        SizedBox(
+          height: 20.h,
+        )
       ],
+    );
+  }
+
+  Widget _buildChatTimestamp(String? timestamp) {
+    var dateTimeDisplay = "NaN";
+    if (timestamp != null) {
+      var dateTime = DateFormat(Constant.fullDataFormat).parse(
+        timestamp,
+      );
+      dateTimeDisplay = DateFormat.Hm().format(dateTime);
+    }
+    return Flexible(
+      flex: 2,
+      child: Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            dateTimeDisplay,
+            style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildChatBody(String? body) {
+    return Flexible(
+      flex: 8,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 250.w),
+        padding: EdgeInsets.all(20.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.r),
+          color: Colors.white,
+        ),
+        child: Text(
+          body ?? "",
+          style: AppTextStyle.t14w500(AppColors.catalinaBlue),
+        ),
+      ),
     );
   }
 
@@ -294,14 +277,19 @@ class ChatDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAvatar(String imageUrl) {
+  Widget _buildAvatar(String? imageUrl) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: Image.network(
-        imageUrl,
+        imageUrl!,
         width: 52.w,
         height: 52.h,
         fit: BoxFit.cover,
+        errorBuilder: (context, exception, stackTrace) {
+          return Container(
+            color: AppColors.lightSlateGrey,
+          );
+        },
       ),
     );
   }

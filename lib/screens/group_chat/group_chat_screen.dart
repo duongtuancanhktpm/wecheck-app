@@ -95,10 +95,6 @@ class GroupChatScreen extends StatelessWidget {
   }
 
   Widget _buildItemPartners(Partner partner) {
-    var dateTime = DateFormat(Constant.fullDataFormat).parse(
-      partner.createAt,
-    );
-    var dateTimeDisplay = DateFormat.Hm().format(dateTime);
     return Container(
       color: Colors.white,
       height: 102.h,
@@ -115,7 +111,7 @@ class GroupChatScreen extends StatelessWidget {
             top: 23.h,
             right: 80.w,
             child: Text(
-              partner.name,
+              partner.name ?? "",
               maxLines: 1,
               style: AppTextStyle.t18w700(AppColors.catalinaBlue),
             ),
@@ -125,29 +121,18 @@ class GroupChatScreen extends StatelessWidget {
             top: 50.h,
             right: 80.w,
             child: Text(
-              partner.description,
+              partner.description ?? "",
               maxLines: 2,
               style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
             ),
           ),
-          Positioned(
-            right: 22.w,
-            top: 23.h,
-            child: Text(
-              dateTimeDisplay,
-              style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
-            ),
-          ),
+          _buildDateTimeBody(partner.createAt),
         ],
       ),
     );
   }
 
   Widget _buildItemMedicalInstitute(MedicalInstitute medicalInstitute) {
-    var dateTime = DateFormat(Constant.fullDataFormat).parse(
-      medicalInstitute.createAt,
-    );
-    var dateTimeDisplay = DateFormat.Hm().format(dateTime);
     return Container(
       color: Colors.white,
       height: 102.h,
@@ -164,7 +149,7 @@ class GroupChatScreen extends StatelessWidget {
             top: 23.h,
             right: 80.w,
             child: Text(
-              medicalInstitute.name,
+              medicalInstitute.name ?? "",
               maxLines: 1,
               style: AppTextStyle.t18w700(AppColors.catalinaBlue),
             ),
@@ -174,27 +159,18 @@ class GroupChatScreen extends StatelessWidget {
             top: 50.h,
             right: 80.w,
             child: Text(
-              medicalInstitute.description,
+              medicalInstitute.description ?? "",
               maxLines: 2,
               style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
             ),
           ),
-          Positioned(
-            right: 22.w,
-            top: 23.h,
-            child: Text(
-              dateTimeDisplay,
-              style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
-            ),
-          ),
+          _buildDateTimeBody(medicalInstitute.createAt),
         ],
       ),
     );
   }
 
   Widget _buildItemGroupChat(GroupUser user) {
-    var dateTime = DateFormat(Constant.fullDataFormat).parse(user.createAt);
-    var dateTimeDisplay = DateFormat.Hm().format(dateTime);
     return InkWell(
       onTap: () {
         Get.toNamed(RouteName.chatDetail,
@@ -209,18 +185,18 @@ class GroupChatScreen extends StatelessWidget {
           children: [
             Positioned(
               left: 40.w,
-              child: _buildAvatar(user.users[0].avatarUrl),
+              child: _buildAvatar(user.users?[0].avatarUrl),
             ),
             Positioned(
               left: 20.w,
-              child: _buildAvatar(user.users[1].avatarUrl),
+              child: _buildAvatar(user.users?[1].avatarUrl),
             ),
             Positioned(
               left: 132.w,
               top: 23.h,
               right: 80.w,
               child: Text(
-                user.nameGroup,
+                user.nameGroup ?? "",
                 maxLines: 1,
                 style: AppTextStyle.t18w700(AppColors.catalinaBlue),
               ),
@@ -230,26 +206,29 @@ class GroupChatScreen extends StatelessWidget {
               top: 50.h,
               right: 80.w,
               child: Text(
-                user.description,
+                user.description ?? "",
                 maxLines: 2,
                 style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
               ),
             ),
-            Positioned(
-              right: 22.w,
-              top: 23.h,
-              child: Text(
-                dateTimeDisplay,
-                style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
-              ),
-            ),
+            _buildDateTimeBody(user.createAt),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildAvatar(String imageUrl) {
+  Widget _buildAvatar(String? imageUrl) {
+    if (imageUrl == null) {
+      return Container(
+        width: 62.w,
+        height: 62.w,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            color: AppColors.lightSlateGrey),
+        child: const Text(""),
+      );
+    }
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
       child: Image.network(
@@ -257,6 +236,29 @@ class GroupChatScreen extends StatelessWidget {
         width: 62.w,
         height: 62.h,
         fit: BoxFit.cover,
+        errorBuilder: (context, exception, stackTrace) {
+          return Container(
+            color: Colors.red,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDateTimeBody(String? createAt) {
+    String dateTimeDisplay = "NaN";
+    if (createAt != null) {
+      var dateTime = DateFormat(Constant.fullDataFormat).parse(
+        createAt,
+      );
+      dateTimeDisplay = DateFormat.Hm().format(dateTime);
+    }
+    return Positioned(
+      right: 22.w,
+      top: 23.h,
+      child: Text(
+        dateTimeDisplay,
+        style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
       ),
     );
   }

@@ -1,84 +1,158 @@
+import 'dart:convert';
+
 import 'package:wecheck/model/group_chat.dart';
 
 class GroupChatRepository {
-  Future<List<Partner>> doGetListPartner() {
-    var partners = [
-      Partner(
-        "https://smartyads.com/images/uploads/Boosting-ad-revenue-with-right-advertising-partnership.png",
-        "Partner 1",
-        "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
-        "2022-05-18 12:34:44",
-      ),
-      Partner(
-        "https://1330878074.rsc.cdn77.org/wp-content/uploads/2019/09/MakeMeReach-%E2%80%93-Leading-Global-Digital-Ad-Platform-%E2%80%93-Announces-Pinterest-Partnership.jpg",
-        "Partner 1",
-        "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
-        "2022-05-18 12:34:44",
-      ),
-      Partner(
-        "https://www.mcnuttpartners.com/assets/uploads/2021/01/1-25-21_Digital_Ads_Listening_Insta.jpg",
-        "Partner 1",
-        "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
-        "2022-05-18 12:34:44",
-      )
-    ];
-    return Future.value(partners);
+  Future<List<Partner>> doGetListPartner() async {
+    var partners = """
+      {
+        "success": 0,
+        "data": [
+          {
+            "partner_url" : "https://smartyads.com/images/uploads/Boosting-ad-revenue-with-right-advertising-partnership.png",
+            "name" : "Partner 1",
+            "description" : "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
+            "create_at" : "2022-05-18 12:34:44"
+          },
+          {
+            "partner_url" : "https://smartyads.com/images/uploads/Boosting-ad-revenue-with-right-advertising-partnership.png",
+            "name" : "Partner 1",
+            "description" : "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
+            "create_at" : "2022-05-18 12:34:44"
+          },
+          {
+            "partner_url" : "https://smartyads.com/images/uploads/Boosting-ad-revenue-with-right-advertising-partnership.png",
+            "name" : "Partner 1",
+            "description" : "Campaign Online Briefing: Adtech Playbook – A roadmap to superior performance - Campaign Middle East",
+            "create_at" : "2022-05-18 12:34:44"
+          }
+        ]
+      }
+    """;
+    var json = await jsonDecode(partners);
+    var partnerResponse = (json["data"] as List)
+        .map(
+          (e) => Partner.fromJson(e),
+        )
+        .toList();
+    return Future.value(partnerResponse);
   }
 
-  Future<List<GroupUser>> doGetListGroupUser() {
-    var users = [
-      GroupUser(
-        [
-          User("https://www.w3schools.com/howto/img_avatar.png", "People 1"),
-          User("https://www.w3schools.com/w3images/avatar6.png", "People 1"),
-          User("https://www.w3schools.com/w3images/avatar2.png", "People 1"),
-          User("https://www.w3schools.com/howto/img_avatar2.png", "People 1"),
-        ],
-        "Arkey Hospital group",
-        "Hello, the next chat will be on",
-        "2022-05-18 12:45:00",
-      ),
-      GroupUser(
-        [
-          User("https://www.w3schools.com/howto/img_avatar.png", "People 1"),
-          User("https://www.w3schools.com/w3images/avatar2.png", "People 1"),
-          User("https://www.w3schools.com/howto/img_avatar2.png", "People 1"),
-        ],
-        "Arkey Hospital group",
-        "Hello, the next chat will be on",
-        "2022-05-18 12:45:00",
-      )
-    ];
-    return Future.value(users);
+  Future<List<GroupUser>> doGetListGroupUser() async {
+    var users = """
+      {
+        "success": 0,
+        "data": [
+          {
+            "name_group": "Arkey Hospital group",
+            "description": "Hello, the next chat will be on",
+            "create_at": "2022-05-18 12:45:00",
+            "users": [
+               {
+                 "avatar_url" : null,
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               }
+            ]
+          },
+          {
+            "name_group": "Arkey Hospital group",
+            "description": "Hello, the next chat will be on",
+            "create_at": "2022-05-18 12:45:00",
+            "users": [
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               }
+            ]
+          },
+          {
+            "name_group": "Arkey Hospital group",
+            "description": "Hello, the next chat will be on",
+            "create_at": "2022-05-18 12:45:00",
+            "users": [
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               },
+               {
+                 "avatar_url" : "https://www.w3schools.com/howto/img_avatar.png",
+                 "name" : "People 1"
+               }
+            ]
+          }
+        ]
+      }
+    """;
+    var json = await jsonDecode(users);
+    var partnerResponse = (json["data"] as List)
+        .map(
+          (e) => GroupUser.fromJson(e),
+        )
+        .toList();
+    return Future.value(partnerResponse);
   }
 
-  Future<List<MedicalInstitute>> doGetListMedicalInstitute() {
-    var medicalInstitutes = [
-      MedicalInstitute(
-        "https://image.shutterstock.com/z/stock-photo-modern-hospital-style-building-212251981.jpg",
-        "Hospital Comples",
-        "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
-        "2022-05-15 12:45:00",
-      ),
-      MedicalInstitute(
-        "https://www.tibika.co.ke/images/hospital.jpg",
-        "Hospital Comples",
-        "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
-        "2022-05-15 12:45:00",
-      ),
-      MedicalInstitute(
-        "https://hongngochospital.vn/wp-content/uploads/2021/02/benh-vien-hong-ngoc-my-dinh-tu-ben-ngoai-e1615191158677.jpg",
-        "Hospital Comples",
-        "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
-        "2022-05-15 12:45:00",
-      ),
-      MedicalInstitute(
-        "https://betongtrangtribm.com/wp-content/uploads/2021/03/d5daeb21ffa30cfd55b2.jpg",
-        "Hospital Comples",
-        "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
-        "2022-05-15 12:45:00",
-      ),
-    ];
-    return Future.value(medicalInstitutes);
+  Future<List<MedicalInstitute>> doGetListMedicalInstitute() async {
+    var medicalInstitutes = """
+      {
+        "success": 0,
+        "data": [
+          {
+            "image_url" : "https://image.shutterstock.com/z/stock-photo-modern-hospital-style-building-212251981.jpg",
+            "name" : "Hospital Comples",
+            "description" : "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
+            "create_at" : "2022-05-15 12:45:00"
+          },
+          {
+            "image_url" : "https://image.shutterstock.com/z/stock-photo-modern-hospital-style-building-212251981.jpg",
+            "name" : "Hospital Comples",
+            "description" : "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
+            "create_at" : "2022-05-15 12:45:00"
+          },
+          {
+            "image_url" : "https://image.shutterstock.com/z/stock-photo-modern-hospital-style-building-212251981.jpg",
+            "name" : "Hospital Comples",
+            "description" : "Find Hospital building stock images in HD and millions of other royalty-free stock photos, illustrations and vectors in the Shutterstock collection.",
+            "create_at" : "2022-05-15 12:45:00"
+          }
+        ]
+      }
+    """;
+    // var medicalInstitutes = """
+    //     {
+    //       "success": 1,
+    //       "error": {
+    //          "error_code": "E001",
+    //          "error_message": "an error message"
+    //       }
+    //     }
+    // """;
+    var json = await jsonDecode(medicalInstitutes);
+    var partnerResponse = (json["data"] as List)
+        .map(
+          (e) => MedicalInstitute.fromJson(e),
+        )
+        .toList();
+    return Future.value(partnerResponse);
   }
 }

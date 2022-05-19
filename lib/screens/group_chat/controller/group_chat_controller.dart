@@ -10,11 +10,23 @@ class GroupChatController extends GetxController {
 
   @override
   void onInit() {
-    repository.doGetListGroupUser().then((value) => groupUsers.value = value);
+    repository.doGetListGroupUser().then((value) {
+      if (value.isNotEmpty) {
+        groupUsers.value = value;
+      }
+    });
     repository.doGetListMedicalInstitute().then(
-          (value) => medicalInstitutes.value = value,
-        );
-    repository.doGetListPartner().then((value) => partners.value = value);
+      (value) {
+        if (value.isNotEmpty) {
+          medicalInstitutes.value = value;
+        }
+      },
+    );
+    repository.doGetListPartner().then((value) {
+      if (value.isNotEmpty) {
+        partners.value = value;
+      }
+    });
     super.onInit();
   }
 }
