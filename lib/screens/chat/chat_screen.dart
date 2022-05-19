@@ -43,7 +43,7 @@ class ChatScreen extends GetView<ChatController> {
       toolbarHeight: 160.h,
       backgroundColor: AppColors.aliceBlue,
       titleSpacing: 12.w,
-      title: Container(
+      title: Padding(
         padding: EdgeInsets.only(
           left: 12.w,
           right: 15.w,
@@ -132,7 +132,7 @@ class ChatScreen extends GetView<ChatController> {
     return Obx(
       () {
         int tabCount = controller.selectedSegment.value;
-        return tabCount == 0 ? const GroupChatScreen() : const ReverseScreen();
+        return tabCount == 0 ? const GroupChatScreen() : ReverseScreen();
       },
     );
   }

@@ -44,4 +44,6 @@ abstract class BaseLanguage {
   String get partner;
   String get search;
   String get hintInput;
+  String get vacancies;
+  String get lastReverseTime;
 }

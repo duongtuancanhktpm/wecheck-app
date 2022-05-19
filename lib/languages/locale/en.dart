@@ -134,4 +134,10 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get hintInput => "Text";
+
+  @override
+  String get vacancies => "vacancies";
+
+  @override
+  String get lastReverseTime => "Last reversed on the";
 }
