@@ -3,6 +3,7 @@ import 'package:wecheck/screens/account/sign_up/binding/sign_up_main_binding.dar
 import 'package:wecheck/screens/account/sign_up/sign_up_main_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
+import 'package:wecheck/screens/chat_detail/chat_detail_screen.dart';
 import 'package:wecheck/screens/home/binding/home_binding.dart';
 import 'package:wecheck/screens/home/home_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
@@ -26,6 +27,7 @@ class RouteName {
   static const String home = "home";
   static const String timeline = "timeline";
   static const String chat = "chat";
+  static const String chatDetail = "chat/details";
   static const String settings = "setting";
   static const String signIn = "/signIn";
   static const String signUp = "/signUp";
@@ -46,6 +48,7 @@ class AppRoutes {
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUpMain: () => const SignUpMainScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
+    RouteName.chatDetail: () => const ChatDetailScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
