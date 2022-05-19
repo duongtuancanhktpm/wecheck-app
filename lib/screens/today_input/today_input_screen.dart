@@ -74,7 +74,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
 
   Widget _condition() {
     Widget body = SizedBox(
-        height: 200,
+        height: 220,
         child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
@@ -91,64 +91,38 @@ class TodayInputScreen extends GetView<TodayInputController> {
   Widget _time() {
     Widget body = Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            children: [
-              Text(
-                L.current.dateAndTime,
-                style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-              ),
-              const Spacer(),
-              Text(
-                controller.DnTValue.value,
-                style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-              ),
-            ],
-          ),
-        ),
+        _itemRow(
+            label: L.current.dateAndTime,
+            detail: _detail(unit: controller.DnTValue.value)),
         _divider(),
-        Padding(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            children: [
-              Text(
-                L.current.tag,
-                style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-              ),
-              const Spacer(),
-              SvgPicture.asset("assets/icons/ic_event_drink_water.svg"),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  "Tag name",
-                  style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-                ),
-              ),
-            ],
-          ),
-        ),
+        _itemRow(
+            label: "Tag",
+            detail: _detail(
+                iconPath: "assets/icons/ic_event_drink_water.svg",
+                unit: "Tag name"))
       ],
     );
     return _todayInputItem(L.current.time, body);
   }
 
-  Widget _itemRow(String pathIcon, String label, Widget detail, bool expanded) {
+  Widget _itemRow(
+      {String? pathIcon, String? label, Widget? detail, bool? expanded}) {
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: SvgPicture.asset(pathIcon),
-          ),
+          if (pathIcon != null)
+            Container(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: SvgPicture.asset(pathIcon),
+            ),
           Text(
-            label,
+            label ?? "",
             style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
           ),
           const Spacer(),
-          detail,
-          if (expanded)
+          if (detail != null) detail,
+          if (expanded == true)
             const Icon(
               Icons.chevron_right_outlined,
               color: itemTextColor,
@@ -158,26 +132,36 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _detail(String? value, String? unit, {String? imagePath}) {
+  Widget _detail(
+      {String? value, String? unit, String? imagePath, String? iconPath}) {
     return Row(
       children: [
-        SizedBox(
-            //color: Colors.red,
-            width: 40,
-            height: 40,
-            child: imagePath != null
-                ? Image.asset(
-                    imagePath,
-                    fit: BoxFit.contain,
-                  )
-                : Container()),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            value ?? "null",
-            style: AppTextStyle.t22w700(valueTextColor),
+        if (imagePath != null)
+          SizedBox(
+              //color: Colors.red,
+              width: 40,
+              height: 40,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.contain,
+              )),
+        if (iconPath != null)
+          SizedBox(
+              //color: Colors.red,
+              width: 40,
+              height: 40,
+              child: SvgPicture.asset(
+                iconPath,
+                color: itemTextColor,
+              )),
+        if (value != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              value,
+              style: AppTextStyle.t22w700(valueTextColor),
+            ),
           ),
-        ),
         Text(
           unit ?? "null",
           style: AppTextStyle.t16w700(itemTextColor),
@@ -189,17 +173,30 @@ class TodayInputScreen extends GetView<TodayInputController> {
   Widget _main() {
     Widget body = Column(
       children: [
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Sugar",
-            _detail("7.9", "%"), false),
+        _itemRow(
+          pathIcon: "assets/icons/ic_event_drink_water.svg",
+          label: "Blood Sugar",
+          detail: _detail(value: "7.9", unit: "%"),
+        ),
         _divider(),
-        _itemRow("assets/icons/ic_event_eat.svg", "Meal",
-            _detail("3", "kcal", imagePath: "assets/images/meal.jpg"), true),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_eat.svg",
+            label: "Meal",
+            detail: _detail(
+                value: "3", unit: "kcal", imagePath: "assets/images/meal.jpg"),
+            expanded: true),
         _divider(),
-        _itemRow("assets/icons/ic_event_inject_medicines.svg", "Insulin",
-            _detail("3", "unit"), true),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_inject_medicines.svg",
+            label: "Insulin",
+            detail: _detail(value: "3", unit: "unit"),
+            expanded: true),
         _divider(),
-        _itemRow("assets/icons/ic_event_take_medicines.svg", "Medicine",
-            _detail("2", "pills"), true),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_take_medicines.svg",
+            label: "Medicine",
+            detail: _detail(value: "2", unit: "pills"),
+            expanded: true),
       ],
     );
     return _todayInputItem("Main", body);
@@ -208,20 +205,31 @@ class TodayInputScreen extends GetView<TodayInputController> {
   Widget _other() {
     Widget body = Column(
       children: [
-        _itemRow("assets/icons/ic_event_drink_water.svg", "HbA1c",
-            _detail("7.9", "%"), false),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_drink_water.svg",
+            label: "HbA1c",
+            detail: _detail(value: "7.9", unit: "%")),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Steps",
-            _detail("6500", "steps"), false),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_drink_water.svg",
+            label: "Steps",
+            detail: _detail(value: "6500", unit: "steps")),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Blood Pressure",
-            _detail("100", "mmhg"), false),
+        _itemRow(
+          pathIcon: "assets/icons/ic_event_drink_water.svg",
+          label: "Blood Pressure",
+          detail: _detail(value: "100", unit: "mmhg"),
+        ),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "TIR",
-            _detail("54", "%"), false),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_drink_water.svg",
+            label: "TIR",
+            detail: _detail(value: "54", unit: "%")),
         _divider(),
-        _itemRow("assets/icons/ic_event_drink_water.svg", "Weight",
-            _detail("75", "kg"), false),
+        _itemRow(
+            pathIcon: "assets/icons/ic_event_drink_water.svg",
+            label: "Weight",
+            detail: _detail(value: "75", unit: "kg")),
       ],
     );
     return _todayInputItem("Other", body);
