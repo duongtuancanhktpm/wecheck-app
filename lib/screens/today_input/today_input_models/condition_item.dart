@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wecheck/theme/colors.dart';
 
-import '../../../theme/colors.dart';
 
 enum Condition{
   HightBloodSugar,
