@@ -11,7 +11,7 @@ class _SettingsScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(color: Colors.blue,),
+      body: Container(color: Colors.green,),
     );
   }
 }
