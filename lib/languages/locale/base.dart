@@ -38,7 +38,6 @@ abstract class BaseLanguage {
   String get sendEmail;
   String get dateOfBirth;
   String get createAccount;
-  String get bsLogTitle;
   String get reserve;
   String get groupChat;
   String get medicalInstitute;
