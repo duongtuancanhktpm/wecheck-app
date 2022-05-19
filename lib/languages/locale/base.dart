@@ -44,4 +44,13 @@ abstract class BaseLanguage {
   String get tag;
   String get main;
   String get other;
+  String get bloodSugar;
+  String get meals;
+  String get insulin;
+  String get medicine;
+  String get a1c;
+  String get steps;
+  String get bloodPressure;
+  String get tir;
+
 }

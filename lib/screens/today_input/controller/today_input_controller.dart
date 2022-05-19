@@ -1,25 +1,45 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:wecheck/screens/today_input/today_input_models/condition_item.dart';
-import 'package:wecheck/theme/colors.dart';
-
-
+import 'package:wecheck/model/condition_list_data.dart';
+import 'package:wecheck/model/input_data.dart';
+import 'package:wecheck/repository/today_input_repository.dart';
+import 'package:wecheck/utils/constants.dart';
 
 class TodayInputController extends GetxController {
-  var conditions = ConditionItem().getConditions().obs;
-  var DnTValue =
-      DateFormat("MMMM dd, yyyy    kk:mm").format(DateTime.now()).obs;
+  var todayInputRepository = TodayInputRepository();
+  var initial = true;
+  var conditions1 = <ConditionInput>[].obs;
+  var dateAndTime = DateTime.now();
+  var dateAndTimeFormated =
+      DateFormat(Constant.fullDateTimeFormat).format(DateTime.now()).obs;
+  var tagItem;
+  InputData? bloodSugar;
+  InputData? meals;
+  InputData? insulin;
+  InputData? medicine;
 
-  void onConditionTap(int index){
-    conditions.value.forEach((newItem) {
-      newItem.itemColor = AppColors.lightSlateGrey;
-      newItem.borderColor = AppColors.pattensBlue;
-      newItem.textColor = AppColors.lightSlateGrey;
+  InputData? a1c;
+  InputData? steps;
+  InputData? bloodPressure;
+  InputData? tir;
+  InputData? weight;
+
+  @override
+  void onInit() {
+    todayInputRepository.doGetConditionList().then((value) {
+      conditions1.value = value;
     });
-    conditions.value[index].itemColor = AppColors.ceruleanBlue;
-    conditions.value[index].borderColor = AppColors.ceruleanBlue;
-    conditions.value[index].backgroundColor = AppColors.solitude;
-    conditions.refresh();
+    todayInputRepository.doGetTagItemData().then((value) {
+      tagItem = value;
+    });
+    todayInputRepository.doGetInputData().then((value) {
+      bloodSugar = value[0];
+      meals = value[1];
+      insulin = value[2];
+      medicine = value[3];
 
+      a1c = value[4];
+    });
+    super.onInit();
   }
 }

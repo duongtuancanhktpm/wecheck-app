@@ -19,8 +19,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
 import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
-
-import '../screens/today_input/today_input_screen.dart';
+import 'package:wecheck/screens/today_input/today_input_screen.dart';
 
 class RouteName {
   static const String splash = "splash";
@@ -33,7 +32,7 @@ class RouteName {
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
   static const String resetPassword = "/resetPassword";
-  static const String todayInput = "/todayinput";
+  static const String todayInput = "home/todayinput";
 }
 
 class AppRoutes {
