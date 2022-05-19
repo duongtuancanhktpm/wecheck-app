@@ -24,4 +24,6 @@ class AppIcons {
   static const String icAfterDinner = "assets/icons/ic_after_dinner.svg";
   static const String icBeforeBedtime = "assets/icons/ic_before_bedtime.svg";
   static const String icAfterBedtime = "assets/icons/ic_after_bedtime.svg";
+  static const String icCamera = "assets/icons/ic_camera.svg";
+  static const String icGallery = "assets/icons/ic_gallery.svg";
 }

@@ -116,4 +116,22 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get createAccount => 'Create Account';
+
+  @override
+  String get reserve => "Reserve";
+
+  @override
+  String get groupChat => "Group";
+
+  @override
+  String get medicalInstitute => "Medical Institute";
+
+  @override
+  String get partner => "Partner";
+
+  @override
+  String get search => "Search";
+
+  @override
+  String get hintInput => "Text";
 }
