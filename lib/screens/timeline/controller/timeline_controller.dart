@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:wecheck/model/event_detail_data.dart';
 import 'package:wecheck/utils/constants.dart';
 import 'package:wecheck/model/event_data.dart';
 import 'package:wecheck/repository/timeline_repository.dart';

@@ -5,6 +5,7 @@ abstract class BaseLanguage {
   String get chat;
   String get cancel;
   String get setting;
+  String get bsLogTitle;
   String get service;
   String get email;
   String get signIn;
@@ -37,4 +38,12 @@ abstract class BaseLanguage {
   String get sendEmail;
   String get dateOfBirth;
   String get createAccount;
+  String get reserve;
+  String get groupChat;
+  String get medicalInstitute;
+  String get partner;
+  String get search;
+  String get hintInput;
+  String get vacancies;
+  String get lastReverseTime;
 }

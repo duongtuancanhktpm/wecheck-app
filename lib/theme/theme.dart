@@ -99,7 +99,7 @@ class AppTheme {
         style: ButtonStyle(
           shape: MaterialStateProperty.resolveWith(
             (states) => RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.dp),
+              borderRadius: BorderRadius.circular(50),
             ),
           ),
           backgroundColor: MaterialStateProperty.resolveWith(
@@ -107,7 +107,7 @@ class AppTheme {
               if (states.any((state) => state == MaterialState.disabled)) {
                 return AppColors.black;
               }
-              return AppColors.black;
+              return AppColors.colorCeruleanBlue;
             },
           ),
           foregroundColor: MaterialStateProperty.resolveWith(
@@ -117,9 +117,6 @@ class AppTheme {
           ),
           textStyle: MaterialStateProperty.resolveWith(
             (states) => AppTextStyle.button,
-          ),
-          padding: MaterialStateProperty.resolveWith(
-            (states) => EdgeInsets.symmetric(vertical: 14.dp, horizontal: 30),
           ),
         ),
       );
