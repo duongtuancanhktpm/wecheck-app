@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
@@ -197,7 +196,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
 
   Widget _buildConditions() {
     return SizedBox(
-      height: 220.h,
+      height: 220,
       child: Obx(
         () => GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
