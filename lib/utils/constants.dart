@@ -10,4 +10,9 @@ class Constant {
   static const String bloodPresureUnit = "mmhg";
   static const String tirUnit = "%";
   static const String weightUnit = "kg";
+  static const String monthSuffixDateFormat = "EEEE, MMMM d";
+  static const String daySuffixDateFormat = "d MMMM";
+  static const String dayFormat = "MMMM, yyyy";
+  static const String argumentKey1 = "argumentKey_1";
+  static const String nAn = "NaN";
 }

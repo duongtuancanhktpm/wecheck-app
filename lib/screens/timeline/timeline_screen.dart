@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:wecheck/model/event_detail_data.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
@@ -27,39 +28,35 @@ class TimeLineScreen extends GetView<TimeLineController> {
         }
         return true;
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBarWidget(
-            title: Obx(
-              () => Text(
-                controller.titleAppBar.value,
-                style: AppTextStyle.t22w700(AppColors.catalinaBlue),
-              ),
+      child: Scaffold(
+        appBar: AppBarWidget(
+          titleWidget: Obx(
+            () => Text(
+              controller.titleAppBar.value,
+              style: AppTextStyle.t22w700(AppColors.catalinaBlue),
             ),
-            action: [
-              SvgPicture.asset(
-                AppIcons.icEdit,
-              ),
-            ],
-            onBackPressed: () {
-              if (controller.calendarFormat.value == CalendarFormat.month) {
-                SystemNavigator.pop();
-              } else {
-                controller.onChangeCalendarFormat();
-              }
-            },
           ),
-          backgroundColor: Colors.white,
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  _buildCalendarEvent(),
-                  _buildListEventData(),
-                ],
-              ),
+          didBackPressed: () {
+            if (controller.calendarFormat.value == CalendarFormat.month) {
+              SystemNavigator.pop();
+            } else {
+              controller.onChangeCalendarFormat();
+            }
+          },
+          iconAction: SvgPicture.asset(
+            AppIcons.icEdit,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.dp,),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                _buildCalendarEvent(),
+                _buildListEventData(),
+              ],
             ),
           ),
         ),
@@ -79,21 +76,36 @@ class TimeLineScreen extends GetView<TimeLineController> {
           firstDay: DateTime.utc(1900, 10, 16),
           lastDay: DateTime.utc(5000, 3, 14),
           focusedDay: focusDay,
-          daysOfWeekHeight: 40.h,
-          rowHeight: 80.h,
+          daysOfWeekHeight: 40.dp,
+          rowHeight: 80.dp,
           calendarFormat: calendarFormat,
           headerStyle: HeaderStyle(
             formatButtonVisible: false,
             titleCentered: true,
+            leftChevronIcon: Icon(
+              Icons.chevron_left,
+              size: 27.dp,
+              color: AppColors.catalinaBlue,
+            ),
+            rightChevronIcon: Icon(
+              Icons.chevron_right,
+              size: 27.dp,
+              color: AppColors.catalinaBlue,
+            ),
+            titleTextFormatter: (date, locale) {
+              var dateTimeHeader = DateFormat(Constant.dayFormat)
+                  .format(date);
+              return dateTimeHeader;
+            },
             titleTextStyle: TextStyle(
-              fontSize: 15.sp,
+              fontSize: 15.dp,
               fontWeight: FontWeight.bold,
               color: AppColors.catalinaBlue,
             ),
           ),
           calendarStyle: CalendarStyle(
             markersAutoAligned: false,
-            markersOffset: PositionedOffset(top: 40.h),
+            markersOffset: PositionedOffset(top: 40.dp,),
             tableBorder: const TableBorder(
               horizontalInside: BorderSide(
                 color: AppColors.lightSlateGrey,
@@ -169,7 +181,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
 
   Widget _buildItemDefault(DateTime dateTime) {
     return Padding(
-      padding: EdgeInsets.only(top: 18.h),
+      padding: EdgeInsets.only(top: 18.dp,),
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(
@@ -182,7 +194,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
 
   Widget _buildItemOutSiteMonth(DateTime dateTime) {
     return Padding(
-      padding: EdgeInsets.only(top: 18.h),
+      padding: EdgeInsets.only(top: 18.dp,),
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(
@@ -195,9 +207,9 @@ class TimeLineScreen extends GetView<TimeLineController> {
 
   Widget _buildItemToday(DateTime dateTime) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 9.h, horizontal: 4.h),
+      margin: EdgeInsets.symmetric(vertical: 9.dp, horizontal: 4.dp,),
       color: AppColors.aliceBlue2,
-      padding: EdgeInsets.only(top: 9.h),
+      padding: EdgeInsets.only(top: 9.dp,),
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(
@@ -215,9 +227,9 @@ class TimeLineScreen extends GetView<TimeLineController> {
       color = AppColors.aliceBlue2;
     }
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 9.h, horizontal: 4.h),
+      margin: EdgeInsets.symmetric(vertical: 9.dp, horizontal: 4.dp,),
       color: color,
-      padding: EdgeInsets.only(top: 9.h),
+      padding: EdgeInsets.only(top: 9.dp,),
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(
@@ -237,13 +249,13 @@ class TimeLineScreen extends GetView<TimeLineController> {
     });
     return eventData != null
         ? SizedBox(
-            height: 40.h,
+            height: 40.dp,
             child: Column(
               children: [
                 eventData.dayType.isNotEmpty
                     ? Expanded(
                         child: Padding(
-                          padding: EdgeInsets.only(top: 0.h),
+                          padding: EdgeInsets.only(top: 0.dp,),
                           child: SvgPicture.asset(
                             eventData.dayType,
                           ),
@@ -255,9 +267,9 @@ class TimeLineScreen extends GetView<TimeLineController> {
                 eventData.status != 0
                     ? Expanded(
                         child: Container(
-                          width: 7.w,
-                          height: 7.h,
-                          margin: EdgeInsets.only(top: 6.h),
+                          width: 7.dp,
+                          height: 7.dp,
+                          margin: EdgeInsets.only(top: 6.dp,),
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.red,
@@ -281,10 +293,10 @@ class TimeLineScreen extends GetView<TimeLineController> {
             children: [
               Container(
                 width: double.infinity,
-                height: 35.h,
+                height: 35.dp,
                 color: AppColors.aliceBlue,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10.w),
+                  padding: EdgeInsets.only(left: 10.dp,),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -325,7 +337,7 @@ class TimeLineScreen extends GetView<TimeLineController> {
   _buildItemEventDetailData(EventDetailData data) {
     var time = DateFormat(Constant.fullDataFormat).parse(data.dateTime);
     return SizedBox(
-      height: 67.h,
+      height: 67.dp,
       child: Row(
         children: [
           Expanded(

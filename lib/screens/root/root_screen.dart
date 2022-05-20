@@ -1,10 +1,6 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/routes/routes.dart';
-import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
-import 'package:wecheck/screens/timeline/timeline_screen.dart';
-import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,10 +51,7 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: SizedBox(
-        height: 84.h,
-        child: _bottomNavigationBar(),
-      ),
+      bottomNavigationBar: _bottomNavigationBar(),
       body: PageView(
         controller: pageController,
         children: pages,
@@ -108,17 +101,20 @@ class _RootScreenState extends State<RootScreen> {
       );
 
   BottomNavigationBarItem _buildItem(
-      String activeIcon, String icon, String name) {
+    String activeIcon,
+    String icon,
+    String name,
+  ) {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
         icon,
-        width: 26.w,
-        height: 26.w,
+        width: 26.dp,
+        height: 26.dp,
       ),
       activeIcon: SvgPicture.asset(
         activeIcon,
-        width: 26.w,
-        height: 26.w,
+        width: 26.dp,
+        height: 26.dp,
       ),
       label: name,
       backgroundColor: Colors.white,

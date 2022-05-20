@@ -23,6 +23,9 @@ class LanguageEn extends BaseLanguage {
   String get setting => 'Setting';
 
   @override
+  String get bsLogTitle => "Blood Sugar Log";
+
+  @override
   String get service => 'Service';
 
   @override
@@ -159,4 +162,28 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get tir => "TIR";
+
+  @override
+  String get reserve => "Reserve";
+
+  @override
+  String get groupChat => "Group";
+
+  @override
+  String get medicalInstitute => "Medical Institute";
+
+  @override
+  String get partner => "Partner";
+
+  @override
+  String get search => "Search";
+
+  @override
+  String get hintInput => "Text";
+
+  @override
+  String get vacancies => "vacancies";
+
+  @override
+  String get lastReverseTime => "Last reversed on the";
 }
