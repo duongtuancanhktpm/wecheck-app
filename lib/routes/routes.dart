@@ -34,7 +34,6 @@ class RouteName {
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
   static const String resetPassword = "/resetPassword";
-  static const String bsLog = "home/bsLog";
 }
 
 class AppRoutes {
