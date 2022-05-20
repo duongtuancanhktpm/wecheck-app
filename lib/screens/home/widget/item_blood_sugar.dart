@@ -21,8 +21,8 @@ itemBloodSugar() {
             children: [
               SvgPicture.asset(
                 AppIcons.icEventDrinkWater,
-                width: 26.h,
-                height: 26.h,
+                width: 26.dp,
+                height: 26.dp,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),

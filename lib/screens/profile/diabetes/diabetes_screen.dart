@@ -87,12 +87,12 @@ class DiabetesScreen extends GetView {
             child: DropdownButton<String>(
               value: controller.valueHaveDiabetes.value,
               icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24.h,
+              iconSize: 24.dp,
               elevation: 16,
               isExpanded: true,
               style: AppTextStyle.t18w500(AppColors.colorGrey),
               underline: Container(
-                height: 1.h,
+                height: 1.dp,
                 color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
@@ -141,12 +141,12 @@ class DiabetesScreen extends GetView {
             child: DropdownButton<String>(
               value: controller.valueTakingMedicine.value,
               icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24.h,
+              iconSize: 24.dp,
               elevation: 16,
               isExpanded: true,
               style: AppTextStyle.t18w500(AppColors.colorGrey),
               underline: Container(
-                height: 1.h,
+                height: 1.dp,
                 color: AppColors.colorDarkGrey,
               ),
               onChanged: (data) {
@@ -199,7 +199,7 @@ class DiabetesScreen extends GetView {
             isExpanded: true,
             style: AppTextStyle.t18w500(AppColors.colorGrey),
             underline: Container(
-              height: 1.h,
+              height: 1.dp,
               color: AppColors.colorDarkGrey,
             ),
             onChanged: (data) {
@@ -227,7 +227,7 @@ class DiabetesScreen extends GetView {
               child: Container(
                 alignment: Alignment.center,
                width: double.infinity,
-                height: 45.h,
+                height: 45.dp,
                 padding: const EdgeInsets.only(top: 12, bottom: 12),
                 child: Text(
                   L.current.signIn,

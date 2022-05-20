@@ -46,8 +46,8 @@ class HomeScreen extends GetView<HomeController> {
                   padding: const EdgeInsets.all(10),
                   child: SvgPicture.asset(
                     AppIcons.icChatUnSelected,
-                    width: 25.h,
-                    height: 25.h,
+                    width: 25.dp,
+                    height: 25.dp,
                   ),
                 )
               ],
@@ -105,8 +105,8 @@ class HomeScreen extends GetView<HomeController> {
                         const EdgeInsets.only(top: 10, bottom: 10, left: 10),
                     child: SvgPicture.asset(
                       AppIcons.icChatUnSelected,
-                      width: 20.h,
-                      height: 20.h,
+                      width: 20.dp,
+                      height: 20.dp,
                     ),
                   ),
                   const Padding(
@@ -121,7 +121,7 @@ class HomeScreen extends GetView<HomeController> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
-              height: 220.h,
+              height: 220.dp,
               child: Obx(() => Stack(
                     children: [
                       //SmoothLineChart.withRandomData(),

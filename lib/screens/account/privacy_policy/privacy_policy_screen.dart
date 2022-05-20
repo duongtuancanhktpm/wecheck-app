@@ -5,6 +5,7 @@ import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy
 import 'package:wecheck/theme/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class PrivacyPolicyScreen extends GetView {
@@ -37,7 +38,7 @@ class PrivacyPolicyScreen extends GetView {
                 Container(
                   child: Container(
                     width: double.infinity,
-                    height: 430.h,
+                    height: 430.dp,
                     child: const WebView(
                       initialUrl: 'https://flutter.dev',
                     ),

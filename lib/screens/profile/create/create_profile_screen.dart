@@ -218,7 +218,7 @@ class CreateProfileScreen extends GetView {
       isExpanded: true,
       style: AppTextStyle.t18w500(AppColors.colorGrey),
       underline: Container(
-        height: 1.h,
+        height: 1.dp,
         color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {
@@ -238,12 +238,12 @@ class CreateProfileScreen extends GetView {
     DropdownButton<String>(
       value: controller.valueGender.value,
       icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24.h,
+      iconSize: 24.dp,
       elevation: 16,
       isExpanded: true,
       style: AppTextStyle.t18w500(AppColors.colorGrey),
       underline: Container(
-        height: 1.h,
+        height: 1.dp,
         color: AppColors.colorDarkGrey,
       ),
       onChanged: (data) {

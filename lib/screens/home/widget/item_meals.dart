@@ -22,8 +22,8 @@ itemMeals() {
             children: [
               SvgPicture.asset(
                 AppIcons.icEventEat,
-                width: 26.h,
-                height: 26.h,
+                width: 26.dp,
+                height: 26.dp,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -42,7 +42,7 @@ itemMeals() {
               padding: const EdgeInsets.only(left: 10),
               child: Image.network(
                 imageUrl,
-                height: 45.h,
+                height: 45.dp,
               ),
             ),
             Container(

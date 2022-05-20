@@ -16,8 +16,8 @@ itemMenuSmall(SmallMenu indexEn) {
         children: [
           SvgPicture.asset(
             indexEn.icon,
-            width: 35.h,
-            height: 35.h,
+            width: 35.dp,
+            height: 35.dp,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),
@@ -41,8 +41,8 @@ itemMenuSmallFinal(SmallMenu indexEn) {
         children: [
           SvgPicture.asset(
             indexEn.icon,
-            width: 35.h,
-            height: 35.h,
+            width: 35.dp,
+            height: 35.dp,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),

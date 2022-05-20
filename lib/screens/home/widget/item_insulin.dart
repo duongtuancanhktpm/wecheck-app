@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
@@ -22,8 +23,8 @@ itemInsulin() {
             children: [
               SvgPicture.asset(
                 AppIcons.icEventInject,
-                width: 26.h,
-                height: 26.h,
+                width: 26.dp,
+                height: 26.dp,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 5),
@@ -40,15 +41,15 @@ itemInsulin() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
-              width: 8.h,
+              width: 8.dp,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.colorJungleGreen),
               padding: const EdgeInsets.only(left: 10),
-              height: 45.h,
+              height: 45.dp,
             ),
             Container(
-              width: 160.h,
+              width: 160.dp,
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 'Tresiba Injection Penfill',

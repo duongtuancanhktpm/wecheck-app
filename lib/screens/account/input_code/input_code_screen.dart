@@ -5,6 +5,7 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class InputCodeScreen extends GetView {
@@ -42,7 +43,7 @@ class InputCodeScreen extends GetView {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 250.h,
+                height: 250.dp,
                 child: Form(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -67,8 +68,8 @@ class InputCodeScreen extends GetView {
                         pinTheme: PinTheme(
                             shape: PinCodeFieldShape.box,
                             borderRadius: BorderRadius.circular(5),
-                            fieldHeight: 50.h,
-                            fieldWidth: 40.h,
+                            fieldHeight: 50.dp,
+                            fieldWidth: 40.dp,
                             borderWidth: 1,
                             activeFillColor: Colors.white,
                             inactiveColor: AppColors.colorGrey,

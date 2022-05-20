@@ -47,7 +47,7 @@ class AppRoutes {
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUpMain: () => const SignUpScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
-    RouteName.insulinGraph: () => const InsulinGraphHorizontalScreen(),
+    RouteName.insulinGraph: () => InsulinGraphHorizontalScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{

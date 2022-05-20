@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   final Widget title;
@@ -13,7 +14,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 84.h,
+      height: 84.dp,
       color: AppColors.aliceBlue,
       child: Stack(
         children: [
