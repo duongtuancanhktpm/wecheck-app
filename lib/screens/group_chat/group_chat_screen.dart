@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/model/group_chat.dart';
+import 'package:wecheck/model/medical_institute.dart';
+import 'package:wecheck/model/partner.dart';
 import 'package:wecheck/routes/routes.dart';
 import 'package:wecheck/screens/group_chat/controller/group_chat_controller.dart';
 import 'package:wecheck/theme/theme.dart';

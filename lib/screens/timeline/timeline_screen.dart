@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:wecheck/model/event_detail_data.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
@@ -27,39 +28,35 @@ class TimeLineScreen extends GetView<TimeLineController> {
         }
         return true;
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBarWidget(
-            title: Obx(
-              () => Text(
-                controller.titleAppBar.value,
-                style: AppTextStyle.t22w700(AppColors.catalinaBlue),
-              ),
+      child: Scaffold(
+        appBar: AppBarWidget(
+          titleWidget: Obx(
+            () => Text(
+              controller.titleAppBar.value,
+              style: AppTextStyle.t22w700(AppColors.catalinaBlue),
             ),
-            action: [
-              SvgPicture.asset(
-                AppIcons.icEdit,
-              ),
-            ],
-            onBackPressed: () {
-              if (controller.calendarFormat.value == CalendarFormat.month) {
-                SystemNavigator.pop();
-              } else {
-                controller.onChangeCalendarFormat();
-              }
-            },
           ),
-          backgroundColor: Colors.white,
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  _buildCalendarEvent(),
-                  _buildListEventData(),
-                ],
-              ),
+          didBackPressed: () {
+            if (controller.calendarFormat.value == CalendarFormat.month) {
+              SystemNavigator.pop();
+            } else {
+              controller.onChangeCalendarFormat();
+            }
+          },
+          iconAction: SvgPicture.asset(
+            AppIcons.icEdit,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                _buildCalendarEvent(),
+                _buildListEventData(),
+              ],
             ),
           ),
         ),
@@ -85,6 +82,21 @@ class TimeLineScreen extends GetView<TimeLineController> {
           headerStyle: HeaderStyle(
             formatButtonVisible: false,
             titleCentered: true,
+            leftChevronIcon: Icon(
+              Icons.chevron_left,
+              size: 27.w,
+              color: AppColors.catalinaBlue,
+            ),
+            rightChevronIcon: Icon(
+              Icons.chevron_right,
+              size: 27.w,
+              color: AppColors.catalinaBlue,
+            ),
+            titleTextFormatter: (date, locale) {
+              var dateTimeHeader = DateFormat(Constant.dayFormat)
+                  .format(date);
+              return dateTimeHeader;
+            },
             titleTextStyle: TextStyle(
               fontSize: 15.sp,
               fontWeight: FontWeight.bold,

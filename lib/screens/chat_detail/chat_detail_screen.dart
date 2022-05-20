@@ -11,6 +11,7 @@ import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
+import 'package:wecheck/widgets/app_bar.dart';
 
 class ChatDetailScreen extends StatelessWidget {
   const ChatDetailScreen({Key? key}) : super(key: key);
@@ -22,55 +23,25 @@ class ChatDetailScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.aliceBlue,
-      appBar: AppBar(
-        backgroundColor: AppColors.aliceBlue,
-        toolbarHeight: 84.h,
-        title: Text(
-          groupName ?? "",
-          style: AppTextStyle.t22w700(AppColors.catalinaBlue),
-        ),
-        titleSpacing: 0,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.catalinaBlue,
-              size: 32,
-            ),
-          ),
-        ),
-        centerTitle: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.search,
-              size: 35.w,
-              color: AppColors.catalinaBlue,
-            ),
-          )
-        ],
+      appBar: AppBarWidget(
+        title: groupName,
+        didActionPressed: () {
+          Navigator.of(context).pop();
+        },
       ),
       body: Column(
         children: [
-          Expanded(
-            flex: 9,
-            child: Obx(
-              () {
-                var messages = controller.messages.toList();
-                return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return _buildItemChat(messages[index]);
-                  },
-                  itemCount: messages.length,
-                );
-              },
-            ),
+          Obx(
+            () {
+              var messages = controller.messages.toList();
+              return ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return _buildItemChat(messages[index]);
+                },
+                itemCount: messages.length,
+              );
+            },
           ),
           _buildInputChat(context)
         ],
@@ -81,7 +52,6 @@ class ChatDetailScreen extends StatelessWidget {
   Widget _buildInputChat(BuildContext context) {
     return Container(
       color: Colors.white,
-      constraints: BoxConstraints(minHeight: 84.h),
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).padding.bottom,
         left: 18.w,
