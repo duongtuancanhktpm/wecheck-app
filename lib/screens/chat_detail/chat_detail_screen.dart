@@ -31,17 +31,19 @@ class ChatDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Obx(
-            () {
-              var messages = controller.messages.toList();
-              return ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return _buildItemChat(messages[index]);
-                },
-                itemCount: messages.length,
-              );
-            },
+          Expanded(
+            child: Obx(
+              () {
+                var messages = controller.messages.toList();
+                return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return _buildItemChat(messages[index]);
+                  },
+                  itemCount: messages.length,
+                );
+              },
+            ),
           ),
           _buildInputChat(context)
         ],
