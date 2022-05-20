@@ -1,3 +1,4 @@
+import 'package:wecheck/model/figures_health_data.dart';
 import 'package:wecheck/model/health_data.dart';
 
 class BloodSugarLogRepository {

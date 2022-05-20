@@ -4,14 +4,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:wecheck/model/bs_log_time_milestone.dart';
+import 'package:wecheck/model/figures_health_data.dart';
 import 'package:wecheck/screens/bslog/calendar/controller/calendar_controller.dart';
 import 'package:wecheck/screens/bslog/calendar/controller/interface/interface.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/model/health_data.dart';
 import 'package:wecheck/theme/text_styles.dart';
+import 'package:wecheck/utils/constants.dart';
 import 'package:wecheck/utils/extensions.dart';
 
-class VerticalCalendarWidget extends StatefulWidget {
+class BsLogCalendarWidget extends StatefulWidget {
   final dynamic locale;
 
   final List<HealthData>? eventData;
@@ -20,7 +23,7 @@ class VerticalCalendarWidget extends StatefulWidget {
 
   final StartingDayOfWeek startingDayOfWeek;
 
-  const VerticalCalendarWidget({
+  const BsLogCalendarWidget({
     Key? key,
     this.locale,
     this.eventData,
@@ -29,10 +32,10 @@ class VerticalCalendarWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<VerticalCalendarWidget> createState() => _VerticalCalendarWidgetState();
+  State<BsLogCalendarWidget> createState() => _BsLogCalendarWidgetState();
 }
 
-class _VerticalCalendarWidgetState extends State<VerticalCalendarWidget> {
+class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
   final RefreshController _refreshController = RefreshController(
     initialRefresh: false,
   );
@@ -187,6 +190,16 @@ class _VerticalCalendarWidgetState extends State<VerticalCalendarWidget> {
   }
 
   Widget _buildHeader() {
+    var focusDay = _calendarController.focusedDay;
+    var now = _calendarController.now;
+    var isCurrentMonth =
+        focusDay.month >= now.month && focusDay.year >= now.year;
+    Color iconColor = AppColors.catalinaBlue;
+    var dateTimeHeader = DateFormat(Constant.dayFormat)
+        .format(_calendarController.lastFocusMonth.value);
+    if (isCurrentMonth) {
+      iconColor = AppColors.hawkesBlue;
+    }
     final children = [
       const Spacer(
         flex: 1,
@@ -208,11 +221,7 @@ class _VerticalCalendarWidgetState extends State<VerticalCalendarWidget> {
           valueListenable: _calendarController.lastFocusMonth,
           builder: (context, child, error) {
             return Text(
-              DateFormat.yMMMM(
-                widget.locale,
-              ).format(
-                _calendarController.lastFocusMonth.value,
-              ),
+              dateTimeHeader,
               style: AppTextStyle.t18w700(AppColors.catalinaBlue),
               textAlign: TextAlign.center,
             );
@@ -225,7 +234,7 @@ class _VerticalCalendarWidgetState extends State<VerticalCalendarWidget> {
           child: Icon(
             Icons.chevron_right,
             size: 37.w,
-            color: AppColors.catalinaBlue,
+            color: iconColor,
           ),
           onTap: _selectNext,
         ),
