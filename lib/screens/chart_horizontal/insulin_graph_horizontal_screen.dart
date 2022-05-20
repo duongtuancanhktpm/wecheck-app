@@ -1,14 +1,19 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/flutter_chart/chart_app_icons.dart';
 import 'package:wecheck/flutter_chart/common/src/common/symbol_renderer.dart';
 import 'package:wecheck/model/home/chart_entity.dart';
+import 'package:wecheck/model/home/insulin_model.dart';
 import 'package:wecheck/screens/chart_horizontal/controller/insulin_graph_horizontal_controller.dart';
+import 'package:wecheck/screens/chart_horizontal/widget/dialog_insulin_index.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 import 'package:wecheck/theme/dimens.dart';
-
-
+import 'package:wecheck/theme/icons.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class InsulinGraphHorizontalScreen
     extends GetView<InsulinGraphHorizontalController> {
@@ -20,135 +25,10 @@ class InsulinGraphHorizontalScreen
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(title: Text("Landscape3")),
-      body:  Container(
-        margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
-        height: 220.dp,
-        child: Obx(() => Stack(
-          children: [
-            //SmoothLineChart.withRandomData(),
-            charts.NumericComboChart(
-              _createSampleData2(),
-              domainAxis: charts.NumericAxisSpec(
-                  renderSpec: charts.GridlineRendererSpec(
-                      lineStyle: charts.LineStyleSpec(
-                        color: charts.MaterialPalette.gray.shade200,
-                        thickness: 1,
-                      )),
-                  tickProviderSpec:
-                  const charts.StaticNumericTickProviderSpec(
-                    <charts.TickSpec<num>>[
-                      charts.TickSpec(0,
-                          label: '03:00',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(3,
-                          label: '',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(6,
-                          label: '9:00',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(9,
-                          label: '',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(12,
-                          label: '15:00',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(15,
-                          label: '',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(18,
-                          label: '21:00',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(21,
-                          label: '',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(24,
-                          label: '3:00',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                    ],
-                  )),
-              primaryMeasureAxis: charts.NumericAxisSpec(
-                  renderSpec: charts.GridlineRendererSpec(
-                      labelOffsetFromAxisPx: -20,
-                      labelAnchor: charts.TickLabelAnchor.after,
-                      lineStyle: charts.LineStyleSpec(
-                        color: charts.MaterialPalette.gray.shade200,
-                        thickness: 1,
-                      )),
-                  tickProviderSpec:
-                  const charts.StaticNumericTickProviderSpec(
-                    // Create the ticks to be used the domain axis.
-                    <charts.TickSpec<num>>[
-                      charts.TickSpec(300,
-                          label: '300',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(200,
-                          label: '200',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(100,
-                          label: '100',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                    ],
-                  )),
-              secondaryMeasureAxis: charts.NumericAxisSpec(
-                  renderSpec: charts.GridlineRendererSpec(
-                      labelOffsetFromAxisPx: -20,
-                      labelAnchor: charts.TickLabelAnchor.after,
-                      lineStyle: charts.LineStyleSpec(
-                        color: charts.MaterialPalette.gray.shade200,
-                        thickness: 1,
-                      )),
-                  tickProviderSpec:
-                  const charts.StaticNumericTickProviderSpec(
-                    // Create the ticks to be used the domain axis.
-                    <charts.TickSpec<num>>[
-                      charts.TickSpec(6000,
-                          label: '6000',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(4000,
-                          label: '4000',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(2000,
-                          label: '2000',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                      charts.TickSpec(0,
-                          label: '',
-                          style: charts.TextStyleSpec(fontSize: 10)),
-                    ],
-                  )),
-              animate: true,
-              defaultRenderer: charts.LineRendererConfig(
-                includePoints: true,
-                symbolRenderer: charts.RectSymbolRenderer(),
-              ),
-              customSeriesRenderers: [
-                charts.BarRendererConfig(
-                    customRendererId: 'customBar'),
-                charts.LineRendererConfig(
-                    smoothLine: true, customRendererId: 'SmoothLine'),
-              ],
-              behaviors: listBehaviors(),
-              selectionModels: [
-                charts.SelectionModelConfig(
-                    changedListener: (charts.SelectionModel model) {
-                      if (model.hasDatumSelection) {
-                        if (model.selectedDatum.length >= 2) {
-                          valueShow.value.valueShow =
-                          '${model.selectedDatum[1].series.data[model.selectedDatum[1].index!].sales}';
-                        } else {
-                          valueShow.value.valueShow =
-                          '${model.selectedSeries[0].data[model.selectedDatum[0].index!].sales}';
-                        }
-                      }
-                    })
-              ],
-            ),
-          ],
-        )),
-      ),
+      appBar: _appBarGraph(),
+      body: _insulinGraph(context),
     );
   }
-
 
   /// Create one series with sample hard coded data.
   static List<charts.Series<LinearSales, int>> _createSampleData2() {
@@ -258,7 +138,7 @@ class InsulinGraphHorizontalScreen
           symbolRenderer: valueShow.value,
           drawFollowLinesAcrossChart: true,
           showVerticalFollowLine:
-          charts.LinePointHighlighterFollowLineType.all),
+              charts.LinePointHighlighterFollowLineType.all),
       charts.RangeAnnotationCustom([
         charts.RangeAnnotationSegmentCustom(
             3,
@@ -364,4 +244,234 @@ class InsulinGraphHorizontalScreen
     ];
   }
 
+  _appBarGraph() {
+    return AppBar(
+      title: Text(
+        "Sunday, April 10 ",
+        style: AppTextStyle.t10w400(),
+      ),
+      backgroundColor: AppColors.colorPattensBlue,
+      actions: [
+        Padding(
+          padding: EdgeInsets.only(right: 15),
+          child: SvgPicture.asset(
+            AppIcons.icChatUnSelected,
+            width: 25.dp,
+            height: 25.dp,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 15),
+          child: SvgPicture.asset(
+            AppIcons.icEventStressFill,
+            width: 25.dp,
+            height: 25.dp,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 15),
+          child: SvgPicture.asset(
+            AppIcons.icEventRunning,
+            width: 25.dp,
+            height: 25.dp,
+          ),
+        ),
+      ],
+    );
+  }
+
+  _insulinGraph(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(5),
+      child: Column(
+        children: [
+          _indexTop(context),
+          Container(
+              margin: const EdgeInsets.only(
+                  top: 30, left: 20, right: 20, bottom: 20),
+              height: 250.dp,
+              child: Obx(
+                () => Stack(
+                  children: [
+                    //SmoothLineChart.withRandomData(),
+                    charts.NumericComboChart(
+                      _createSampleData2(),
+                      domainAxis: charts.NumericAxisSpec(
+                          renderSpec: charts.GridlineRendererSpec(
+                              lineStyle: charts.LineStyleSpec(
+                            color: charts.MaterialPalette.gray.shade200,
+                            thickness: 1,
+                          )),
+                          tickProviderSpec:
+                              const charts.StaticNumericTickProviderSpec(
+                            <charts.TickSpec<num>>[
+                              charts.TickSpec(0,
+                                  label: '03:00',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(3,
+                                  label: '',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(6,
+                                  label: '9:00',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(9,
+                                  label: '',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(12,
+                                  label: '15:00',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(15,
+                                  label: '',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(18,
+                                  label: '21:00',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(21,
+                                  label: '',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(24,
+                                  label: '3:00',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                            ],
+                          )),
+                      primaryMeasureAxis: charts.NumericAxisSpec(
+                          renderSpec: charts.GridlineRendererSpec(
+                              labelOffsetFromAxisPx: -20,
+                              labelAnchor: charts.TickLabelAnchor.after,
+                              lineStyle: charts.LineStyleSpec(
+                                color: charts.MaterialPalette.gray.shade200,
+                                thickness: 1,
+                              )),
+                          tickProviderSpec:
+                              const charts.StaticNumericTickProviderSpec(
+                            // Create the ticks to be used the domain axis.
+                            <charts.TickSpec<num>>[
+                              charts.TickSpec(300,
+                                  label: '300',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(200,
+                                  label: '200',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(100,
+                                  label: '100',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                            ],
+                          )),
+                      secondaryMeasureAxis: charts.NumericAxisSpec(
+                          renderSpec: charts.GridlineRendererSpec(
+                              labelOffsetFromAxisPx: -20,
+                              labelAnchor: charts.TickLabelAnchor.after,
+                              lineStyle: charts.LineStyleSpec(
+                                color: charts.MaterialPalette.gray.shade200,
+                                thickness: 1,
+                              )),
+                          tickProviderSpec:
+                              const charts.StaticNumericTickProviderSpec(
+                            // Create the ticks to be used the domain axis.
+                            <charts.TickSpec<num>>[
+                              charts.TickSpec(6000,
+                                  label: '6000',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(4000,
+                                  label: '4000',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(2000,
+                                  label: '2000',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                              charts.TickSpec(0,
+                                  label: '',
+                                  style: charts.TextStyleSpec(fontSize: 10)),
+                            ],
+                          )),
+                      animate: true,
+                      defaultRenderer: charts.LineRendererConfig(
+                        includePoints: true,
+                        symbolRenderer: charts.RectSymbolRenderer(),
+                      ),
+                      customSeriesRenderers: [
+                        charts.BarRendererConfig(customRendererId: 'customBar'),
+                        charts.LineRendererConfig(
+                            smoothLine: true, customRendererId: 'SmoothLine'),
+                      ],
+                      behaviors: listBehaviors(),
+                      selectionModels: [
+                        charts.SelectionModelConfig(
+                            changedListener: (charts.SelectionModel model) {
+                          if (model.hasDatumSelection) {
+                            if (model.selectedDatum.length >= 2) {
+                              valueShow.value.valueShow =
+                                  '${model.selectedDatum[1].series.data[model.selectedDatum[1].index!].sales}';
+                            } else {
+                              valueShow.value.valueShow =
+                                  '${model.selectedSeries[0].data[model.selectedDatum[0].index!].sales}';
+                            }
+                          }
+                        })
+                      ],
+                    ),
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  _indexTop(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        InkWell(
+          onTap: () => {_showDialogInsulin(context)},
+          child: Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: SvgPicture.asset(
+              AppIcons.icChatUnSelected,
+              width: 15.dp,
+              height: 15.dp,
+            ),
+          ),
+        ),
+        Text(
+          '1422 kcal',
+          style: AppTextStyle.t6w700(),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 30, right: 15),
+          child: SvgPicture.asset(
+            AppIcons.icChatUnSelected,
+            width: 15.dp,
+            height: 15.dp,
+          ),
+        ),
+        Text(
+          '527.0 g',
+          style: AppTextStyle.t6w700(),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 30, right: 15),
+          child: SvgPicture.asset(
+            AppIcons.icChatUnSelected,
+            width: 15.dp,
+            height: 15.dp,
+          ),
+        ),
+        Text(
+          '6500 step',
+          style: AppTextStyle.t6w700(),
+        ),
+        Padding(padding: EdgeInsets.only(right: 20, left: 30))
+      ],
+    );
+  }
+
+  _showDialogInsulin(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (contextDialog) {
+          var fff = [InsulinEntity(1), InsulinEntity(1), InsulinEntity(1)];
+          return InsulinDialog(insulinEntity: fff);
+        });
+  }
 }

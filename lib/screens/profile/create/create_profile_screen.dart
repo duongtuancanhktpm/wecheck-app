@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class CreateProfileScreen extends GetView {

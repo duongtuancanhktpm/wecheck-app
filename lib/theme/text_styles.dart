@@ -43,6 +43,12 @@ class AppTextStyle {
     );
   }
 
+  static TextStyle t6w700([Color? color, double? height]) {
+    return common(6.sp, FontWeight.w700, color, null, height);
+  }
+  static TextStyle t8w700([Color? color, double? height]) {
+    return common(8.sp, FontWeight.w700, color, null, height);
+  }
   static TextStyle t10w400([Color? color, double? height]) {
     return common(10.sp, FontWeight.w400, color, null, height);
   }

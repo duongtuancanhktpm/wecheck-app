@@ -19,6 +19,7 @@ import 'package:wecheck/screens/home/widget/item_insulin.dart';
 import 'package:wecheck/screens/home/widget/item_meals.dart';
 import 'package:wecheck/screens/home/widget/item_steps.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 

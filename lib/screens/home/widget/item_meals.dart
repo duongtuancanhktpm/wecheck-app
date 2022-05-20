@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
