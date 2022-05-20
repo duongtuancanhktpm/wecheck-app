@@ -1,6 +1,6 @@
+import 'package:flutter/services.dart';
 import 'package:wecheck/app/flutter_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wecheck/theme/colors.dart';
 
 import 'configurations/environments.dart';
@@ -15,7 +15,10 @@ void mainApp(EnvironmentType environment) async {
       systemNavigationBarIconBrightness: Brightness.dark,
       systemNavigationBarDividerColor: Colors.white,
       statusBarColor: AppColors.aliceBlue,
-      statusBarIconBrightness: Brightness.dark
+      statusBarIconBrightness: Brightness.dark));
+  runApp(MaterialApp(
+    home: FlutterApp(
+      environment: environment,
+    ),
   ));
-  runApp(FlutterApp(environment: environment,));
 }

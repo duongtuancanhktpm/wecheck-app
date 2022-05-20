@@ -6,8 +6,12 @@ import 'package:wecheck/flutter_chart/chart_app_icons.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 import 'package:wecheck/flutter_chart/common/src/common/symbol_renderer.dart';
 import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/model/home/blood_sugar_model.dart';
 import 'package:wecheck/model/home/chart_entity.dart';
+import 'package:wecheck/model/home/insulin_model.dart';
+import 'package:wecheck/model/home/meals_model.dart';
 import 'package:wecheck/model/home/small_menu.dart';
+import 'package:wecheck/model/home/step_model.dart';
 import 'package:wecheck/screens/home/controller/home_controller.dart';
 import 'package:wecheck/screens/home/widget/item_blood_sugar.dart';
 import 'package:wecheck/screens/home/widget/item_grid_menu.dart';
@@ -26,55 +30,62 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.colorPattensBlue,
-        title: Text('Sunday, April 10',
-            style: AppTextStyle.t18w700(AppColors.colorCatalinaBlue)),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: SvgPicture.asset(
-              AppIcons.icChatUnSelected,
-              width: 25.h,
-              height: 25.h,
-            ),
-          )
-        ],
-      ),
-      backgroundColor: AppColors.colorPattensBlue,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  _homeChart(),
-                  _gridMenuIndex(),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text(
-                          L.current.menu.tr,
-                          style:
-                              AppTextStyle.t18w700(AppColors.colorCatalinaBlue),
-                        ),
-                      )
-                    ],
+    return ScreenUtilInit(
+        designSize: const Size(414, 896),
+        builder: (child) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: AppColors.colorPattensBlue,
+              title: InkWell(
+                onTap: () {},
+                child: Text('Sunday, April 10',
+                    style: AppTextStyle.t18w700(AppColors.colorCatalinaBlue)),
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SvgPicture.asset(
+                    AppIcons.icChatUnSelected,
+                    width: 25.h,
+                    height: 25.h,
                   ),
-                  _gridMenu()
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+                )
+              ],
+            ),
+            backgroundColor: AppColors.colorPattensBlue,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Stack(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        _homeChart(context),
+                        _gridMenuIndex(),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(
+                                L.current.menu.tr,
+                                style:
+                                AppTextStyle.t18w700(AppColors.colorCatalinaBlue),
+                              ),
+                            )
+                          ],
+                        ),
+                        _gridMenu()
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
-  Widget _homeChart() {
+  Widget _homeChart(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
       child: Card(
@@ -82,22 +93,31 @@ class HomeScreen extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10),
-                  child: SvgPicture.asset(
-                    AppIcons.icChatUnSelected,
-                    width: 20.h,
-                    height: 20.h,
+            InkWell(
+              onTap: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => InsulinGraphHorizontalScreen()));
+                controller.goToInsulinChartHorizontalScreen();
+              },
+              child: Row(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10, bottom: 10, left: 10),
+                    child: SvgPicture.asset(
+                      AppIcons.icChatUnSelected,
+                      width: 20.h,
+                      height: 20.h,
+                    ),
                   ),
-                ),
-                const Padding(padding: EdgeInsets.all(5),),
-                Text(
-                  L.current.dailyGraph.tr,
-                  style: AppTextStyle.t14w500(AppColors.colorGrey),
-                )
-              ],
+                  const Padding(
+                    padding: EdgeInsets.all(5),
+                  ),
+                  Text(
+                    L.current.dailyGraph.tr,
+                    style: AppTextStyle.t14w500(AppColors.colorGrey),
+                  )
+                ],
+              ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 10, left: 1, right: 1),
@@ -454,13 +474,13 @@ class HomeScreen extends GetView<HomeController> {
         padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
         itemBuilder: (BuildContext context, int pos) {
           var indexEn = controller.listMenuIndex[pos];
-          if (pos == 0) {
+          if (indexEn is BloodSugarEntity) {
             return itemBloodSugar();
-          } else if (pos == 1) {
+          } else if (indexEn is MealsEntity) {
             return itemMeals();
-          } else if (pos == 2) {
+          } else if (indexEn is InsulinEntity) {
             return itemInsulin();
-          } else if (pos == 3) {
+          } else if (indexEn is StepEntity) {
             return itemSteps();
           }
           return Container();
