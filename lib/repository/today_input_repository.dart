@@ -1,6 +1,8 @@
+import 'package:intl/intl.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/model/today_input_data.dart';
 import 'package:wecheck/theme/icons.dart';
+import 'package:wecheck/utils/constants.dart';
 
 class TodayInputRepository {
   Future<TodayInputData> doGetTodayInputData() {
@@ -17,24 +19,27 @@ class TodayInputRepository {
       ]),
       Time(
         [
-          InputRow(title: "Date & time", unit: "AAA 00, 0000   00:00"),
           InputRow(
-              title: "Tag",
+              title: L.current.dateAndTime,
+              unit: DateFormat(Constant.fullDateTimeFormat)
+                  .format(DateTime.now())),
+          InputRow(
+              title: L.current.tag,
               unit: "Tag label",
-              icon: AppIcons.icEventDrinkWater),
+              icon: AppIcons.icHomeSelected),
         ],
       ),
       MainData([
         InputRow(
             firstIcon: AppIcons.icEventDrinkWater,
-            title: "title",
-            value: "100",
-            unit: "unit"),
+            title: L.current.bloodSugar,
+            value: "155",
+            unit: Constant.bloodSugarUnit),
         InputRow(
-            firstIcon: AppIcons.icEventDrinkWater,
-            title: "title",
-            value: "100",
-            unit: "unit"),
+            firstIcon: AppIcons.icEventEat,
+            title: L.current.meals,
+            value: "980",
+            unit: Constant.mealsUnit ),
         InputRow(
             firstIcon: AppIcons.icEventDrinkWater,
             title: "title",

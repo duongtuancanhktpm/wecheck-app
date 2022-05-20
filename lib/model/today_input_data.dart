@@ -9,7 +9,6 @@ class TodayInputData {
 
 class Condition {
   List<ConditionItem> list;
-
   Condition(this.list);
 }
 

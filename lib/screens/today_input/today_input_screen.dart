@@ -23,7 +23,9 @@ class TodayInputScreen extends GetView<TodayInputController> {
           child: Column(
             children: [
               _buildTitle(),
-              _divider(),
+              const Divider(
+                thickness: 2,
+              ),
               _body(),
             ],
           ),
@@ -32,12 +34,45 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
+  Widget _buildTitle() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Stack(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                L.current.todayInputTitle,
+                style: AppTextStyle.t22w700(AppColors.textRegalBlue),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          Positioned(
+            right: 0,
+            child: InkWell(
+              onTap: () {},
+              child: SvgPicture.asset(
+                AppIcons.icEdit,
+                color: AppColors.textRegalBlue,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _body() {
     List<Widget> todayInputs = [
       _todayInputItem(L.current.condition, _buildConditions()),
-      _todayInputItem(L.current.time, _buildTimes()),
-      _todayInputItem(L.current.main, _buildMains()),
-      _todayInputItem(L.current.other, _buildOther()),
+      _todayInputItem(
+          L.current.time, Obx(() => _buildListRow(controller.time.value))),
+      _todayInputItem(
+          L.current.main, Obx(() => _buildListRow(controller.main.value))),
+      _todayInputItem(
+          L.current.other, Obx(() => _buildListRow(controller.other.value))),
     ];
     return Expanded(
       child: ListView.separated(
@@ -51,44 +86,23 @@ class TodayInputScreen extends GetView<TodayInputController> {
           return todayInputs[index];
         },
         itemCount: todayInputs.length,
-        //children: todayInputs.toList(),
       ),
     );
   }
 
-  Widget _buildOther() {
-    return Obx(
-      () => ListView.separated(
-        physics: const ClampingScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return (_buildRow(controller.other.value[index]));
-        },
-        itemCount: controller.other.value.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            thickness: 2,
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildMains() {
-    return Obx(
-      () => ListView.separated(
-        physics: const ClampingScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return (_buildRow(controller.main.value[index]));
-        },
-        itemCount: controller.main.value.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            thickness: 2,
-          );
-        },
-      ),
+  Widget _buildListRow(List<dynamic> rows) {
+    return ListView.separated(
+      physics: const ClampingScrollPhysics(),
+      shrinkWrap: true,
+      itemBuilder: (BuildContext context, int index) {
+        return (_buildRow(rows[index]));
+      },
+      itemCount: rows.length,
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider(
+          thickness: 2,
+        );
+      },
     );
   }
 
@@ -109,22 +123,24 @@ class TodayInputScreen extends GetView<TodayInputController> {
           const Spacer(),
           if (rowData.picture != null)
             SizedBox(
-                //color: Colors.red,
-                width: 40,
-                height: 40,
-                child: Image.asset(
-                  rowData.picture ?? "",
-                  fit: BoxFit.contain,
-                )),
+              //color: Colors.red,
+              width: 40,
+              height: 40,
+              child: Image.asset(
+                rowData.picture ?? "",
+                fit: BoxFit.contain,
+              ),
+            ),
           if (rowData.icon != null)
             Container(
-                padding: const EdgeInsets.only(right: 15),
-                width: 40,
-                height: 40,
-                child: SvgPicture.asset(
-                  rowData.icon ?? "",
-                  color: AppColors.lightSlateGrey,
-                )),
+              padding: const EdgeInsets.only(right: 15),
+              width: 40,
+              height: 40,
+              child: SvgPicture.asset(
+                rowData.icon ?? "",
+                color: AppColors.lightSlateGrey,
+              ),
+            ),
           if (rowData.value != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -141,7 +157,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
             const Icon(
               Icons.chevron_right_outlined,
               color: AppColors.lightSlateGrey,
-            )
+            ),
         ],
       ),
     );
@@ -199,54 +215,6 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _buildTimes() {
-    return Obx(
-      () => ListView.separated(
-        physics: const ClampingScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: (BuildContext context, int index) {
-          return (_buildRow(controller.time.value[index]));
-        },
-        itemCount: controller.time.value.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            thickness: 2,
-          );
-        },
-      ),
-    );
-  }
-
-  _buildTitle() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      child: Stack(
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                L.current.todayInputTitle,
-                style: AppTextStyle.t22w700(AppColors.textRegalBlue),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-          Positioned(
-              right: 0,
-              child: InkWell(
-                onTap: () {},
-                child: SvgPicture.asset(
-                  AppIcons.icEdit,
-                  color: AppColors.textRegalBlue,
-                ),
-              ))
-        ],
-      ),
-    );
-  }
-
   Widget _todayInputItem(String title, Widget body) {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -254,8 +222,9 @@ class TodayInputScreen extends GetView<TodayInputController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Row(children: [
+            padding: const EdgeInsets.only(bottom: 15),
+            child: Row(
+              children: [
                 Text(
                   title,
                   textAlign: TextAlign.start,
@@ -264,24 +233,22 @@ class TodayInputScreen extends GetView<TodayInputController> {
                 const Spacer(),
                 if (title == "Condition")
                   Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.lightSlateGrey)),
-                      child: const Icon(Icons.question_mark)),
-              ])),
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.lightSlateGrey)),
+                    child: const Icon(
+                      Icons.question_mark,
+                      color: AppColors.lightSlateGrey,
+                    ),
+                  ),
+              ],
+            ),
+          ),
           body,
         ],
       ),
-    );
-  }
-
-  Widget _divider() {
-    return const Divider(
-      color: AppColors.textRegalBlue,
-      height: 2,
-      thickness: 0.3,
     );
   }
 }
