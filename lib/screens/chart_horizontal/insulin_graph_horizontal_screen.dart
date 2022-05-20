@@ -5,9 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/flutter_chart/chart_app_icons.dart';
 import 'package:wecheck/flutter_chart/common/src/common/symbol_renderer.dart';
+import 'package:wecheck/model/home/blood_sugar_model.dart';
 import 'package:wecheck/model/home/chart_entity.dart';
 import 'package:wecheck/model/home/insulin_model.dart';
 import 'package:wecheck/screens/chart_horizontal/controller/insulin_graph_horizontal_controller.dart';
+import 'package:wecheck/screens/chart_horizontal/widget/dialog_blood_sugar_index.dart';
 import 'package:wecheck/screens/chart_horizontal/widget/dialog_insulin_index.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
@@ -423,7 +425,7 @@ class InsulinGraphHorizontalScreen
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         InkWell(
-          onTap: () => {_showDialogInsulin(context)},
+          onTap: () => {_showDialogBloodSugar(context)},
           child: Padding(
             padding: EdgeInsets.only(right: 15),
             child: SvgPicture.asset(
@@ -437,12 +439,15 @@ class InsulinGraphHorizontalScreen
           '1422 kcal',
           style: AppTextStyle.t6w700(),
         ),
-        Padding(
-          padding: EdgeInsets.only(left: 30, right: 15),
-          child: SvgPicture.asset(
-            AppIcons.icChatUnSelected,
-            width: 15.dp,
-            height: 15.dp,
+        InkWell(
+          onTap: () => {_showDialogInsulin(context)},
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, right: 15),
+            child: SvgPicture.asset(
+              AppIcons.icChatUnSelected,
+              width: 15.dp,
+              height: 15.dp,
+            ),
           ),
         ),
         Text(
@@ -466,12 +471,37 @@ class InsulinGraphHorizontalScreen
     );
   }
 
+  _showDialogBloodSugar(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (contextDialog) {
+          var listBloodSugar = [
+            BloodSugarEntity(1),
+            BloodSugarEntity(1),
+            BloodSugarEntity(1),
+            BloodSugarEntity(1),
+            BloodSugarEntity(1),
+            BloodSugarEntity(1),
+            BloodSugarEntity(1)
+          ];
+          return BloodSugarDialog(insulinEntity: listBloodSugar);
+        });
+  }
+
   _showDialogInsulin(BuildContext context) {
     showDialog(
         context: context,
         builder: (contextDialog) {
-          var fff = [InsulinEntity(1), InsulinEntity(1), InsulinEntity(1)];
-          return InsulinDialog(insulinEntity: fff);
+          var listBloodSugar = [
+            InsulinEntity(1),
+            InsulinEntity(1),
+            InsulinEntity(1),
+            InsulinEntity(1),
+            InsulinEntity(1),
+            InsulinEntity(1),
+            InsulinEntity(1)
+          ];
+          return InsulinDialog(insulinEntity: listBloodSugar);
         });
   }
 }

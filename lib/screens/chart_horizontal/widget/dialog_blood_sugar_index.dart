@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/model/home/blood_sugar_model.dart';
 import 'package:wecheck/model/home/insulin_model.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
-class InsulinDialog extends StatefulWidget {
-  List<InsulinEntity> insulinEntity;
+class BloodSugarDialog extends StatefulWidget {
+  List<BloodSugarEntity> insulinEntity;
 
-  InsulinDialog({
+  BloodSugarDialog({
     required this.insulinEntity,
   });
 
@@ -18,7 +19,7 @@ class InsulinDialog extends StatefulWidget {
   _InsulinDialogState createState() => _InsulinDialogState();
 }
 
-class _InsulinDialogState extends State<InsulinDialog> {
+class _InsulinDialogState extends State<BloodSugarDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +42,7 @@ class _InsulinDialogState extends State<InsulinDialog> {
           leading: Container(
             alignment: Alignment.center,
             child: Text(
-              L.current.insulin,
+              L.current.bloodSugar,
               style: AppTextStyle.t8w700(),
             ),
           ),
@@ -59,62 +60,29 @@ class _InsulinDialogState extends State<InsulinDialog> {
             itemCount: widget.insulinEntity.length,
             itemBuilder: (BuildContext context, int index) {
               var insulinIndex = widget.insulinEntity[index];
-              return _itemInsulinDialog(insulinIndex);
+              return _itemBloodSugarDialog(insulinIndex);
             }),
       ),
     );
   }
 
-  Widget _itemInsulinDialog(InsulinEntity insulinEntity) {
+  Widget _itemBloodSugarDialog(BloodSugarEntity insulinEntity) {
     return Container(
         decoration: const BoxDecoration(
-            border:
-                Border(bottom: BorderSide(color: AppColors.colorHawkesBlue))),
+            border: Border(bottom: BorderSide(color: AppColors.colorHawkesBlue))),
         child: ListTile(
           leading: SvgPicture.asset(
-            AppIcons.icEventEat,
+            AppIcons.icEventDrinkWater,
             width: 25.dp,
             height: 25.dp,
           ),
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 8.dp,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: AppColors.colorJungleGreen),
-                    padding: const EdgeInsets.only(left: 10),
-                    height: 45.dp,
-                  ),
-                  Container(
-                    width: 160.dp,
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Text(
-                      'Tresiba Injection Penfill',
-                      style: AppTextStyle.t6w700(AppColors.colorCeruleanBlue),
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    '3',
-                    style: AppTextStyle.t8w700(AppColors.colorCeruleanBlue),
-                  ),
-                  Text(
-                    L.current.unit,
-                    style: AppTextStyle.t6w700(AppColors.colorGrey),
-                  )
-                ],
-              )
-            ],
+          title: Text(
+            '145',
+            style: AppTextStyle.t12w700(AppColors.colorCeruleanBlue),
+          ),
+          subtitle: Text(
+            L.current.mgDL,
+            style: AppTextStyle.t8w700(AppColors.colorGrey),
           ),
           trailing: Text(
             '20:22',
