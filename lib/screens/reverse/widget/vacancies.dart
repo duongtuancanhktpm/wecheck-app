@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:intl/intl.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/model/vacancies.dart';
 import 'package:wecheck/model/vacancies_calendar.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
 
@@ -25,7 +25,7 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
   Widget build(BuildContext context) {
     if (widget.vacanciesCalendar == null) {
       return Container(
-        height: 34.h,
+        height: 34.dp,
         color: AppColors.aliceBlue,
       );
     }
@@ -80,7 +80,7 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
                 ),
               ),
               SizedBox(
-                width: 10.w,
+                width: 10.dp,
               ),
             ],
           ),
@@ -114,7 +114,7 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
   Widget _buildItemVacancies(Vacancies? vacancies) {
     if (vacancies == null) {
       return Container(
-        height: 64.h,
+        height: 64.dp,
         color: Colors.white,
         child: const Text(""),
       );
@@ -134,7 +134,7 @@ class _VacanciesWidgetState extends State<VacanciesWidget> {
       endTimeDisplay = DateFormat.Hm().format(endTime);
     }
     return Container(
-      height: 64.h,
+      height: 64.dp,
       color: Colors.white,
       child: Row(
         children: [

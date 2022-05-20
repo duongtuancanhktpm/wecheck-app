@@ -21,10 +21,7 @@ class FlutterApp extends StatefulWidget {
 class FlutterAppState extends State<FlutterApp> {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(414, 896),
-      builder: (child) {
-        return GetMaterialApp(
+    return GetMaterialApp(
           navigatorKey: Get.key,
           theme: AppTheme
               .base(Get.theme)
@@ -40,8 +37,6 @@ class FlutterAppState extends State<FlutterApp> {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: L.delegate.supportedLocales,
-        );
-      }
     );
   }
 

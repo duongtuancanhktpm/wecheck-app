@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
@@ -23,7 +23,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.aliceBlue,
-      toolbarHeight: 84.h,
+      toolbarHeight: 84.dp,
       title: titleWidget ?? Text(
         title ?? "",
         style: AppTextStyle.t22w700(AppColors.catalinaBlue),
@@ -34,7 +34,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
           didBackPressed?.call();
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 20.dp),
           child: const Icon(
             Icons.arrow_back_ios,
             color: AppColors.catalinaBlue,
@@ -52,7 +52,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
             padding: const EdgeInsets.all(8.0),
             child: iconAction ?? Icon(
               Icons.search,
-              size: 35.w,
+              size: 35.dp,
               color: AppColors.catalinaBlue,
             ),
           ),
@@ -62,5 +62,5 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 84.h);
+  Size get preferredSize => Size(double.infinity, 84.dp);
 }

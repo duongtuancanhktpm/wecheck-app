@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:wecheck/languages/language.dart';
@@ -7,6 +6,7 @@ import 'package:wecheck/model/reverse.dart';
 import 'package:wecheck/screens/reverse/controller/reverse_controller.dart';
 import 'package:wecheck/screens/reverse/widget/vacancies.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
 
@@ -33,10 +33,10 @@ class ReverseScreen extends StatelessWidget {
 
   Widget _buildItemReverseHospital(HospitalReverse hospitalReverse) {
     return Container(
-      margin: EdgeInsets.only(left: 20.w, right: 20.h, top: 20.h),
-      padding: EdgeInsets.only(bottom: 10.h),
+      margin: EdgeInsets.only(left: 20.dp, right: 20.dp, top: 20.dp,),
+      padding: EdgeInsets.only(bottom: 10.dp,),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(10.dp,),
         color: Colors.white,
         boxShadow: const [
           BoxShadow(
@@ -81,15 +81,15 @@ class ReverseScreen extends StatelessWidget {
       dateTimeDisplay = DateFormat(Constant.daySuffixDateFormat).format(dateTime);
     }
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
+      padding: EdgeInsets.symmetric(vertical: 10.dp,),
       child: Row(
         children: [
           SizedBox(
-            width: 20.w,
+            width: 20.dp,
           ),
           _buildAvatar(hospitalReverse.imageUrl),
           SizedBox(
-            width: 20.w,
+            width: 20.dp,
           ),
           Expanded(
             child: Column(
@@ -115,8 +115,8 @@ class ReverseScreen extends StatelessWidget {
   Widget _buildAvatar(String? imageUrl) {
     if (imageUrl == null) {
       return Container(
-        width: 62.w,
-        height: 62.w,
+        width: 62.dp,
+        height: 62.dp,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: AppColors.lightSlateGrey),
@@ -127,8 +127,8 @@ class ReverseScreen extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       child: Image.network(
         imageUrl,
-        width: 62.w,
-        height: 62.h,
+        width: 62.dp,
+        height: 62.dp,
         fit: BoxFit.cover,
         errorBuilder: (context, exception, stackTrace) {
           return Container(

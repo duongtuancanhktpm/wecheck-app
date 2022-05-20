@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +9,7 @@ import 'package:wecheck/screens/bslog/calendar/controller/calendar_controller.da
 import 'package:wecheck/screens/bslog/calendar/controller/interface/interface.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/model/health_data.dart';
+import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 import 'package:wecheck/utils/constants.dart';
 import 'package:wecheck/utils/extensions.dart';
@@ -41,7 +41,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
   );
 
   final CalendarController _calendarController = CalendarController();
-  final double _height = 80.h;
+  final double _height = 80.dp;
 
   @override
   void dispose() {
@@ -123,7 +123,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         SizedBox(
-          width: 60.w,
+          width: 60.dp,
         ),
         Expanded(
           flex: 9,
@@ -145,8 +145,8 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
                               children: [
                                 Center(
                                   child: SizedBox(
-                                    width: 30.w,
-                                    height: 30.h,
+                                    width: 30.dp,
+                                    height: 30.dp,
                                     child: SvgPicture.asset(
                                       bsLog.imgUrl,
                                     ),
@@ -209,7 +209,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
         child: InkWell(
           child: Icon(
             Icons.chevron_left,
-            size: 37.w,
+            size: 37.dp,
             color: AppColors.catalinaBlue,
           ),
           onTap: _selectPrevious,
@@ -233,7 +233,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
         child: InkWell(
           child: Icon(
             Icons.chevron_right,
-            size: 37.w,
+            size: 37.dp,
             color: iconColor,
           ),
           onTap: _selectNext,
@@ -245,7 +245,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
     ];
 
     return SizedBox(
-      height: 80.h,
+      height: 80.dp,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: children,
@@ -334,7 +334,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
 
   Widget _buildDayInWeekWithEvent(HealthData data) {
     return SizedBox(
-      width: 60.w,
+      width: 60.dp,
       height: _height,
       child: Row(
         children: [
@@ -354,7 +354,7 @@ class _BsLogCalendarWidgetState extends State<BsLogCalendarWidget> {
       textColor = AppColors.hawkesBlue;
     }
     return SizedBox(
-      width: 60.w,
+      width: 60.dp,
       height: _height,
       child: Stack(
         children: [

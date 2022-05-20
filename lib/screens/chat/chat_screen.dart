@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
@@ -27,7 +26,7 @@ class ChatScreen extends GetView<ChatController> {
         controller.changeSelectedSegment(tabCount);
       },
       child: SizedBox(
-        height: 36.h,
+        height: 36.dp,
         child: Center(
           child: Text(
             title,
@@ -40,19 +39,19 @@ class ChatScreen extends GetView<ChatController> {
 
   AppBar _buildAppBarSearch() {
     return AppBar(
-      toolbarHeight: 160.h,
+      toolbarHeight: 160.dp,
       backgroundColor: AppColors.aliceBlue,
-      titleSpacing: 12.w,
+      titleSpacing: 12.dp,
       title: Padding(
         padding: EdgeInsets.only(
-          left: 12.w,
-          right: 15.w,
+          left: 12.dp,
+          right: 15.dp,
         ),
         child: Column(
           children: [
             _buildSearchTabBar(),
             SizedBox(
-              height: 30.h,
+              height: 30.dp,
             ),
             _buildSegmentTabBar()
           ],
@@ -63,7 +62,7 @@ class ChatScreen extends GetView<ChatController> {
 
   Widget _buildSearchTabBar() {
     return SizedBox(
-      height: 42.h,
+      height: 42.dp,
       child: Row(
         children: [
           Expanded(
@@ -76,7 +75,7 @@ class ChatScreen extends GetView<ChatController> {
                 fillColor: AppColors.hawkesBlue,
                 prefixIcon: Icon(
                   Icons.search,
-                  size: 25.w,
+                  size: 25.dp,
                   color: AppColors.lightSlateGrey,
                 ),
                 focusedBorder: OutlineInputBorder(

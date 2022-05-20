@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:wecheck/languages/language.dart';
@@ -99,19 +98,19 @@ class GroupChatScreen extends StatelessWidget {
   Widget _buildItemPartners(Partner partner) {
     return Container(
       color: Colors.white,
-      height: 102.h,
+      height: 102.dp,
       width: double.infinity,
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
           Positioned(
-            left: 20.w,
+            left: 20.dp,
             child: _buildAvatar(partner.partnerUrl),
           ),
           Positioned(
-            left: 102.w,
-            top: 23.h,
-            right: 80.w,
+            left: 102.dp,
+            top: 23.dp,
+            right: 80.dp,
             child: Text(
               partner.name ?? "",
               maxLines: 1,
@@ -119,9 +118,9 @@ class GroupChatScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 102.w,
-            top: 50.h,
-            right: 80.w,
+            left: 102.dp,
+            top: 50.dp,
+            right: 80.dp,
             child: Text(
               partner.description ?? "",
               maxLines: 2,
@@ -137,19 +136,19 @@ class GroupChatScreen extends StatelessWidget {
   Widget _buildItemMedicalInstitute(MedicalInstitute medicalInstitute) {
     return Container(
       color: Colors.white,
-      height: 102.h,
+      height: 102.dp,
       width: double.infinity,
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
           Positioned(
-            left: 20.w,
+            left: 20.dp,
             child: _buildAvatar(medicalInstitute.imageUrl),
           ),
           Positioned(
-            left: 102.w,
-            top: 23.h,
-            right: 80.w,
+            left: 102.dp,
+            top: 23.dp,
+            right: 80.dp,
             child: Text(
               medicalInstitute.name ?? "",
               maxLines: 1,
@@ -157,9 +156,9 @@ class GroupChatScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 102.w,
-            top: 50.h,
-            right: 80.w,
+            left: 102.dp,
+            top: 50.dp,
+            right: 80.dp,
             child: Text(
               medicalInstitute.description ?? "",
               maxLines: 2,
@@ -180,23 +179,23 @@ class GroupChatScreen extends StatelessWidget {
       },
       child: Container(
         color: Colors.white,
-        height: 102.h,
+        height: 102.dp,
         width: double.infinity,
         child: Stack(
           alignment: Alignment.centerLeft,
           children: [
             Positioned(
-              left: 40.w,
+              left: 40.dp,
               child: _buildAvatar(user.users?[0].avatarUrl),
             ),
             Positioned(
-              left: 20.w,
+              left: 20.dp,
               child: _buildAvatar(user.users?[1].avatarUrl),
             ),
             Positioned(
-              left: 132.w,
-              top: 23.h,
-              right: 80.w,
+              left: 132.dp,
+              top: 23.dp,
+              right: 80.dp,
               child: Text(
                 user.nameGroup ?? "",
                 maxLines: 1,
@@ -204,9 +203,9 @@ class GroupChatScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 132.w,
-              top: 50.h,
-              right: 80.w,
+              left: 132.dp,
+              top: 50.dp,
+              right: 80.dp,
               child: Text(
                 user.description ?? "",
                 maxLines: 2,
@@ -223,8 +222,8 @@ class GroupChatScreen extends StatelessWidget {
   Widget _buildAvatar(String? imageUrl) {
     if (imageUrl == null) {
       return Container(
-        width: 62.w,
-        height: 62.w,
+        width: 62.dp,
+        height: 62.dp,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: AppColors.lightSlateGrey),
@@ -235,8 +234,8 @@ class GroupChatScreen extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       child: Image.network(
         imageUrl,
-        width: 62.w,
-        height: 62.h,
+        width: 62.dp,
+        height: 62.dp,
         fit: BoxFit.cover,
         errorBuilder: (context, exception, stackTrace) {
           return Container(
@@ -256,8 +255,8 @@ class GroupChatScreen extends StatelessWidget {
       dateTimeDisplay = DateFormat.Hm().format(dateTime);
     }
     return Positioned(
-      right: 22.w,
-      top: 23.h,
+      right: 22.dp,
+      top: 23.dp,
       child: Text(
         dateTimeDisplay,
         style: AppTextStyle.t14w500(AppColors.lightSlateGrey),
@@ -267,8 +266,8 @@ class GroupChatScreen extends StatelessWidget {
 
   Widget _buildItemSeparator(String name) {
     return Container(
-      padding: EdgeInsets.only(left: 22.w),
-      height: 57.h,
+      padding: EdgeInsets.only(left: 22.dp),
+      height: 57.dp,
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
