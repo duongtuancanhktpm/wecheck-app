@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
-import 'package:wecheck/model/condition_list_data.dart';
+import 'package:wecheck/model/today_input_data.dart';
 import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
 import 'package:wecheck/screens/today_input/controller/today_input_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/theme/text_styles.dart';
-import 'package:wecheck/utils/constants.dart';
 
 class TodayInputScreen extends GetView<TodayInputController> {
   const TodayInputScreen({Key? key}) : super(key: key);
@@ -32,7 +32,122 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _buildConditionItem(ConditionInput condition, int index) {
+  Widget _body() {
+    List<Widget> todayInputs = [
+      _todayInputItem(L.current.condition, _buildConditions()),
+      _todayInputItem(L.current.time, _buildTimes()),
+      _todayInputItem(L.current.main, _buildMains()),
+      _todayInputItem(L.current.other, _buildOther()),
+    ];
+    return Expanded(
+      child: ListView.separated(
+        shrinkWrap: true,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            thickness: 2,
+          );
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return todayInputs[index];
+        },
+        itemCount: todayInputs.length,
+        //children: todayInputs.toList(),
+      ),
+    );
+  }
+
+  Widget _buildOther() {
+    return Obx(
+      () => ListView.separated(
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          return (_buildRow(controller.other.value[index]));
+        },
+        itemCount: controller.other.value.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            thickness: 2,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildMains() {
+    return Obx(
+      () => ListView.separated(
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          return (_buildRow(controller.main.value[index]));
+        },
+        itemCount: controller.main.value.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            thickness: 2,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildRow(InputRow rowData) {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Row(
+        children: [
+          if (rowData.firstIcon != null)
+            Container(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: SvgPicture.asset(rowData.firstIcon ?? ""),
+            ),
+          Text(
+            rowData.title ?? "",
+            style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
+          ),
+          const Spacer(),
+          if (rowData.picture != null)
+            SizedBox(
+                //color: Colors.red,
+                width: 40,
+                height: 40,
+                child: Image.asset(
+                  rowData.picture ?? "",
+                  fit: BoxFit.contain,
+                )),
+          if (rowData.icon != null)
+            Container(
+                padding: const EdgeInsets.only(right: 15),
+                width: 40,
+                height: 40,
+                child: SvgPicture.asset(
+                  rowData.icon ?? "",
+                  color: AppColors.lightSlateGrey,
+                )),
+          if (rowData.value != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                rowData.value ?? "",
+                style: AppTextStyle.t22w700(AppColors.ceruleanBlue),
+              ),
+            ),
+          Text(
+            rowData.unit ?? "",
+            style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
+          ),
+          if (rowData.expanded == true)
+            const Icon(
+              Icons.chevron_right_outlined,
+              color: AppColors.lightSlateGrey,
+            )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildConditionItem(ConditionItem condition, int index) {
     return InkWell(
       onTap: () {},
       child: Column(
@@ -64,112 +179,42 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _buildCondition() {
-    Widget body = SizedBox(
-        height: 220,
-        child: Obx(() => GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (BuildContext context, int index) {
-              return _buildConditionItem(controller.conditions1[index], index);
-            },
-            itemCount: controller.conditions1.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              childAspectRatio: 0.8,
-            ))));
-    return _todayInputItem(L.current.condition, body);
+  Widget _buildConditions() {
+    return SizedBox(
+      height: 220.h,
+      child: Obx(
+        () => GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (BuildContext context, int index) {
+            return _buildConditionItem(
+                controller.conditionList.value[index], index);
+          },
+          itemCount: controller.conditionList.value.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            childAspectRatio: 0.8,
+          ),
+        ),
+      ),
+    );
   }
 
-  Widget _buildTime() {
-    Widget body = Column(
-      children: [
-        _itemRow(
-            label: L.current.dateAndTime,
-            unit: controller.dateAndTimeFormated.value),
-        _divider(),
-        _itemRow(
-          label: L.current.tag,
-          icon: controller.tagItem.icon,
-          unit: controller.tagItem.tagName,
-        )
-      ],
+  Widget _buildTimes() {
+    return Obx(
+      () => ListView.separated(
+        physics: const ClampingScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          return (_buildRow(controller.time.value[index]));
+        },
+        itemCount: controller.time.value.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            thickness: 2,
+          );
+        },
+      ),
     );
-    return _todayInputItem(L.current.time, body);
-  }
-
-  Widget _buildMain() {
-    Widget body = Column(
-      children: [
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.bloodSugar,
-            value: null,
-            unit: Constant.bloodSugarUnit,
-            initial: controller.initial),
-        _divider(),
-        _itemRow(
-          pathIcon: AppIcons.icEventEat,
-          label: L.current.meals,
-          unit: Constant.mealsUnit,
-          expanded: true,
-          initial: controller.initial,
-        ),
-        _divider(),
-        _itemRow(
-          pathIcon: AppIcons.icEventInject,
-          label: L.current.insulin,
-          unit: Constant.insulinUnit,
-          expanded: true,
-          initial: controller.initial,
-        ),
-        _divider(),
-        _itemRow(
-          pathIcon: AppIcons.icEventTakeMedicines,
-          label: L.current.medicine,
-          unit: Constant.medicineUnit,
-          expanded: true,
-          initial: controller.initial,
-        ),
-      ],
-    );
-    return _todayInputItem(L.current.main, body);
-  }
-
-  Widget _buildOther() {
-    Widget body = Column(
-      children: [
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.a1c,
-            unit: Constant.a1cUnit,
-            initial: controller.initial),
-        _divider(),
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.steps,
-            unit: Constant.stepUnit,
-            initial: controller.initial),
-        _divider(),
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.bloodPressure,
-            unit: Constant.bloodPresureUnit,
-            initial: controller.initial),
-        _divider(),
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.tir,
-            unit: Constant.tirUnit,
-            initial: controller.initial),
-        _divider(),
-        _itemRow(
-            pathIcon: AppIcons.icEventDrinkWater,
-            label: L.current.weight,
-            unit: Constant.weightUnit,
-            initial: controller.initial),
-      ],
-    );
-    return _todayInputItem("Other", body);
   }
 
   _buildTitle() {
@@ -202,30 +247,11 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  _body() {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildCondition(),
-            _divider(),
-            _buildTime(),
-            _divider(),
-            _buildMain(),
-            _divider(),
-            _buildOther(),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _todayInputItem(String title, Widget body) {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
               padding: const EdgeInsets.only(bottom: 15),
@@ -246,77 +272,6 @@ class TodayInputScreen extends GetView<TodayInputController> {
                       child: const Icon(Icons.question_mark)),
               ])),
           body,
-        ],
-      ),
-    );
-  }
-
-  Widget _itemRow(
-      {String? pathIcon,
-      String? label,
-      String? picture,
-      String? icon,
-      String? value,
-      String? unit,
-      bool? expanded,
-      bool? initial}) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Row(
-        children: [
-          if (pathIcon != null)
-            Container(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: SvgPicture.asset(pathIcon),
-            ),
-          Text(
-            label ?? "",
-            style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-          ),
-          const Spacer(),
-          if (picture != null)
-            SizedBox(
-                //color: Colors.red,
-                width: 40,
-                height: 40,
-                child: Image.asset(
-                  picture,
-                  fit: BoxFit.contain,
-                )),
-          if (icon != null)
-            Container(
-                padding: const EdgeInsets.only(right: 15),
-                width: 40,
-                height: 40,
-                child: SvgPicture.asset(
-                  icon,
-                  color: AppColors.lightSlateGrey,
-                )),
-          if (value != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                value,
-                style: AppTextStyle.t22w700(AppColors.ceruleanBlue),
-              ),
-            ),
-          if (initial == true)
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: Text(
-                "-",
-                style: AppTextStyle.t22w700(AppColors.lightSlateGrey),
-              ),
-            ),
-          Text(
-            unit ?? "null",
-            style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-          ),
-          if (expanded == true)
-            const Icon(
-              Icons.chevron_right_outlined,
-              color: AppColors.lightSlateGrey,
-            )
         ],
       ),
     );
