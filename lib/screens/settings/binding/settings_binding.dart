@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:wecheck/screens/settings/controller/setting_controller.dart';
+import 'package:wecheck/screens/settings/controller/settings_controller.dart';
 
 class SettingsBinding extends Bindings {
   @override

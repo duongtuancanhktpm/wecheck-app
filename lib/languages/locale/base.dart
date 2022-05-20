@@ -37,4 +37,11 @@ abstract class BaseLanguage {
   String get sendEmail;
   String get dateOfBirth;
   String get createAccount;
+  String get settings;
+  String get profile;
+  String get insulinMedicine;
+  String get pairing;
+  String get notification;
+  String get personalGoal;
+  String get link;
 }
