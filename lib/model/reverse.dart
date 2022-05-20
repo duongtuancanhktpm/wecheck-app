@@ -1,3 +1,5 @@
+import 'package:wecheck/model/vacancies_calendar.dart';
+
 class HospitalReverse {
   final String? name;
   final String? imageUrl;
@@ -21,34 +23,6 @@ class HospitalReverse {
             (e) => VacanciesCalendar.fromJson(e),
           )
           .toList(),
-    );
-  }
-}
-
-class VacanciesCalendar {
-  final String? dateReverse;
-  final List<Vacancies>? vacancies;
-
-  VacanciesCalendar(this.dateReverse, this.vacancies);
-
-  factory VacanciesCalendar.fromJson(dynamic json) {
-    return VacanciesCalendar(
-      json["date_reverse"] as String?,
-      (json["vacancies"] as List?)?.map((e) => Vacancies.fromJson(e)).toList(),
-    );
-  }
-}
-
-class Vacancies {
-  final String? startTime;
-  final String? endTime;
-
-  Vacancies(this.startTime, this.endTime);
-
-  factory Vacancies.fromJson(dynamic json) {
-    return Vacancies(
-      json["start_time"] as String?,
-      json["end_time"] as String?,
     );
   }
 }

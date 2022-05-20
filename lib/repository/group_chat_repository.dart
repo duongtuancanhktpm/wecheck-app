@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:wecheck/model/group_chat.dart';
+import 'package:wecheck/model/medical_institute.dart';
+import 'package:wecheck/model/partner.dart';
 
 class GroupChatRepository {
   Future<List<Partner>> doGetListPartner() async {

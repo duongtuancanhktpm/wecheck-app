@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:wecheck/model/group_chat.dart';
+import 'package:wecheck/model/medical_institute.dart';
+import 'package:wecheck/model/partner.dart';
 import 'package:wecheck/repository/group_chat_repository.dart';
 
 class GroupChatController extends GetxController {

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
+import 'package:wecheck/model/bs_log_time_milestone.dart';
 import 'package:wecheck/model/health_data.dart';
 import 'package:wecheck/theme/icons.dart';
 import 'package:wecheck/utils/extensions.dart';
@@ -9,6 +10,8 @@ const double _dxMax = 1.2;
 const double _dxMin = -1.2;
 
 class CalendarController {
+
+  DateTime get focusedDay => _focusedDay;
   List<HealthData>? get visibleEvents => healthData?.where((entry) {
         return visibleDayReversed.value
             .any((element) => entry.dateTime.sameWith(element));
