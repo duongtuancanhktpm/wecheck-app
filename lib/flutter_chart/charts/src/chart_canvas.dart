@@ -15,9 +15,11 @@
 
 import 'dart:ffi';
 import 'dart:math' show Point, Rectangle, max;
+import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
 
+import 'package:flutter/services.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 
 import 'package:wecheck/flutter_chart/common/common.dart' as common
@@ -674,9 +676,7 @@ class ChartCanvas implements common.ChartCanvas {
           lengthLineUse = ((safeWidth / 20) * lengthLine / 5);
         }
       }
-      print('DDRRR $lengthLineUse ${offsetX.toDouble()}');
       // quannh edited 12/04/2022 vẽ line ở trên đầu chart
-
       LinePainter.draw(
         canvas: canvas,
         paint: _paint,
@@ -689,8 +689,54 @@ class ChartCanvas implements common.ChartCanvas {
         strokeWidthPx: 25.0,
       );
     }
+
+    // quannh edited 23/05/2022 vẽ image ở trên đầu chart (chưa xong)
+    // _loadImage("").then((value) async {
+    //   canvas.save();
+    //   canvas.drawImage(value,
+    //       Offset(offsetX.toDouble() - 50, offsetY.toDouble() - 5), _paint);
+    // });
+
     // quannh edited 8/04/2022 vẽ icon ở trên đầu chart
     canvas.drawParagraph(
         para, Offset(offsetX.toDouble(), offsetY.toDouble() - 5));
+    print('TTTTYYYY  ${offsetX.toDouble()} ${offsetY.toDouble() - 5}');
+
+
+  }
+
+  // Future<ui.Image> _loadImage(String imagePath) async {
+  //   var imageUrl =
+  //       'https://admin.nongsandungha.com/uploads/uploads/thit-vai-lon-thao-duoc-e1527664716429.jpg';
+  //
+  //   Uint8List bytes =
+  //       (await NetworkAssetBundle(Uri.parse(imageUrl)).load(imageUrl))
+  //           .buffer
+  //           .asUint8List();
+  //   // ByteData bd = await rootBundle.load(imagePath);
+  //   // final Uint8List bytes = Uint8List.view(bd.buffer);
+  //   final ui.Codec codec = await ui.instantiateImageCodec(bytes);
+  //   final ui.Image image = (await codec.getNextFrame()).image;
+  //
+  //   return image;
+  // }
+}
+
+class ImageInsideCanvas extends CustomPainter {
+  ImageInsideCanvas({required this.image});
+
+  ui.Image? image;
+
+  @override
+  void paint(Canvas canvas, Size size) async {
+    Paint greenBrush = Paint()..color = Colors.greenAccent;
+    canvas.save();
+    canvas.drawImage(image!, const Offset(682, -4), greenBrush);
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -52,8 +51,18 @@ class InsulinGraphHorizontalScreen
       LinearSales(17, 25, [2, 2]),
       LinearSales(18, 15, [2, 2]),
       LinearSales(19, 0, [2, 2]),
-      LinearSales(20, 0, [2, 2]),
+      LinearSales(20, 30, [2, 2]),
       LinearSales(21, 0, [2, 2]),
+      LinearSales(23, 20, [2, 2]),
+      LinearSales(24, 20, [2, 2]),
+      LinearSales(28, 0, [2, 2]),
+      LinearSales(36, 40, [2, 2]),
+      LinearSales(47, 90, [2, 2]),
+      LinearSales(58, 0, [2, 2]),
+      LinearSales(69, 50, [2, 2]),
+      LinearSales(75, 40, [2, 2]),
+      LinearSales(80, 10, [2, 2]),
+      LinearSales(85, 30, [2, 2]),
     ];
 
     final mobileSalesDataLine = [
@@ -80,6 +89,10 @@ class InsulinGraphHorizontalScreen
       LinearSales(18, 200, [2, 2]),
       LinearSales(21, 60, [2, 2]),
       LinearSales(24, 80, [2, 2]),
+      LinearSales(34, 30, [2, 2]),
+      LinearSales(44, 50, [2, 2]),
+      LinearSales(50, 20, [2, 2]),
+      LinearSales(60, 90, [2, 2]),
     ];
 
     final globalSalesDataValueColumnRight = [
@@ -141,6 +154,8 @@ class InsulinGraphHorizontalScreen
           drawFollowLinesAcrossChart: true,
           showVerticalFollowLine:
               charts.LinePointHighlighterFollowLineType.all),
+      charts.SlidingViewport(),
+      charts.PanAndZoomBehavior(),
       charts.RangeAnnotationCustom([
         charts.RangeAnnotationSegmentCustom(
             3,
@@ -295,7 +310,6 @@ class InsulinGraphHorizontalScreen
               child: Obx(
                 () => Stack(
                   children: [
-                    //SmoothLineChart.withRandomData(),
                     charts.NumericComboChart(
                       _createSampleData2(),
                       domainAxis: charts.NumericAxisSpec(
@@ -305,7 +319,8 @@ class InsulinGraphHorizontalScreen
                             thickness: 1,
                           )),
                           tickProviderSpec:
-                              tickProviderSpecDomainAxisHorizontalGraph()),
+                              tickProviderSpecDomainAxisHorizontalGraph(),
+                          viewport: const charts.NumericExtents(61, 85)),
                       primaryMeasureAxis: charts.NumericAxisSpec(
                           renderSpec: charts.GridlineRendererSpec(
                               labelOffsetFromAxisPx: -20,
