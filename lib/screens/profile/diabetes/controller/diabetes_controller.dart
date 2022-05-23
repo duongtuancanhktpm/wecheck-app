@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:wecheck/repository/create_diabetes_repository.dart';
 import 'package:wecheck/routes/routes.dart';
 
 class DiabetesController extends GetxController {
@@ -10,6 +11,8 @@ class DiabetesController extends GetxController {
 
   Rx<bool> isTakingInsulin = false.obs;
   Rx<String> valueTakingInsulin = 'Type Of Insulin'.obs;
+
+  var createDiabetesRepository = CreateDiabetesRepository();
 
   final List<String> listTypeDiabetes = [
     'Type 1',

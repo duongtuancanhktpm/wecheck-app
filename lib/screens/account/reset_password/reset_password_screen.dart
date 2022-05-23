@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/reset_password/controller/reset_password_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class ResetPasswordScreen extends GetView<ResetPasswordController> {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -30,10 +31,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                         ),
                         Text(
                           L.current.back,
-                          style: const TextStyle(
-                              color: AppColors.colorCeruleanBlue,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          style: AppTextStyle.t20w700(AppColors.colorCeruleanBlue),
                         ),
                       ],
                     ),
@@ -43,10 +41,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                   padding: const EdgeInsets.only(top: 80, left: 50),
                   child: Text(
                     L.current.resetPassword.tr,
-                    style: const TextStyle(
-                        color: AppColors.textRegalBlue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                    style:  AppTextStyle.t20w700(AppColors.textRegalBlue),
                   ),
                 ),
                 Padding(
@@ -57,7 +52,6 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                         controller.isActiveResetPassword.value = true;
                       },
                       obscureText: controller.hidePassword.value,
-                      //show/hide password
                       decoration: InputDecoration(
                           fillColor: AppColors.white,
                           suffixIcon: IconButton(
@@ -68,11 +62,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                                 controller.hidePassword.value =
                                     !controller.hidePassword.value;
                               }),
-                          floatingLabelStyle: const TextStyle(
-                              height: 0.2,
-                              color: AppColors.colorCeruleanBlue,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
+                          floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                           enabledBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: AppColors.colorDarkGrey),
@@ -82,9 +72,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                                 BorderSide(color: AppColors.colorDarkGrey),
                           ),
                           labelText: L.current.password.tr,
-                          labelStyle: const TextStyle(
-                              color: AppColors.colorDarkGrey,
-                              fontWeight: FontWeight.bold)),
+                          labelStyle: AppTextStyle.t14w400(AppColors.colorDarkGrey)),
                     ),
                   ),
                 ),
@@ -111,10 +99,7 @@ class ResetPasswordScreen extends GetView<ResetPasswordController> {
                                   const EdgeInsets.only(top: 12, bottom: 12),
                               child: Text(
                                 L.current.resetPassword.tr,
-                                style: const TextStyle(
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                style: AppTextStyle.t16w700(AppColors.white),
                               ),
                               decoration: BoxDecoration(
                                 color: controller.isActiveResetPassword.value

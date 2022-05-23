@@ -61,4 +61,10 @@ abstract class BaseLanguage {
   String get hintInput;
   String get vacancies;
   String get lastReverseTime;
+  String get menu;
+  String get stepsDay;
+  String get kcalDay;
+  String get unit;
+  String get mgDL;
+  String get dailyGraph;
 }

@@ -4,14 +4,15 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_code/controller/input_code_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:wecheck/theme/dimens.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class InputCodeScreen extends GetView {
-
   @override
   late InputCodeController controller;
-
   late Function onTapNext;
-  InputCodeScreen(this.onTapNext, {Key? key}) : super(key: key);
+
+  InputCodeScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +27,19 @@ class InputCodeScreen extends GetView {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 30),
-                child: Text(
-                  L.current.verifyEmailAddress,
-                  style: const TextStyle(
-                      color: AppColors.textRegalBlue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
+                child: Text(L.current.verifyEmailAddress,
+                    style: AppTextStyle.t20w700(AppColors.textRegalBlue)),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30, left: 30),
                 child: Text(
                   L.current.verifyCode,
-                  style: const TextStyle(
-                      color: AppColors.colorGrey,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14),
+                  style: AppTextStyle.t14w700(AppColors.colorGrey),
                 ),
               ),
               SizedBox(
                 width: double.infinity,
-                height: 250,
+                height: 250.dp,
                 child: Form(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -58,11 +51,6 @@ class InputCodeScreen extends GetView {
                           fontWeight: FontWeight.bold,
                         ),
                         length: 6,
-                        //obscureText: true,
-                        // obscuringCharacter: '*',
-                        // obscuringWidget: const FlutterLogo(
-                        //   size: 24,
-                        // ),
                         autoFocus: true,
                         blinkWhenObscuring: true,
                         animationType: AnimationType.fade,
@@ -76,8 +64,8 @@ class InputCodeScreen extends GetView {
                         pinTheme: PinTheme(
                             shape: PinCodeFieldShape.box,
                             borderRadius: BorderRadius.circular(5),
-                            fieldHeight: 50,
-                            fieldWidth: 40,
+                            fieldHeight: 50.dp,
+                            fieldWidth: 40.dp,
                             borderWidth: 1,
                             activeFillColor: Colors.white,
                             inactiveColor: AppColors.colorGrey,
@@ -88,9 +76,6 @@ class InputCodeScreen extends GetView {
                         cursorColor: Colors.black,
                         animationDuration: const Duration(milliseconds: 300),
                         enableActiveFill: true,
-                        // errorAnimationController:
-                        //     controller.errorController.value,
-                        // controller: controller.textEditingController.value,
                         keyboardType: TextInputType.number,
                         boxShadows: const [
                           BoxShadow(
@@ -100,12 +85,9 @@ class InputCodeScreen extends GetView {
                           )
                         ],
                         onCompleted: (v) {},
-                        // onTap: () {
-                        //   print("Pressed");
-                        // },
                         onChanged: (value) {
                           debugPrint(value);
-                          controller.currentText.value = value;
+                          controller.pinCodeText.value = value;
                           if (value.length == 6) {
                             controller.isActiveVerify.value = true;
                           } else {
@@ -131,9 +113,7 @@ class InputCodeScreen extends GetView {
                     Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Obx(() => InkWell(
-                             onTap: () {
-                               onTapNext();
-                             },
+                              onTap: () => clickInputCodeNext(),
                               child: Container(
                                 alignment: Alignment.center,
                                 width: double.infinity,
@@ -141,10 +121,7 @@ class InputCodeScreen extends GetView {
                                     const EdgeInsets.only(top: 12, bottom: 12),
                                 child: Text(
                                   L.current.verify,
-                                  style: const TextStyle(
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                  style: AppTextStyle.t16w700(AppColors.white),
                                 ),
                                 decoration: BoxDecoration(
                                   color: controller.isActiveVerify.value
@@ -165,5 +142,11 @@ class InputCodeScreen extends GetView {
             ),
           )
         ])));
+  }
+
+  clickInputCodeNext() {
+    controller.inputCodeRepository.callInputCode(controller.pinCodeText.value).then((value) {
+      onTapNext();
+    });
   }
 }

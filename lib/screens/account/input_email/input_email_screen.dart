@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/input_email/controller/input_email_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class InputEmailScreen extends GetView {
-
-  InputEmailScreen(this.onTapNext, {Key? key}) : super(key: key);
+  InputEmailScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   late Function onTapNext;
 
@@ -28,10 +28,7 @@ class InputEmailScreen extends GetView {
                 padding: const EdgeInsets.only(top: 80, left: 50),
                 child: Text(
                   L.current.signIn.tr,
-                  style: const TextStyle(
-                      color: AppColors.textRegalBlue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
+                  style: AppTextStyle.t20w700(AppColors.textRegalBlue),
                 ),
               ),
               Padding(
@@ -48,15 +45,11 @@ class InputEmailScreen extends GetView {
                       focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(color: AppColors.colorDarkGrey),
                       ),
-                      floatingLabelStyle: const TextStyle(
-                          height: 0.2,
-                          color: AppColors.colorCeruleanBlue,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                      floatingLabelStyle: AppTextStyle.t20w700(
+                          AppColors.colorCeruleanBlue, 0.2),
                       labelText: L.current.email.tr,
-                      labelStyle: const TextStyle(
-                          color: AppColors.colorDarkGrey,
-                          fontWeight: FontWeight.bold)),
+                      labelStyle:
+                          AppTextStyle.t14w700(AppColors.colorDarkGrey)),
                 ),
               ),
             ],
@@ -81,37 +74,43 @@ class InputEmailScreen extends GetView {
           Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 10),
               child: Obx(() => InkWell(
-                onTap: () => {
-                  if (controller.isActiveSendEmail.value)
-                    onTapNext()
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  padding:
-                  const EdgeInsets.only(top: 12, bottom: 12),
-                  child: Text(
-                    L.current.sendEmail.tr,
-                    style: const TextStyle(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
-                  ),
-                  decoration: BoxDecoration(
-                    color: controller.isActiveSendEmail.value
-                        ? AppColors.colorCeruleanBlue
-                        : AppColors.colorHawkesBlue,
-                    border: Border.all(
+                    onTap: () => clickSendEmail(),
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      padding: const EdgeInsets.only(top: 12, bottom: 12),
+                      child: Text(
+                        L.current.sendEmail.tr,
+                        style: const TextStyle(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                      decoration: BoxDecoration(
                         color: controller.isActiveSendEmail.value
                             ? AppColors.colorCeruleanBlue
-                            : AppColors.colorHawkesBlue),
-                    borderRadius: const BorderRadius.all(
-                        Radius.circular(15.0)),
-                  ),
-                ),
-              ))),
+                            : AppColors.colorHawkesBlue,
+                        border: Border.all(
+                            color: controller.isActiveSendEmail.value
+                                ? AppColors.colorCeruleanBlue
+                                : AppColors.colorHawkesBlue),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                    ),
+                  ))),
         ],
       ),
     );
+  }
+
+  clickSendEmail() {
+    if (controller.isActiveSendEmail.value) {
+      controller.inputEmailRepository
+          .callInputEmailResponse(controller.emailInput.value)
+          .then((value) {
+        onTapNext();
+      });
+    }
   }
 }

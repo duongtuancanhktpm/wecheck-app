@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 import 'controller/set_password_controller.dart';
 
@@ -11,7 +12,7 @@ class SetPasswordScreen extends GetView {
 
   late Function onTapNext;
 
-  SetPasswordScreen(this.onTapNext, {Key? key}) : super(key: key);
+  SetPasswordScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +29,7 @@ class SetPasswordScreen extends GetView {
                   padding: const EdgeInsets.only(top: 50, left: 50),
                   child: Text(
                     L.current.setPassword.tr,
-                    style: const TextStyle(
-                        color: AppColors.textRegalBlue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+                    style: AppTextStyle.t20w700(AppColors.textRegalBlue),
                   ),
                 ),
                 inputPasswordWidget(),
@@ -59,18 +57,14 @@ class SetPasswordScreen extends GetView {
     return Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 10),
         child: Obx(() => InkWell(
-              onTap: () =>
-                  {if (controller.isActiveResetPassword.value) onTapNext()},
+              onTap: () => callSetPasswordResponse(),
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 12, bottom: 12),
                 child: Text(
                   L.current.next.tr,
-                  style: const TextStyle(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                  style: AppTextStyle.t16w700(AppColors.white),
                 ),
                 decoration: BoxDecoration(
                   color: controller.isActiveResetPassword.value
@@ -106,11 +100,8 @@ class SetPasswordScreen extends GetView {
                     controller.hidePassword.value =
                         !controller.hidePassword.value;
                   }),
-              floatingLabelStyle: const TextStyle(
-                  height: 0.2,
-                  color: AppColors.colorCeruleanBlue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+              floatingLabelStyle:
+                  AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
@@ -118,8 +109,7 @@ class SetPasswordScreen extends GetView {
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.password.tr,
-              labelStyle: const TextStyle(
-                  color: AppColors.colorDarkGrey, fontWeight: FontWeight.bold)),
+              labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         ),
       ),
     );
@@ -145,11 +135,8 @@ class SetPasswordScreen extends GetView {
                     controller.hidePassword.value =
                         !controller.hidePassword.value;
                   }),
-              floatingLabelStyle: const TextStyle(
-                  height: 0.2,
-                  color: AppColors.colorCeruleanBlue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+              floatingLabelStyle:
+                  AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
@@ -157,10 +144,17 @@ class SetPasswordScreen extends GetView {
                 borderSide: BorderSide(color: AppColors.colorDarkGrey),
               ),
               labelText: L.current.confirmPassword.tr,
-              labelStyle: const TextStyle(
-                  color: AppColors.colorDarkGrey, fontWeight: FontWeight.bold)),
+              labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         ),
       ),
     );
+  }
+
+  callSetPasswordResponse() {
+    controller.setPasswordRepository
+        .callSetPassword(controller.passwordText.value)
+        .then((value) {
+      if (controller.isActiveResetPassword.value) onTapNext();
+    });
   }
 }

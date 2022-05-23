@@ -119,6 +119,36 @@ class LanguageEn extends BaseLanguage {
   String get createAccount => 'Create Account';
 
   @override
+  String get menu => 'Menu';
+
+  @override
+  String get insulin => 'Insulin';
+
+  @override
+  String get bloodSugar => 'Blood Sugar';
+
+  @override
+  String get meals => 'Meals';
+
+  @override
+  String get steps => 'Steps';
+
+  @override
+  String get stepsDay => 'step/day';
+
+  @override
+  String get kcalDay => 'kcal/day';
+
+  @override
+  String get unit => 'unit';
+
+  @override
+  String get mgDL => 'mg/dl';
+
+  @override
+  String get dailyGraph => 'Daily Graph';
+
+  @override
   String get condition => "Condition";
 
   @override
@@ -140,15 +170,6 @@ class LanguageEn extends BaseLanguage {
   String get todayInputTitle => "Today's input";
 
   @override
-  String get bloodSugar => "Blood Sugar";
-
-  @override
-  String get insulin => "Insulin";
-
-  @override
-  String get meals => "Meals";
-
-  @override
   String get medicine => "Medicine";
 
   @override
@@ -156,9 +177,6 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get bloodPressure => "Blood Pressure";
-
-  @override
-  String get steps => "Steps";
 
   @override
   String get tir => "TIR";
