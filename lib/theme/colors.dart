@@ -43,6 +43,5 @@ class AppColors {
   static const Color ochre = Color(0xFFCB7D1C);
   static const Color lightSeaGreen = Color(0xFF2FB0B6);
   static const Color summerSky = Color(0xFF3B9BEC);
-  static const Color pattensBlue = Color(0xFFE9EEF0);
   static const Color solitude = Color(0xFFE6EEF8);
 }

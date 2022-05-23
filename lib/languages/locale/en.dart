@@ -230,16 +230,10 @@ class LanguageEn extends BaseLanguage {
   String get changeCoverPhoto => "Change cover photo";
 
   @override
-  String get insulin => "Insulin";
-
-  @override
   String get intermediateActingInsulin => "Intermediate-acting insulin";
 
   @override
   String get longActingIsulin => "Long-acting insulin";
-
-  @override
-  String get medicine => "Medicine";
 
   @override
   String get mixedInsulin => "Mixed insulin";
