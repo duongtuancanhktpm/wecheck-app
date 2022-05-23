@@ -1,3 +1,3 @@
 class AppImages {
-  static const String defaultImage = "assets/images/img.img";
+  static const String defaultImage = "assets/images/default.png";
 }

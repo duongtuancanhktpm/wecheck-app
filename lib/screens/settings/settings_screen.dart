@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
@@ -31,7 +30,7 @@ class SettingsScreen extends GetView<SettingsController> {
   _buildTitle() {
     return Container(
       padding:
-          EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
+          EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
       width: double.infinity,
       color: AppColors.pattensBlue,
       child: Center(
@@ -51,7 +50,7 @@ class SettingsScreen extends GetView<SettingsController> {
           Container(
             width: double.infinity,
             padding: EdgeInsets.only(
-                left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
+                left: 20, right: 20, top: 20, bottom: 20),
             color: AppColors.pattensBlue,
             child: Text(
               L.current.profile,
@@ -62,13 +61,13 @@ class SettingsScreen extends GetView<SettingsController> {
            children: [
              Container(
                margin: EdgeInsets.only(
-                   left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
+                   left: 20, right: 20, top: 20, bottom: 20),
                decoration: const BoxDecoration(
                    shape: BoxShape.circle, color: Colors.grey),
                width: 60,
                height: 60,
-               child: //SvgPicture.asset("assetName")
-               Container(),
+               child: Image.asset(controller.userProfile.value.avatar),
+                 //(controller.userProfile.value.avatar),
              ),
              Column(
                crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +103,7 @@ class SettingsScreen extends GetView<SettingsController> {
         Container(
           width: double.infinity,
           padding: EdgeInsets.only(
-              left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
+              left: 20, right: 20, top: 20, bottom: 20),
           color: AppColors.pattensBlue,
           child: Text(
             L.current.settings,
@@ -135,7 +134,7 @@ class SettingsScreen extends GetView<SettingsController> {
               Padding(
                 padding:
                     EdgeInsets.only(
-                        left: 30.w, right: 30.w, top: 16.h, bottom: 16.h),
+                        left: 30, right: 30, top: 16, bottom: 16),
                 child: SvgPicture.asset(icon),
               ),
               Text(
@@ -147,7 +146,7 @@ class SettingsScreen extends GetView<SettingsController> {
                 onPressed: () =>controller.goto(route),
                 child: Padding(
                   padding:  EdgeInsets.only(
-                      left: 10.w, right: 10.w, top: 10.h, bottom: 10.h),
+                      left: 10, right: 10, top: 10, bottom: 10),
                   child: const Icon(Icons.arrow_forward_ios,
                       color: AppColors.lightSlateGrey),
                 ),

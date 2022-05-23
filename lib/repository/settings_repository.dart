@@ -1,4 +1,4 @@
-import 'package:wecheck/model/user_profile_data.dart';
+import 'package:wecheck/model/settings_data.dart';
 import 'package:wecheck/theme/images.dart';
 
 class SettingsRepository {

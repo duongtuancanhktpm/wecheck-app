@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
-import 'package:wecheck/model/user_profile_data.dart';
+import 'package:wecheck/model/settings_data.dart';
 import 'package:wecheck/repository/settings_repository.dart';
 import 'package:wecheck/routes/routes.dart';
+import 'package:wecheck/theme/images.dart';
 
 class SettingsController extends GetxController {
   var settingsRepository = SettingsRepository();
-  var userProfile = UserProfile("default", "", "").obs;
+  var userProfile = UserProfile(AppImages.defaultImage, "name", "abc@imail.com").obs;
 
   @override
   void onInit() {
