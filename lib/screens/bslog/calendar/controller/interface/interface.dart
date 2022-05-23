@@ -1,24 +1,13 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:wecheck/model/health_data.dart';
 
 typedef SelectedDayCallback = void Function(DateTime day);
 
 enum StartingDayOfWeek { monday, sunday }
 
-enum CalendarFormat { month, twoWeeks, week }
+typedef OnVisibleDaysChanged = void Function(DateTime first, DateTime last);
 
-typedef OnVisibleDaysChanged = void Function(
-  DateTime first,
-  DateTime last,
-  CalendarFormat format,
-);
-
-typedef OnDaySelected = void Function(DateTime day, List events);
-
-enum AvailableGestures { none, verticalSwipe, horizontalSwipe, all }
-
-enum FormatAnimation { slide, scale }
+typedef OnDaySelected = void Function(DateTime day, List<HealthData> events);
 
 class TimeMilestone {
   final int value;
@@ -26,4 +15,5 @@ class TimeMilestone {
   TimeMilestone(this.value);
 }
 
-typedef ItemDateEventBuilder = List<Widget> Function(List<DateTime> days, List events);
+typedef ItemDateEventBuilder = List<Widget> Function(
+    List<DateTime> days, List events);

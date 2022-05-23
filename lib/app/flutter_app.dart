@@ -1,5 +1,3 @@
-
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/app/app_bindings.dart';
 import 'package:wecheck/configurations/environments.dart';
 import 'package:wecheck/languages/language.dart';
@@ -25,25 +23,23 @@ class FlutterAppState extends State<FlutterApp> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
-    // return ScreenUtilInit(
-    //   designSize: const Size(414, 896),
-    //   builder: (child) {
     return GetMaterialApp(
-      navigatorKey: Get.key,
-      theme: AppTheme.base(Get.theme).appTheme,
-      onGenerateRoute: AppRoutes.generateRoute,
-      initialRoute: RouteName.splash,
-      initialBinding: AppBinding(),
-      enableLog: true,
-      localizationsDelegates: [
-        L.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: L.delegate.supportedLocales,
-      navigatorObservers: [_observer],
+          navigatorKey: Get.key,
+          theme: AppTheme
+              .base(Get.theme)
+              .appTheme,
+          onGenerateRoute: AppRoutes.generateRoute,
+          initialRoute: RouteName.splash,
+          initialBinding: AppBinding(),
+          enableLog: true,
+          localizationsDelegates: [
+            L.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: L.delegate.supportedLocales,
+          navigatorObservers: [_observer],
     );
     //   }
     // );

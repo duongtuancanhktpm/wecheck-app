@@ -39,5 +39,7 @@ class AppColors {
   static const Color colorPattensBlue = Color(0xFFE9EEF0);
   static const Color colorJungleGreen = Color(0xFF24AB82);
   static const Color colorCatalinaBlue = Color(0xFF243D5A);
+  static const Color pattensBlue = Color(0xFFE9EEF0);
+  static const Color solitude = Color(0xFFE6EEF8);
 }
 // Regal Blue

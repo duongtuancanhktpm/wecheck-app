@@ -1,9 +1,11 @@
+import 'package:wecheck/screens/bslog/bslog_screen.dart';
 import 'package:wecheck/screens/account/sign_up/binding/sign_up_binding.dart';
 import 'package:wecheck/screens/account/sign_up/sign_up_screen.dart';
 import 'package:wecheck/screens/chart_horizontal/binding/insulin_graph_horizontal_binding.dart';
 import 'package:wecheck/screens/chart_horizontal/insulin_graph_horizontal_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
+import 'package:wecheck/screens/chat_detail/chat_detail_screen.dart';
 import 'package:wecheck/screens/home/binding/home_binding.dart';
 import 'package:wecheck/screens/home/home_screen.dart';
 import 'package:wecheck/screens/root/binding/root_binding.dart';
@@ -20,6 +22,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
+import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
+import 'package:wecheck/screens/today_input/today_input_screen.dart';
 import 'package:wecheck/utils/orientation_helpers.dart';
 
 class RouteName {
@@ -28,11 +32,14 @@ class RouteName {
   static const String home = "home";
   static const String timeline = "timeline";
   static const String chat = "chat";
+  static const String chatDetail = "chat/details";
   static const String settings = "setting";
+  static const String bsLog = "home/bsLog";
   static const String signIn = "/signIn";
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
   static const String resetPassword = "/resetPassword";
+  static const String todayInput = "home/todayinput";
   static const String insulinGraph = "/insulinGraph";
 }
 
@@ -44,9 +51,12 @@ class AppRoutes {
     RouteName.timeline: () => const TimeLineScreen(),
     RouteName.chat: () => const ChatScreen(),
     RouteName.settings: () => const SettingScreen(),
+    RouteName.bsLog: () => BloodSugarLogScreen(),
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUpMain: () => const SignUpScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
+    RouteName.todayInput: () => const TodayInputScreen(),
+    RouteName.chatDetail: () => const ChatDetailScreen(),
     RouteName.insulinGraph: () => InsulinGraphHorizontalScreen(),
   };
 
@@ -61,6 +71,7 @@ class AppRoutes {
     RouteName.signUpMain: () => [SignUpBinding()],
     RouteName.resetPassword: () => [ResetPasswordBinding()],
     RouteName.insulinGraph: () => [InsulinGraphHorizontalBinding()],
+    RouteName.todayInput: () => [TodayInputBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {

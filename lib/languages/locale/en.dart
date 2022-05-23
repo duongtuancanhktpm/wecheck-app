@@ -23,6 +23,9 @@ class LanguageEn extends BaseLanguage {
   String get setting => 'Setting';
 
   @override
+  String get bsLogTitle => "Blood Sugar Log";
+
+  @override
   String get service => 'Service';
 
   @override
@@ -144,4 +147,73 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get dailyGraph => 'Daily Graph';
+
+  @override
+  String get condition => "Condition";
+
+  @override
+  String get dateAndTime => "Date & time";
+
+  @override
+  String get main => "Main";
+
+  @override
+  String get other => "Other";
+
+  @override
+  String get tag => "Tag";
+
+  @override
+  String get time => "Time";
+
+  @override
+  String get todayInputTitle => "Today's input";
+
+  @override
+  String get bloodSugar => "Blood Sugar";
+
+  @override
+  String get insulin => "Insulin";
+
+  @override
+  String get meals => "Meals";
+
+  @override
+  String get medicine => "Medicine";
+
+  @override
+  String get a1c => "HbA1c";
+
+  @override
+  String get bloodPressure => "Blood Pressure";
+
+  @override
+  String get steps => "Steps";
+
+  @override
+  String get tir => "TIR";
+
+  @override
+  String get reserve => "Reserve";
+
+  @override
+  String get groupChat => "Group";
+
+  @override
+  String get medicalInstitute => "Medical Institute";
+
+  @override
+  String get partner => "Partner";
+
+  @override
+  String get search => "Search";
+
+  @override
+  String get hintInput => "Text";
+
+  @override
+  String get vacancies => "vacancies";
+
+  @override
+  String get lastReverseTime => "Last reversed on the";
 }
