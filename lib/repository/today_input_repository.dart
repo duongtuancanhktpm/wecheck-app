@@ -39,7 +39,7 @@ class TodayInputRepository {
             firstIcon: AppIcons.icEventEat,
             title: L.current.meals,
             value: "980",
-            unit: Constant.mealsUnit ),
+            unit: Constant.mealsUnit),
         InputRow(
             firstIcon: AppIcons.icEventDrinkWater,
             title: "title",

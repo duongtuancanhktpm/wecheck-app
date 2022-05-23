@@ -13,12 +13,14 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
     return Scaffold(
       backgroundColor: AppColors.pattensBlue,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildTitle(context),
-            _buildProfile(),
-            _buildBasicInfo(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildTitle(context),
+              _buildProfile(),
+              _buildBasicInfo(),
+            ],
+          ),
         ),
       ),
     );
