@@ -170,15 +170,6 @@ class LanguageEn extends BaseLanguage {
   String get todayInputTitle => "Today's input";
 
   @override
-  String get bloodSugar => "Blood Sugar";
-
-  @override
-  String get insulin => "Insulin";
-
-  @override
-  String get meals => "Meals";
-
-  @override
   String get medicine => "Medicine";
 
   @override
@@ -186,9 +177,6 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get bloodPressure => "Blood Pressure";
-
-  @override
-  String get steps => "Steps";
 
   @override
   String get tir => "TIR";
