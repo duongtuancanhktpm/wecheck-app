@@ -30,6 +30,7 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get resetPassword => 'Reset password';
+
   @override
   String get setPassword => 'Set password';
 
@@ -155,4 +156,25 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get changeCoverPhoto => "Change cover photo";
+
+  @override
+  String get insulin => "Insulin";
+
+  @override
+  String get intermediateActingInsulin => "Intermediate-acting insulin";
+
+  @override
+  String get longActingIsulin => "Long-acting insulin";
+
+  @override
+  String get medicine => "Medicine";
+
+  @override
+  String get mixedInsulin => "Mixed insulin";
+
+  @override
+  String get rapidCactingInsulin => "Rapid-acting insulin";
+
+  @override
+  String get shortActingIsulin => "Short-acting insulin";
 }

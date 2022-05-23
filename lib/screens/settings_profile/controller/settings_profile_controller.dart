@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:wecheck/model/settings_data.dart';
-import 'package:wecheck/model/settings_profile_data.dart';
 import 'package:wecheck/repository/settings_profile_repository.dart';
 import 'package:wecheck/theme/images.dart';
 

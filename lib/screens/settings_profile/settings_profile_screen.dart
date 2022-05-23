@@ -15,7 +15,7 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
       body: SafeArea(
         child: Column(
           children: [
-            _buildTitle(),
+            _buildTitle(context),
             _buildProfile(),
             _buildBasicInfo(),
           ],
@@ -127,7 +127,7 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
     );
   }
 
-  _buildTitle() {
+  _buildTitle(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(0),
       width: double.infinity,
@@ -136,8 +136,7 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
         children: [
           TextButton(
               onPressed: () {
-                print("canhdt1 pop");
-                controller.goto(RouteName.settings);
+                Navigator.of(context).pop();
               },
               child: const Icon(Icons.arrow_back_ios_new,
                   color: AppColors.regalBlue)),

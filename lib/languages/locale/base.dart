@@ -51,4 +51,11 @@ abstract class BaseLanguage {
   String get medicalHistory;
   String get basicLifeCustoms;
   String get changeCoverPhoto;
+  String get insulin;
+  String get medicine;
+  String get rapidCactingInsulin;
+  String get shortActingIsulin;
+  String get longActingIsulin;
+  String get intermediateActingInsulin;
+  String get mixedInsulin;
 }
