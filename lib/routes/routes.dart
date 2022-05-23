@@ -2,6 +2,7 @@ import 'package:wecheck/screens/account/sign_up/binding/sign_up_main_binding.dar
 import 'package:wecheck/screens/account/sign_up/sign_up_main_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
+import 'package:wecheck/screens/chat_detail/chat_detail_screen.dart';
 import 'package:wecheck/screens/home/binding/home_binding.dart';
 import 'package:wecheck/screens/home/home_screen.dart';
 import 'package:wecheck/screens/insulin_medicine/binding/insulin_medicine_binding.dart';
@@ -22,6 +23,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
+import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
+import 'package:wecheck/screens/today_input/today_input_screen.dart';
 
 class RouteName {
   static const String splash = "splash";
@@ -30,17 +33,20 @@ class RouteName {
   static const String timeline = "timeline";
   static const String chat = "chat";
   static const String settings = "settings";
+  static const String chatDetail = "chat/details";
+  static const String bsLog = "home/bsLog";
   static const String signIn = "/signIn";
   static const String signUp = "/signUp";
   static const String signUpMain = "/signUpMain";
   static const String resetPassword = "/resetPassword";
   static const String settingsProfile = "settings/profile";
   static const String insulinMedicine = "settings/insulinMedicine";
+  static const String todayInput = "home/todayinput";
 }
 
 class AppRoutes {
   static final screens = <String, Widget Function()>{
-    RouteName.splash: () => SplashScreen(),
+    RouteName.splash: () => const SplashScreen(),
     RouteName.root: () => const RootScreen(),
     RouteName.home: () => const HomeScreen(),
     RouteName.timeline: () => const TimeLineScreen(),
@@ -49,6 +55,8 @@ class AppRoutes {
     RouteName.signIn: () => const SignInScreen(),
     RouteName.signUpMain: () => const SignUpMainScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
+    RouteName.todayInput: () => const TodayInputScreen(),
+    RouteName.chatDetail: () => const ChatDetailScreen(),
     RouteName.settingsProfile: () => const SettingsProfileScreen(),
     RouteName.insulinMedicine: () => const InsulinMedicineScreen(),
   };
@@ -65,10 +73,10 @@ class AppRoutes {
     RouteName.resetPassword: () => [ResetPasswordBinding()],
     RouteName.settingsProfile: () => [SettingsProfileBinding()],
     RouteName.insulinMedicine: () => [InsulinMedicineBinding()],
+    RouteName.todayInput: () => [TodayInputBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
-    print("routeName: ${settings.name}");
     return GetPageRoute(
       settings: settings,
       page: screens[settings.name] ?? getDefaultScreen,
@@ -77,7 +85,7 @@ class AppRoutes {
   }
 
   static Widget getDefaultScreen() => const Scaffold(
-    backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         body: Center(
           child: Text(
             'Undefined',

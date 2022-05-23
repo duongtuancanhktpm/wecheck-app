@@ -5,6 +5,7 @@ abstract class BaseLanguage {
   String get chat;
   String get cancel;
   String get setting;
+  String get bsLogTitle;
   String get service;
   String get email;
   String get signIn;
@@ -58,4 +59,27 @@ abstract class BaseLanguage {
   String get longActingIsulin;
   String get intermediateActingInsulin;
   String get mixedInsulin;
+  String get todayInputTitle;
+  String get condition;
+  String get time;
+  String get dateAndTime;
+  String get tag;
+  String get main;
+  String get other;
+  String get bloodSugar;
+  String get meals;
+  String get insulin;
+  String get medicine;
+  String get a1c;
+  String get steps;
+  String get bloodPressure;
+  String get tir;
+  String get reserve;
+  String get groupChat;
+  String get medicalInstitute;
+  String get partner;
+  String get search;
+  String get hintInput;
+  String get vacancies;
+  String get lastReverseTime;
 }
