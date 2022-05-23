@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/model/create_diabetes_data.dart';
 import 'package:wecheck/screens/profile/diabetes/controller/diabetes_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class DiabetesScreen extends GetView {
-
   @override
   late DiabetesController controller;
   late Function onTapNext;
@@ -223,10 +223,10 @@ class DiabetesScreen extends GetView {
             padding:
                 const EdgeInsets.only(top: 40, left: 30, right: 30, bottom: 40),
             child: InkWell(
-              onTap: () => controller.goToHomeScreen(),
+              onTap: () => clickCreateDiabetesNext(),
               child: Container(
                 alignment: Alignment.center,
-               width: double.infinity,
+                width: double.infinity,
                 height: 45.dp,
                 padding: const EdgeInsets.only(top: 12, bottom: 12),
                 child: Text(
@@ -240,5 +240,14 @@ class DiabetesScreen extends GetView {
                 ),
               ),
             )));
+  }
+
+  clickCreateDiabetesNext() {
+    var createDiabetesData = CreateDiabetesData();
+    controller.createDiabetesRepository
+        .callCreateDiabetes(createDiabetesData)
+        .then((value) {
+      controller.goToHomeScreen();
+    });
   }
 }

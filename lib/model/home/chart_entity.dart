@@ -10,3 +10,8 @@ class LinearSales {
 
 
 }
+
+
+class HomeData {
+
+}

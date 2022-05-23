@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
+import 'package:wecheck/model/create_profile_data.dart';
 import 'package:wecheck/screens/profile/create/controller/create_profile_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class CreateProfileScreen extends GetView {
-
   @override
   late CreateProfileController controller;
 
   late Function onTapNext;
 
-  CreateProfileScreen({Key? key,  required this.onTapNext}) : super(key: key);
+  CreateProfileScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +37,12 @@ class CreateProfileScreen extends GetView {
               ),
               inputNameLayout(),
               Padding(
-                padding:
-                    const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 10),
+                padding: const EdgeInsets.only(
+                    top: 20, left: 30, right: 30, bottom: 10),
                 child: Text(
                   L.current.dateOfBirth.tr,
-                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ),
               dateOfBirthLayout(),
@@ -76,8 +77,7 @@ class CreateProfileScreen extends GetView {
 
   Widget inputNameLayout() {
     return Padding(
-      padding: const EdgeInsets.only(
-          top: 20, left: 30, right: 30, bottom: 20),
+      padding: const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
@@ -89,14 +89,13 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                    floatingLabelStyle:
+                        AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.firstName.tr,
                     labelStyle: const TextStyle(
@@ -111,15 +110,14 @@ class CreateProfileScreen extends GetView {
               padding: const EdgeInsets.only(left: 10),
               child: TextFormField(
                 decoration: InputDecoration(
-                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                    floatingLabelStyle:
+                        AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     fillColor: AppColors.white,
                     enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.lastName.tr,
                     labelStyle: const TextStyle(
@@ -147,14 +145,13 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                    floatingLabelStyle:
+                        AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.day.tr,
                     labelStyle: const TextStyle(
@@ -168,14 +165,13 @@ class CreateProfileScreen extends GetView {
             child: TextFormField(
               decoration: InputDecoration(
                   fillColor: AppColors.white,
-                  floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                  floatingLabelStyle:
+                      AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                   enabledBorder: const UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppColors.colorDarkGrey),
+                    borderSide: BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   focusedBorder: const UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppColors.colorDarkGrey),
+                    borderSide: BorderSide(color: AppColors.colorDarkGrey),
                   ),
                   labelText: L.current.month.tr,
                   labelStyle: const TextStyle(
@@ -190,14 +186,13 @@ class CreateProfileScreen extends GetView {
               child: TextFormField(
                 decoration: InputDecoration(
                     fillColor: AppColors.white,
-                    floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                    floatingLabelStyle:
+                        AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                     enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          color: AppColors.colorDarkGrey),
+                      borderSide: BorderSide(color: AppColors.colorDarkGrey),
                     ),
                     labelText: L.current.year.tr,
                     labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
@@ -224,8 +219,8 @@ class CreateProfileScreen extends GetView {
       onChanged: (data) {
         controller.valueCountry.value = data!;
       },
-      items: controller.listCountry
-          .map<DropdownMenuItem<String>>((String value) {
+      items:
+          controller.listCountry.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -249,8 +244,8 @@ class CreateProfileScreen extends GetView {
       onChanged: (data) {
         controller.valueGender.value = data!;
       },
-      items: controller.listGender
-          .map<DropdownMenuItem<String>>((String value) {
+      items:
+          controller.listGender.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -267,14 +262,13 @@ class CreateProfileScreen extends GetView {
           TextFormField(
             decoration: InputDecoration(
                 fillColor: AppColors.white,
-                floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                floatingLabelStyle:
+                    AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                 enabledBorder: const UnderlineInputBorder(
-                  borderSide:
-                  BorderSide(color: AppColors.colorDarkGrey),
+                  borderSide: BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 focusedBorder: const UnderlineInputBorder(
-                  borderSide:
-                  BorderSide(color: AppColors.colorDarkGrey),
+                  borderSide: BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 labelText: L.current.height.tr,
                 labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
@@ -291,20 +285,19 @@ class CreateProfileScreen extends GetView {
       child: Stack(
         children: [
           TextFormField(
-            style: const TextStyle(
-                color: AppColors.textRegalBlue, fontSize: 16),
+            style:
+                const TextStyle(color: AppColors.textRegalBlue, fontSize: 16),
             decoration: InputDecoration(
                 fillColor: AppColors.white,
                 filled: true,
                 //  contentPadding: const EdgeInsets.only(top: 25, bottom: 15),
-                floatingLabelStyle: AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+                floatingLabelStyle:
+                    AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
                 enabledBorder: const UnderlineInputBorder(
-                  borderSide:
-                  BorderSide(color: AppColors.colorDarkGrey),
+                  borderSide: BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 focusedBorder: const UnderlineInputBorder(
-                  borderSide:
-                  BorderSide(color: AppColors.colorDarkGrey),
+                  borderSide: BorderSide(color: AppColors.colorDarkGrey),
                 ),
                 labelText: L.current.weight.tr,
                 labelStyle: const TextStyle(
@@ -321,10 +314,10 @@ class CreateProfileScreen extends GetView {
 
   Widget nextButton() {
     return Padding(
-        padding: const EdgeInsets.only(
-            top: 20, left: 30, right: 30, bottom: 20),
+        padding:
+            const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
         child: InkWell(
-         onTap: () => onTapNext(),
+          onTap: () => clickCreateProfile(),
           child: Container(
             alignment: Alignment.center,
             width: double.infinity,
@@ -336,10 +329,18 @@ class CreateProfileScreen extends GetView {
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               border: Border.all(color: Colors.blueAccent),
-              borderRadius:
-              const BorderRadius.all(Radius.circular(15.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(15.0)),
             ),
           ),
         ));
+  }
+
+  clickCreateProfile() {
+    var createProfileData = CreateProfileData();
+    controller.createProfileRepository
+        .callInputCode(createProfileData)
+        .then((value) {
+      onTapNext();
+    });
   }
 }

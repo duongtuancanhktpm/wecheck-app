@@ -36,7 +36,7 @@ itemBloodSugar() {
         ),
         Text(
           '155',
-          style: AppTextStyle.t40w700(AppColors.colorCeruleanBlue),
+          style: AppTextStyle.t35w700(AppColors.colorCeruleanBlue),
         ),
         Padding(
           padding: const EdgeInsets.all(10),

@@ -8,12 +8,11 @@ import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
 class InputCodeScreen extends GetView {
-
   @override
   late InputCodeController controller;
   late Function onTapNext;
 
-  InputCodeScreen({Key? key,  required this.onTapNext}) : super(key: key);
+  InputCodeScreen({Key? key, required this.onTapNext}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +27,8 @@ class InputCodeScreen extends GetView {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 30),
-                child: Text(
-                  L.current.verifyEmailAddress,
-                  style: AppTextStyle.t20w700(AppColors.textRegalBlue)
-                ),
+                child: Text(L.current.verifyEmailAddress,
+                    style: AppTextStyle.t20w700(AppColors.textRegalBlue)),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30, left: 30),
@@ -90,7 +87,7 @@ class InputCodeScreen extends GetView {
                         onCompleted: (v) {},
                         onChanged: (value) {
                           debugPrint(value);
-                          controller.currentText.value = value;
+                          controller.pinCodeText.value = value;
                           if (value.length == 6) {
                             controller.isActiveVerify.value = true;
                           } else {
@@ -116,9 +113,7 @@ class InputCodeScreen extends GetView {
                     Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Obx(() => InkWell(
-                             onTap: () {
-                               onTapNext();
-                             },
+                              onTap: () => clickInputCodeNext(),
                               child: Container(
                                 alignment: Alignment.center,
                                 width: double.infinity,
@@ -147,5 +142,11 @@ class InputCodeScreen extends GetView {
             ),
           )
         ])));
+  }
+
+  clickInputCodeNext() {
+    controller.inputCodeRepository.callInputCode(controller.pinCodeText.value).then((value) {
+      onTapNext();
+    });
   }
 }

@@ -45,14 +45,14 @@ itemInsulin() {
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.colorJungleGreen),
               padding: const EdgeInsets.only(left: 10),
-              height: 45.dp,
+              height: 40.dp,
             ),
             Container(
-              width: 160.dp,
+              width: 150.dp,
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 'Tresiba Injection Penfill',
-                style: AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
+                style: AppTextStyle.t12w700(AppColors.colorCeruleanBlue),
               ),
             ),
           ],

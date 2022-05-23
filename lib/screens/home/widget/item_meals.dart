@@ -49,7 +49,7 @@ itemMeals() {
               padding: const EdgeInsets.only(right: 10),
               child: Text(
                 '2150',
-                style: AppTextStyle.t40w700(AppColors.colorCeruleanBlue),
+                style: AppTextStyle.t35w700(AppColors.colorCeruleanBlue),
               ),
             ),
           ],

@@ -19,7 +19,7 @@ itemMenuSmall(SmallMenu indexEn) {
             height: 35.dp,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const EdgeInsets.only(top: 6),
             child: Text(
               indexEn.name,
               style: AppTextStyle.t14w700(AppColors.colorGrey),

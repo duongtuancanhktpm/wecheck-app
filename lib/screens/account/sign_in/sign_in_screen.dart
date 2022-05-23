@@ -49,7 +49,7 @@ class SignInScreen extends GetView<SignInController> {
         Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 10),
             child: Obx(() => InkWell(
-                  onTap: () => controller.goToHome(),
+                  onTap: () => controller.callLoginService(),
                   child: Container(
                     alignment: Alignment.center,
                     width: double.infinity,
@@ -122,6 +122,7 @@ class SignInScreen extends GetView<SignInController> {
             labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         onChanged: (value) {
           if (value.isNotEmpty) {
+            controller.usernameInput.value = value;
             controller.isActiveLogin.value = true;
           } else {
             controller.isActiveLogin.value = false;
@@ -137,7 +138,7 @@ class SignInScreen extends GetView<SignInController> {
       child: Obx(
         () => TextFormField(
           onChanged: (value) {
-            //print(value);
+            controller.passwordInput.value = value;
           },
           obscureText: controller.hidePassword.value,
           //show/hide password
@@ -160,7 +161,7 @@ class SignInScreen extends GetView<SignInController> {
               floatingLabelStyle:
                   AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
               labelText: L.current.password.tr,
-              labelStyle: AppTextStyle.t14w700( AppColors.colorDarkGrey)),
+              labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
         ),
       ),
     );
