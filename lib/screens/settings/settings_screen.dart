@@ -30,7 +30,7 @@ class SettingsScreen extends GetView<SettingsController> {
   _buildTitle() {
     return Container(
       padding:
-          EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+          const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
       width: double.infinity,
       color: AppColors.pattensBlue,
       child: Center(
@@ -49,7 +49,7 @@ class SettingsScreen extends GetView<SettingsController> {
         children: [
           Container(
             width: double.infinity,
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
                 left: 20, right: 20, top: 20, bottom: 20),
             color: AppColors.pattensBlue,
             child: Text(
@@ -60,7 +60,7 @@ class SettingsScreen extends GetView<SettingsController> {
          Obx(()=>  Row(
            children: [
              Container(
-               margin: EdgeInsets.only(
+               margin: const EdgeInsets.only(
                    left: 20, right: 20, top: 20, bottom: 20),
                decoration: const BoxDecoration(
                    shape: BoxShape.circle, color: Colors.grey),
@@ -102,7 +102,7 @@ class SettingsScreen extends GetView<SettingsController> {
       children: [
         Container(
           width: double.infinity,
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
               left: 20, right: 20, top: 20, bottom: 20),
           color: AppColors.pattensBlue,
           child: Text(
@@ -133,7 +133,7 @@ class SettingsScreen extends GetView<SettingsController> {
             children: [
               Padding(
                 padding:
-                    EdgeInsets.only(
+                    const EdgeInsets.only(
                         left: 30, right: 30, top: 16, bottom: 16),
                 child: SvgPicture.asset(icon),
               ),
@@ -144,10 +144,10 @@ class SettingsScreen extends GetView<SettingsController> {
               const Spacer(),
               TextButton(
                 onPressed: () =>controller.goto(route),
-                child: Padding(
+                child: const Padding(
                   padding:  EdgeInsets.only(
                       left: 10, right: 10, top: 10, bottom: 10),
-                  child: const Icon(Icons.arrow_forward_ios,
+                  child: Icon(Icons.arrow_forward_ios,
                       color: AppColors.lightSlateGrey),
                 ),
               )

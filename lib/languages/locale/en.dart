@@ -134,4 +134,25 @@ class LanguageEn extends BaseLanguage {
 
   @override
   String get personalGoal => "Personal goal";
+
+  @override
+  String get basicInfo => "Basic Information";
+
+  @override
+  String get basicLifeCustoms => "Basic life customs";
+
+  @override
+  String get birthOfDateSexAdd => "Birth of date, Sex, Address";
+
+  @override
+  String get medicalHistory => "Medical History";
+
+  @override
+  String get namePhoneIdPass => "Name, Phone, ID, Password";
+
+  @override
+  String get typeOfDiabeteHW => "Type of diabetes, Height, Weight";
+
+  @override
+  String get changeCoverPhoto => "Change cover photo";
 }

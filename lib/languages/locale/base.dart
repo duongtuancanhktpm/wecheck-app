@@ -44,4 +44,11 @@ abstract class BaseLanguage {
   String get notification;
   String get personalGoal;
   String get link;
+  String get basicInfo;
+  String get namePhoneIdPass;
+  String get birthOfDateSexAdd;
+  String get typeOfDiabeteHW;
+  String get medicalHistory;
+  String get basicLifeCustoms;
+  String get changeCoverPhoto;
 }
