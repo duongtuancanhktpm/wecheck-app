@@ -1,4 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/app/app_bindings.dart';
 import 'package:wecheck/configurations/environments.dart';
 import 'package:wecheck/languages/language.dart';

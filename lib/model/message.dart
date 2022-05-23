@@ -1,4 +1,3 @@
-import 'package:wecheck/model/group_chat.dart';
 import 'package:wecheck/model/user.dart';
 
 class UserMessage {

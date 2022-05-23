@@ -1,4 +1,3 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:flutter/cupertino.dart';
