@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +10,7 @@ import 'package:wecheck/model/home/insulin_model.dart';
 import 'package:wecheck/screens/chart_horizontal/controller/insulin_graph_horizontal_controller.dart';
 import 'package:wecheck/screens/chart_horizontal/widget/dialog_blood_sugar_index.dart';
 import 'package:wecheck/screens/chart_horizontal/widget/dialog_insulin_index.dart';
+import 'package:wecheck/screens/chart_horizontal/widget/tick_provider_spec_home_graph.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:wecheck/flutter_chart/charts/flutter.dart' as charts;
 import 'package:wecheck/theme/dimens.dart';
@@ -255,7 +255,7 @@ class InsulinGraphHorizontalScreen
       backgroundColor: AppColors.colorPattensBlue,
       actions: [
         Padding(
-          padding: EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 15),
           child: SvgPicture.asset(
             AppIcons.icChatUnSelected,
             width: 25.dp,
@@ -263,7 +263,7 @@ class InsulinGraphHorizontalScreen
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 15),
           child: SvgPicture.asset(
             AppIcons.icEventStressFill,
             width: 25.dp,
@@ -271,7 +271,7 @@ class InsulinGraphHorizontalScreen
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(right: 15),
+          padding: const EdgeInsets.only(right: 15),
           child: SvgPicture.asset(
             AppIcons.icEventRunning,
             width: 25.dp,
@@ -284,7 +284,7 @@ class InsulinGraphHorizontalScreen
 
   _insulinGraph(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       child: Column(
         children: [
           _indexTop(context),
@@ -305,37 +305,7 @@ class InsulinGraphHorizontalScreen
                             thickness: 1,
                           )),
                           tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(0,
-                                  label: '03:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(3,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(6,
-                                  label: '9:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(9,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(12,
-                                  label: '15:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(15,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(18,
-                                  label: '21:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(21,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(24,
-                                  label: '3:00',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
+                              tickProviderSpecDomainAxisHorizontalGraph()),
                       primaryMeasureAxis: charts.NumericAxisSpec(
                           renderSpec: charts.GridlineRendererSpec(
                               labelOffsetFromAxisPx: -20,
@@ -345,20 +315,7 @@ class InsulinGraphHorizontalScreen
                                 thickness: 1,
                               )),
                           tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            // Create the ticks to be used the domain axis.
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(300,
-                                  label: '300',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(200,
-                                  label: '200',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(100,
-                                  label: '100',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
+                              tickProviderSpecPrimaryMeasureAxisHorizontalGraph()),
                       secondaryMeasureAxis: charts.NumericAxisSpec(
                           renderSpec: charts.GridlineRendererSpec(
                               labelOffsetFromAxisPx: -20,
@@ -368,23 +325,7 @@ class InsulinGraphHorizontalScreen
                                 thickness: 1,
                               )),
                           tickProviderSpec:
-                              const charts.StaticNumericTickProviderSpec(
-                            // Create the ticks to be used the domain axis.
-                            <charts.TickSpec<num>>[
-                              charts.TickSpec(6000,
-                                  label: '6000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(4000,
-                                  label: '4000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(2000,
-                                  label: '2000',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                              charts.TickSpec(0,
-                                  label: '',
-                                  style: charts.TextStyleSpec(fontSize: 10)),
-                            ],
-                          )),
+                              tickProviderSpecSecondaryMeasureAxisHorizontalGraph()),
                       animate: true,
                       defaultRenderer: charts.LineRendererConfig(
                         includePoints: true,
@@ -427,7 +368,7 @@ class InsulinGraphHorizontalScreen
         InkWell(
           onTap: () => {_showDialogBloodSugar(context)},
           child: Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: SvgPicture.asset(
               AppIcons.icChatUnSelected,
               width: 15.dp,
@@ -442,7 +383,7 @@ class InsulinGraphHorizontalScreen
         InkWell(
           onTap: () => {_showDialogInsulin(context)},
           child: Padding(
-            padding: EdgeInsets.only(left: 30, right: 15),
+            padding: const EdgeInsets.only(left: 30, right: 15),
             child: SvgPicture.asset(
               AppIcons.icChatUnSelected,
               width: 15.dp,
@@ -455,7 +396,7 @@ class InsulinGraphHorizontalScreen
           style: AppTextStyle.t6w700(),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 30, right: 15),
+          padding: const EdgeInsets.only(left: 30, right: 15),
           child: SvgPicture.asset(
             AppIcons.icChatUnSelected,
             width: 15.dp,
@@ -466,7 +407,7 @@ class InsulinGraphHorizontalScreen
           '6500 step',
           style: AppTextStyle.t6w700(),
         ),
-        Padding(padding: EdgeInsets.only(right: 20, left: 30))
+        const Padding(padding: EdgeInsets.only(right: 20, left: 30))
       ],
     );
   }

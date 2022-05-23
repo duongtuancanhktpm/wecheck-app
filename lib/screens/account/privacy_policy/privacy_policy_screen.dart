@@ -4,7 +4,6 @@ import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/privacy_policy/controller/privacy_policy_controller.dart';
 import 'package:wecheck/theme/colors.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wecheck/theme/dimens.dart';
 import 'package:wecheck/theme/text_styles.dart';
 
