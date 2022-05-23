@@ -25,7 +25,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
               const Divider(
                 thickness: 2,
               ),
-              _body(),
+              _buildBody(),
             ],
           ),
         ),
@@ -63,14 +63,14 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _body() {
+  Widget _buildBody() {
     List<Widget> todayInputs = [
-      _todayInputItem(L.current.condition, _buildConditions()),
-      _todayInputItem(
+      _buildTodayInputItem(L.current.condition, _buildConditions()),
+      _buildTodayInputItem(
           L.current.time, Obx(() => _buildListRow(controller.time.value))),
-      _todayInputItem(
+      _buildTodayInputItem(
           L.current.main, Obx(() => _buildListRow(controller.main.value))),
-      _todayInputItem(
+      _buildTodayInputItem(
           L.current.other, Obx(() => _buildListRow(controller.other.value))),
     ];
     return Expanded(
@@ -214,7 +214,7 @@ class TodayInputScreen extends GetView<TodayInputController> {
     );
   }
 
-  Widget _todayInputItem(String title, Widget body) {
+  Widget _buildTodayInputItem(String title, Widget body) {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
