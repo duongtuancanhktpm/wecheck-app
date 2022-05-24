@@ -35,10 +35,11 @@ class SettingsScreen extends GetView<SettingsController> {
       width: double.infinity,
       color: AppColors.pattensBlue,
       child: Center(
-          child: Text(
-        L.current.settings,
-        style: AppTextStyle.t22w700(AppColors.regalBlue),
-      )),
+        child: Text(
+          L.current.settings,
+          style: AppTextStyle.t22w700(AppColors.regalBlue),
+        ),
+      ),
     );
   }
 
@@ -58,41 +59,43 @@ class SettingsScreen extends GetView<SettingsController> {
               style: AppTextStyle.t18w700(AppColors.regalBlue),
             ),
           ),
-          Obx(() => Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(
-                        left: 20, right: 20, top: 20, bottom: 20),
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle, color: Colors.grey),
-                    width: 60,
-                    height: 60,
-                    child: Image.asset(controller.userProfile.value.avatar),
-                    //(controller.userProfile.value.avatar),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.userProfile.value.name,
-                        style: AppTextStyle.t18w700(AppColors.regalBlue),
-                      ),
-                      Text(
-                        controller.userProfile.value.email,
-                        style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () => controller.gotoSettingsProfile(),
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      color: AppColors.lightSlateGrey,
+          Obx(
+            () => Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                      left: 20, right: 20, top: 20, bottom: 20),
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.grey),
+                  width: 60,
+                  height: 60,
+                  child: Image.asset(controller.userProfile.value.avatar),
+                  //(controller.userProfile.value.avatar),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      controller.userProfile.value.name,
+                      style: AppTextStyle.t18w700(AppColors.regalBlue),
                     ),
+                    Text(
+                      controller.userProfile.value.email,
+                      style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                TextButton(
+                  onPressed: () => controller.gotoSettingsProfile(),
+                  child: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.lightSlateGrey,
                   ),
-                ],
-              )),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -164,7 +167,7 @@ class SettingsScreen extends GetView<SettingsController> {
                   child: Icon(Icons.arrow_forward_ios,
                       color: AppColors.lightSlateGrey),
                 ),
-              )
+              ),
             ],
           ),
           Container(
