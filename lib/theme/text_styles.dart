@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyle {
-
   static TextStyle get button => t14w700();
 
   static TextStyle get appbar => t16w700(AppColors.black);
@@ -26,6 +25,29 @@ class AppTextStyle {
     );
   }
 
+  static TextStyle commonLabel(
+    double? fontSize,
+    FontWeight? fontWeight,
+    Color? color, [
+    TextDecoration? decoration = TextDecoration.none,
+    double? height = 1.25,
+  ]) {
+    return TextStyle(
+      color: color ?? AppColors.black,
+      fontWeight: fontWeight,
+      fontSize: fontSize?.dp,
+      decoration: decoration,
+      height: height,
+      fontFamily: 'Poppins',
+    );
+  }
+
+  static TextStyle t6w700([Color? color, double? height]) {
+    return common(6.dp, FontWeight.w700, color, null, height);
+  }
+  static TextStyle t8w700([Color? color, double? height]) {
+    return common(8.dp, FontWeight.w700, color, null, height);
+  }
   static TextStyle t10w400([Color? color, double? height]) {
     return common(10.dp, FontWeight.w400, color, null, height);
   }
@@ -73,6 +95,13 @@ class AppTextStyle {
   static TextStyle t18w700([Color? color, double? height]) {
     return common(18.dp, FontWeight.w700, color, null, height);
   }
+  static TextStyle t18w500([Color? color, double? height]) {
+    return common(18.dp, FontWeight.w500, color, null, height);
+  }
+
+  static TextStyle t20w700([Color? color, double? height]) {
+    return common(20.dp, FontWeight.w700, color, null, height);
+  }
 
   static TextStyle t22w700([Color? color, double? height]) {
     return common(22.dp, FontWeight.w700, color, null, height);
@@ -80,5 +109,12 @@ class AppTextStyle {
 
   static TextStyle t30w700([Color? color, double? height]) {
     return common(30.dp, FontWeight.w700, color, null, height);
+  }
+static TextStyle t35w700([Color? color, double? height]) {
+    return common(35.dp, FontWeight.w700, color, null, height);
+  }
+
+  static TextStyle t40w700([Color? color, double? height]) {
+    return common(40.dp, FontWeight.w700, color, null, height);
   }
 }

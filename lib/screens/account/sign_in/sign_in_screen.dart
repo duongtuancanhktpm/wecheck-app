@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wecheck/languages/language.dart';
 import 'package:wecheck/screens/account/sign_in/controller/sign_in_controller.dart';
 import 'package:wecheck/theme/colors.dart';
+import 'package:wecheck/theme/text_styles.dart';
 
 class SignInScreen extends GetView<SignInController> {
   const SignInScreen({Key? key}) : super(key: key);
@@ -13,108 +14,88 @@ class SignInScreen extends GetView<SignInController> {
         backgroundColor: Colors.white,
         body: SafeArea(
             child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 80, left: 50),
-                      child: Text(
-                        L.current.signIn.tr,
-                        style: const TextStyle(
-                            color: AppColors.textRegalBlue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                    inputEmailWidget(),
-                    inputPasswordWidget(),
-                    rememberMyIDWidget(),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 80, left: 50),
+                  child: Text(
+                    L.current.signIn.tr,
+                    style: AppTextStyle.t20w700(AppColors.textRegalBlue),
+                  ),
                 ),
-                Positioned.fill(
-                    child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding:
-                          const EdgeInsets.only(top: 20, left: 50, right: 50),
-                          child: bottomSignInButton(),
-                        )))
+                _inputEmailWidget(),
+                _inputPasswordWidget(),
+                _rememberMyIDWidget(),
               ],
-            )));
+            ),
+            Positioned.fill(
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 50, right: 50),
+                      child: _bottomSignInButton(),
+                    )))
+          ],
+        )));
   }
 
-  Widget bottomSignInButton() {
+  Widget _bottomSignInButton() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-            padding:
-            const EdgeInsets.only(top: 20, bottom: 10),
-            child: Obx(() =>
-                InkWell(
-                  onTap: () => controller.goToHome(),
+            padding: const EdgeInsets.only(top: 20, bottom: 10),
+            child: Obx(() => InkWell(
+                  onTap: () => controller.callLoginService(),
                   child: Container(
                     alignment: Alignment.center,
                     width: double.infinity,
-                    padding: const EdgeInsets.only(
-                        top: 12, bottom: 12),
+                    padding: const EdgeInsets.only(top: 12, bottom: 12),
                     child: Text(
                       L.current.signIn,
-                      style: const TextStyle(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                      style: AppTextStyle.t16w700(AppColors.white),
                     ),
                     decoration: BoxDecoration(
                       color: controller.isActiveLogin.value
                           ? AppColors.colorCeruleanBlue
                           : AppColors.colorHawkesBlue,
                       border: Border.all(
-                          color:
-                          controller.isActiveLogin.value
+                          color: controller.isActiveLogin.value
                               ? AppColors.colorCeruleanBlue
                               : AppColors.colorHawkesBlue),
-                      borderRadius: const BorderRadius.all(
-                          Radius.circular(15.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15.0)),
                     ),
                   ),
                 ))),
         InkWell(
           onTap: () => controller.goToResetPassword(),
           child: Container(
-            padding:
-            const EdgeInsets.only(left: 20, right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
               L.current.forgetPassword,
-              style: const TextStyle(
-                  color: AppColors.colorCeruleanBlue,
-                  fontWeight: FontWeight.bold),
+              style: AppTextStyle.t14w700(AppColors.colorCeruleanBlue),
             ),
           ),
         ),
         Padding(
-            padding:
-            const EdgeInsets.only(top: 20, bottom: 20),
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: InkWell(
               onTap: () => controller.goToCreateAccount(),
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,
-                padding: const EdgeInsets.only(
-                    top: 12, bottom: 12),
+                padding: const EdgeInsets.only(top: 12, bottom: 12),
                 child: Text(
                   L.current.createAccount.tr,
-                  style: const TextStyle(
-                      color: AppColors.colorCeruleanBlue,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                  style: AppTextStyle.t16w700(AppColors.colorCeruleanBlue),
                 ),
                 decoration: BoxDecoration(
-                  border:
-                  Border.all(color: Colors.blueAccent),
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(15.0)),
+                  border: Border.all(color: Colors.blueAccent),
+                  borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 ),
               ),
             ))
@@ -122,7 +103,7 @@ class SignInScreen extends GetView<SignInController> {
     );
   }
 
-  Widget inputEmailWidget() {
+  Widget _inputEmailWidget() {
     return Padding(
       padding: const EdgeInsets.only(top: 40, left: 50, right: 50),
       child: TextFormField(
@@ -130,24 +111,18 @@ class SignInScreen extends GetView<SignInController> {
         decoration: InputDecoration(
             fillColor: AppColors.white,
             enabledBorder: const UnderlineInputBorder(
-              borderSide:
-              BorderSide(color: AppColors.colorDarkGrey),
+              borderSide: BorderSide(color: AppColors.colorDarkGrey),
             ),
             focusedBorder: const UnderlineInputBorder(
-              borderSide:
-              BorderSide(color: AppColors.colorDarkGrey),
+              borderSide: BorderSide(color: AppColors.colorDarkGrey),
             ),
-            floatingLabelStyle: const TextStyle(
-                height: 0.2,
-                color: AppColors.colorCeruleanBlue,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
+            floatingLabelStyle:
+                AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
             labelText: L.current.email.tr,
-            labelStyle: const TextStyle(
-                color: AppColors.colorDarkGrey,
-                fontWeight: FontWeight.bold)),
+            labelStyle: AppTextStyle.t16w700(AppColors.colorDarkGrey)),
         onChanged: (value) {
           if (value.isNotEmpty) {
+            controller.usernameInput.value = value;
             controller.isActiveLogin.value = true;
           } else {
             controller.isActiveLogin.value = false;
@@ -157,68 +132,54 @@ class SignInScreen extends GetView<SignInController> {
     );
   }
 
-  Widget inputPasswordWidget() {
+  Widget _inputPasswordWidget() {
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 50, right: 50),
       child: Obx(
-            () =>
-            TextFormField(
-              onChanged: (value) {
-                //print(value);
-              },
-              obscureText: controller.hidePassword.value,
-              //show/hide password
-              decoration: InputDecoration(
-                  fillColor: AppColors.white,
-                  suffixIcon: IconButton(
-                      icon: controller.hidePassword.value
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility),
-                      onPressed: () {
-                        controller.hidePassword.value =
+        () => TextFormField(
+          onChanged: (value) {
+            controller.passwordInput.value = value;
+          },
+          obscureText: controller.hidePassword.value,
+          //show/hide password
+          decoration: InputDecoration(
+              fillColor: AppColors.white,
+              suffixIcon: IconButton(
+                  icon: controller.hidePassword.value
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
+                  onPressed: () {
+                    controller.hidePassword.value =
                         !controller.hidePassword.value;
-                      }),
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppColors.colorDarkGrey),
-                  ),
-                  focusedBorder: const UnderlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppColors.colorDarkGrey),
-                  ),
-                  floatingLabelStyle: const TextStyle(
-                      height: 0.2,
-                      color: AppColors.colorCeruleanBlue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                  labelText: L.current.password.tr,
-                  labelStyle: const TextStyle(
-                      color: AppColors.colorDarkGrey,
-                      fontWeight: FontWeight.bold)),
-            ),
+                  }),
+              enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
+              ),
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: AppColors.colorDarkGrey),
+              ),
+              floatingLabelStyle:
+                  AppTextStyle.t20w700(AppColors.colorCeruleanBlue, 0.2),
+              labelText: L.current.password.tr,
+              labelStyle: AppTextStyle.t14w700(AppColors.colorDarkGrey)),
+        ),
       ),
     );
   }
 
-  Widget rememberMyIDWidget() {
+  Widget _rememberMyIDWidget() {
     return Padding(
-        padding:
-        const EdgeInsets.only(top: 10, left: 35, right: 50),
+        padding: const EdgeInsets.only(top: 10, left: 35, right: 50),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Obx(() =>
-                Checkbox(
-                    value: controller.isRememberId.value,
-                    onChanged: (value) =>
-                    controller.isRememberId.value = value!)),
+            Obx(() => Checkbox(
+                value: controller.isRememberId.value,
+                onChanged: (value) => controller.isRememberId.value = value!)),
             Text(
               L.current.rememberMyID.tr,
-              style: const TextStyle(
-                  color: AppColors.colorDarkGrey,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14),
+              style: AppTextStyle.t14w700(AppColors.colorDarkGrey),
             )
           ],
         ));

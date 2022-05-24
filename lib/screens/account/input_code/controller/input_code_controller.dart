@@ -1,15 +1,14 @@
-import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:wecheck/routes/routes.dart';
+import 'package:wecheck/repository/input_code_repository.dart';
 
 class InputCodeController extends GetxController {
   // late Rx<TextEditingController> textEditingController;
   // late Rx<StreamController<ErrorAnimationType>> errorController;
-  Rx<String> currentText = "".obs;
+  Rx<String> pinCodeText = "".obs;
   Rx<bool> isActiveVerify = false.obs;
+
+  var inputCodeRepository = InputCodeRepository();
 
   @override
   void onInit() {
@@ -22,7 +21,4 @@ class InputCodeController extends GetxController {
     Get.back();
   }
 
-  void goToResetPassword() {
-    Get.toNamed(RouteName.resetPassword);
-  }
 }

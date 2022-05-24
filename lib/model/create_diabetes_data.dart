@@ -1,0 +1,10 @@
+
+
+
+class CreateDiabetesResponse {
+
+}
+
+class CreateDiabetesData {
+
+}

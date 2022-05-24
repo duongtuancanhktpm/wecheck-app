@@ -1,5 +1,7 @@
-import 'package:wecheck/screens/account/sign_up/binding/sign_up_main_binding.dart';
-import 'package:wecheck/screens/account/sign_up/sign_up_main_screen.dart';
+import 'package:wecheck/screens/account/sign_up/binding/sign_up_binding.dart';
+import 'package:wecheck/screens/bslog/bslog_screen.dart';
+import 'package:wecheck/screens/chart_horizontal/binding/insulin_graph_horizontal_binding.dart';
+import 'package:wecheck/screens/chart_horizontal/insulin_graph_horizontal_screen.dart';
 import 'package:wecheck/screens/chat/binding/chat_binding.dart';
 import 'package:wecheck/screens/chat/chat_screen.dart';
 import 'package:wecheck/screens/chat_detail/chat_detail_screen.dart';
@@ -25,6 +27,7 @@ import 'package:wecheck/screens/timeline/binding/timeline_binding.dart';
 import 'package:wecheck/screens/timeline/timeline_screen.dart';
 import 'package:wecheck/screens/today_input/binding/today_input_binding.dart';
 import 'package:wecheck/screens/today_input/today_input_screen.dart';
+import 'package:wecheck/utils/orientation_helpers.dart';
 
 class RouteName {
   static const String splash = "splash";
@@ -42,23 +45,24 @@ class RouteName {
   static const String settingsProfile = "settings/profile";
   static const String insulinMedicine = "settings/insulinMedicine";
   static const String todayInput = "home/todayinput";
+  static const String insulinGraph = "/insulinGraph";
 }
 
 class AppRoutes {
   static final screens = <String, Widget Function()>{
     RouteName.splash: () => const SplashScreen(),
     RouteName.root: () => const RootScreen(),
-    RouteName.home: () => const HomeScreen(),
+    RouteName.home: () => HomeScreen(),
     RouteName.timeline: () => const TimeLineScreen(),
     RouteName.chat: () => const ChatScreen(),
     RouteName.settings: () => const SettingsScreen(),
     RouteName.signIn: () => const SignInScreen(),
-    RouteName.signUpMain: () => const SignUpMainScreen(),
     RouteName.resetPassword: () => const ResetPasswordScreen(),
     RouteName.todayInput: () => const TodayInputScreen(),
     RouteName.chatDetail: () => const ChatDetailScreen(),
     RouteName.settingsProfile: () => const SettingsProfileScreen(),
     RouteName.insulinMedicine: () => const InsulinMedicineScreen(),
+    RouteName.insulinGraph: () => InsulinGraphHorizontalScreen(),
   };
 
   static final bindings = <String, List<Bindings> Function()>{
@@ -73,12 +77,23 @@ class AppRoutes {
     RouteName.resetPassword: () => [ResetPasswordBinding()],
     RouteName.settingsProfile: () => [SettingsProfileBinding()],
     RouteName.insulinMedicine: () => [InsulinMedicineBinding()],
+    RouteName.insulinGraph: () => [InsulinGraphHorizontalBinding()],
     RouteName.todayInput: () => [TodayInputBinding()],
   };
 
   static GetPageRoute generateRoute(RouteSettings settings) {
+    print("routeName: ${settings.name}");
+    if (settings.name == RouteName.insulinGraph) {
+      return GetPageRoute(
+        settings: RouteSettings(
+            name: settings.name, arguments: ScreenOrientation.landscapeOnly),
+        page: screens[settings.name] ?? getDefaultScreen,
+        bindings: bindings[settings.name]?.call(),
+      );
+    }
     return GetPageRoute(
-      settings: settings,
+      settings: RouteSettings(
+          name: settings.name, arguments: ScreenOrientation.portraitOnly),
       page: screens[settings.name] ?? getDefaultScreen,
       bindings: bindings[settings.name]?.call(),
     );

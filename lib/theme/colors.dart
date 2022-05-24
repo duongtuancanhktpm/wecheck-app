@@ -36,6 +36,9 @@ class AppColors {
   static const Color colorCeruleanBlue = Color(0xFF2A61B9);
   static const Color colorGrey = Color(0xFF848484);
   static const Color colorHawkesBlue = Color(0xFFD8DEE6);
+  static const Color colorPattensBlue = Color(0xFFE9EEF0);
+  static const Color colorJungleGreen = Color(0xFF24AB82);
+  static const Color colorCatalinaBlue = Color(0xFF243D5A);
   static const Color pattensBlue = Color(0xFFE9EEF0);
   static const Color regalBlue = Color(0xFF1B3553);
   static const Color buddhaGold = Color(0xFFBC9920);

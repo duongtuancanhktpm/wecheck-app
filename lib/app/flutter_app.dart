@@ -7,6 +7,7 @@ import 'package:wecheck/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:wecheck/utils/orientation_helpers.dart';
 
 class FlutterApp extends StatefulWidget {
   final EnvironmentType? environment;
@@ -18,6 +19,8 @@ class FlutterApp extends StatefulWidget {
 }
 
 class FlutterAppState extends State<FlutterApp> {
+  final _observer = NavigatorObserverWithOrientation();
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -36,7 +39,10 @@ class FlutterAppState extends State<FlutterApp> {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: L.delegate.supportedLocales,
+          navigatorObservers: [_observer],
     );
+    //   }
+    // );
   }
 
   @override
