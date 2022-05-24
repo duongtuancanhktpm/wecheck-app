@@ -52,8 +52,8 @@ class TodayInputScreen extends GetView<TodayInputController> {
             right: 0,
             child: InkWell(
               onTap: () {},
-              child: SvgPicture.asset(
-                AppIcons.icEdit,
+              child: const Icon(
+                Icons.cancel_outlined,
                 color: AppColors.textRegalBlue,
               ),
             ),
