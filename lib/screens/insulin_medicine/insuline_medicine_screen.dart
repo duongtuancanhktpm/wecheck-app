@@ -65,7 +65,7 @@ class InsulinMedicineScreen extends GetView<InsulinMedicineController> {
           Padding(
             padding: const EdgeInsets.only(left: 0),
             child: Text(
-              L.current.insulin,
+              L.current.insulinMedicine,
               style: AppTextStyle.t22w700(AppColors.regalBlue),
             ),
           ),
@@ -141,7 +141,7 @@ class InsulinMedicineScreen extends GetView<InsulinMedicineController> {
               padding: const EdgeInsets.all(0),
               child: Text(
                 title,
-                style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
+                style: AppTextStyle.t18w700(AppColors.lightSlateGrey),
               ),
             ),
             const Spacer(),

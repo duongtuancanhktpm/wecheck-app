@@ -40,7 +40,9 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
             ),
             const Spacer(),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               child: const Icon(
                 Icons.arrow_forward_ios,
                 color: AppColors.lightSlateGrey,

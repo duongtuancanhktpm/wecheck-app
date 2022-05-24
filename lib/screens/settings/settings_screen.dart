@@ -16,12 +16,14 @@ class SettingsScreen extends GetView<SettingsController> {
     return Scaffold(
       backgroundColor: AppColors.pattensBlue,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildTitle(),
-            _buildProfile(),
-            _buildSettings(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildTitle(),
+              _buildProfile(),
+              _buildSettings(),
+            ],
+          ),
         ),
       ),
     );
@@ -29,8 +31,7 @@ class SettingsScreen extends GetView<SettingsController> {
 
   _buildTitle() {
     return Container(
-      padding:
-          const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
       width: double.infinity,
       color: AppColors.pattensBlue,
       child: Center(
@@ -49,49 +50,49 @@ class SettingsScreen extends GetView<SettingsController> {
         children: [
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.only(
-                left: 20, right: 20, top: 20, bottom: 20),
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             color: AppColors.pattensBlue,
             child: Text(
               L.current.profile,
               style: AppTextStyle.t18w700(AppColors.regalBlue),
             ),
           ),
-         Obx(()=>  Row(
-           children: [
-             Container(
-               margin: const EdgeInsets.only(
-                   left: 20, right: 20, top: 20, bottom: 20),
-               decoration: const BoxDecoration(
-                   shape: BoxShape.circle, color: Colors.grey),
-               width: 60,
-               height: 60,
-               child: Image.asset(controller.userProfile.value.avatar),
-                 //(controller.userProfile.value.avatar),
-             ),
-             Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: [
-                 Text(
-                   controller.userProfile.value.name,
-                   style: AppTextStyle.t18w700(AppColors.regalBlue),
-                 ),
-                 Text(
-                   controller.userProfile.value.email,
-                   style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
-                 ),
-               ],
-             ),
-             const Spacer(),
-             TextButton(
-               onPressed: () => controller.gotoSettingsProfile(),
-               child: const Icon(
-                 Icons.arrow_forward_ios,
-                 color: AppColors.lightSlateGrey,
-               ),
-             ),
-           ],
-         )),
+          Obx(() => Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(
+                        left: 20, right: 20, top: 20, bottom: 20),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.grey),
+                    width: 60,
+                    height: 60,
+                    child: Image.asset(controller.userProfile.value.avatar),
+                    //(controller.userProfile.value.avatar),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        controller.userProfile.value.name,
+                        style: AppTextStyle.t18w700(AppColors.regalBlue),
+                      ),
+                      Text(
+                        controller.userProfile.value.email,
+                        style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () => controller.gotoSettingsProfile(),
+                    child: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.lightSlateGrey,
+                    ),
+                  ),
+                ],
+              )),
         ],
       ),
     );
@@ -102,8 +103,8 @@ class SettingsScreen extends GetView<SettingsController> {
       children: [
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.only(
-              left: 20, right: 20, top: 20, bottom: 20),
+          padding:
+              const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
           color: AppColors.pattensBlue,
           child: Text(
             L.current.settings,
@@ -111,31 +112,44 @@ class SettingsScreen extends GetView<SettingsController> {
           ),
         ),
         _buildSettingsRow(
-            icon: AppIcons.icEventInject, label: L.current.insulinMedicine, route: RouteName.insulinMedicine),
+            icon: AppIcons.icEventInject,
+            label: L.current.insulinMedicine,
+            route: RouteName.insulinMedicine),
         _buildSettingsRow(
-            icon: AppIcons.icEventDrinkWater, label: L.current.pairing, route: RouteName.insulinMedicine),
+            icon: AppIcons.icEventDrinkWater,
+            label: L.current.pairing,
+            route: RouteName.insulinMedicine),
         _buildSettingsRow(
-            icon: AppIcons.icEventDrinkWater, label: L.current.notification, route: RouteName.insulinMedicine),
+            icon: AppIcons.icEventDrinkWater,
+            label: L.current.notification,
+            route: RouteName.insulinMedicine),
         _buildSettingsRow(
-            icon: AppIcons.icEventDrinkWater, label: L.current.personalGoal, route: RouteName.insulinMedicine),
+            icon: AppIcons.icEventDrinkWater,
+            label: L.current.personalGoal,
+            route: RouteName.insulinMedicine),
         _buildSettingsRow(
-            icon: AppIcons.icEventDrinkWater, label: L.current.link, route: RouteName.insulinMedicine),
+            icon: AppIcons.icEventDrinkWater,
+            label: L.current.link,
+            route: RouteName.insulinMedicine),
       ],
     );
   }
 
-  Widget _buildSettingsRow({required String icon, required String label, required String route}) {
+  Widget _buildSettingsRow(
+      {required String icon, required String label, required String route}) {
     return Container(
       color: AppColors.white,
       child: Column(
         children: [
           Row(
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.only(
-                        left: 30, right: 30, top: 16, bottom: 16),
-                child: SvgPicture.asset(icon),
+              SizedBox(
+                width: 90,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 30, right: 30, top: 16, bottom: 16),
+                  child: SvgPicture.asset(icon),
+                ),
               ),
               Text(
                 label,
@@ -143,10 +157,10 @@ class SettingsScreen extends GetView<SettingsController> {
               ),
               const Spacer(),
               TextButton(
-                onPressed: () =>controller.goto(route),
+                onPressed: () => controller.goto(route),
                 child: const Padding(
-                  padding:  EdgeInsets.only(
-                      left: 10, right: 10, top: 10, bottom: 10),
+                  padding:
+                      EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
                   child: Icon(Icons.arrow_forward_ios,
                       color: AppColors.lightSlateGrey),
                 ),
