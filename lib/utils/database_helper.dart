@@ -1,4 +1,5 @@
 import 'package:wecheck/services/database/dao/sample_dao.dart';
+import 'package:wecheck/services/database/dao/user_table_dao.dart';
 import 'package:wecheck/services/database/local_cache_database.dart';
 
 class DatabaseHelper {
@@ -13,6 +14,9 @@ class DatabaseHelper {
   Future initDataBase() async {
     data = await $FloorLocalCacheDatabase.databaseBuilder('app_database.db').build();
   }
-
+  Future dropDB() async{
+    await $FloorLocalCacheDatabase.databaseBuilder('app_database.db').dropDB();
+  }
   SampleDao get sampleDao => data.sampleDao;
+  UserTableDao get userTableDao => data.userTableDao;
 }

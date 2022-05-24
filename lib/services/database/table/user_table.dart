@@ -50,6 +50,40 @@ class UserTable {
   String? createdAt;
   static const String createdAtFiled = "created_at";
 
+  UserTable({
+    String? id,
+    String? firstName,
+    String? lastName,
+    String? birthDay,
+    int? sex,
+    String? country,
+    double? heigh,
+    double? weight,
+    String? phone,
+    String? syncedTime,
+    String? image,
+    String? diabete,
+    int? isSynced,
+    String? updatedAt,
+    String? createdAt,
+  }){
+    this.id = id;
+    this.firstName=firstName;
+    this.lastName = lastName;
+    this.birthDay = birthDay;
+    this.sex = sex;
+    this.country = country;
+    this.heigh = heigh;
+    this.weight = weight;
+    this.phone = phone;
+    this.syncedTime = syncedTime;
+    this.image = image;
+    this.diabete = diabete;
+    this.isSynced = isSynced;
+    this.updatedAt = updatedAt;
+    this.createdAt = createdAt;
+  }
+
   @ignore
   UserTable.fromMap(Map<String, dynamic> data) {
     id = data[idField]?.toString();
@@ -78,15 +112,15 @@ class UserTable {
     data[birthDayFiled] = birthDay;
     data[sexFiled] = sex;
     data[countryFiled] = country;
-    data[heighFiled]= heigh;
-    data[weightFiled]= weight;
+    data[heighFiled] = heigh;
+    data[weightFiled] = weight;
     data[phoneFiled] = phone;
-    data[syncedTimeFiled]= syncedTime;
+    data[syncedTimeFiled] = syncedTime;
     data[imageFiled] = image;
-    data[diabeteFiled]= diabete;
+    data[diabeteFiled] = diabete;
     data[isSyncedFiled] = isSynced;
-    data[updatedAtFiled]= updatedAt;
-    data[createdAtFiled]= createdAt;
+    data[updatedAtFiled] = updatedAt;
+    data[createdAtFiled] = createdAt;
     return data;
   }
 }

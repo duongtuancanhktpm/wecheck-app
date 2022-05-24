@@ -18,6 +18,7 @@ class $FloorLocalCacheDatabase {
   /// Once a database is built, you should keep a reference to it and re-use it.
   static _$LocalCacheDatabaseBuilder inMemoryDatabaseBuilder() =>
       _$LocalCacheDatabaseBuilder(null);
+
 }
 
 class _$LocalCacheDatabaseBuilder {
@@ -54,6 +55,14 @@ class _$LocalCacheDatabaseBuilder {
     );
     return database;
   }
+
+  Future dropDB() async {
+    final path = name != null
+        ? await sqfliteDatabaseFactory.getDatabasePath(name!)
+        : ':memory:';
+    final database = _$LocalCacheDatabase();
+    await database.close();
+  }
 }
 
 class _$LocalCacheDatabase extends LocalCacheDatabase {
@@ -84,7 +93,24 @@ class _$LocalCacheDatabase extends LocalCacheDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `sample_table` (`id` TEXT, `name` TEXT, `dateUpdated` INTEGER, `dateCreated` INTEGER, PRIMARY KEY (`id`))');
-
+        await database
+            .execute('''CREATE TABLE IF NOT EXISTS ${UserTable.tableName} (
+             `${UserTable.idField}` TEXT,
+             `${UserTable.firstNameFiled}` TEXT,
+             `${UserTable.lastNameFiled}` TEXT,
+             `${UserTable.birthDayFiled}` TEXT,
+             `${UserTable.sexFiled}` INTEGER,
+             `${UserTable.countryFiled}` TEXT,
+             `${UserTable.heighFiled}` DOUBLE,
+             `${UserTable.weightFiled}` DOUBLE,
+             `${UserTable.phoneFiled}` TEXT,
+             `${UserTable.syncedTimeFiled}` TEXT,
+             `${UserTable.imageFiled}` TEXT,
+             `${UserTable.diabeteFiled}` TEXT,
+             `${UserTable.isSyncedFiled}` INTEGER,
+             `${UserTable.updatedAtFiled}` TEXT,
+             `${UserTable.createdAtFiled}` TEXT
+            )''');
         await callback?.onCreate?.call(database, version);
       },
     );
@@ -137,7 +163,8 @@ class _$UserTableDao extends UserTableDao {
 
   @override
   Future<UserTable?> getUserTableById(String id) async {
-    return _queryAdapter.query('SELECT * FROM sample_table WHERE id = ?1',
+    return _queryAdapter.query(
+        'SELECT * FROM ${UserTable.tableName} WHERE id = ?1',
         mapper: (Map<String, Object?> row) =>
             UserTable.fromMap(Map<String, dynamic>.from(row)),
         arguments: [id]);
@@ -145,14 +172,33 @@ class _$UserTableDao extends UserTableDao {
 
   @override
   Future<void> deleteUserTableById(String id) async {
-    await _queryAdapter.queryNoReturn('DELETE FROM ${UserTable.tableName} WHERE id = ?1',
+    await _queryAdapter.queryNoReturn(
+        'DELETE FROM ${UserTable.tableName} WHERE id = ?1',
         arguments: [id]);
   }
 
   @override
-  Future<void> insert(List<UserTable> userTable) async {
+  Future<void> insert(List<UserTable> userTables) async {
+    print("canhdt1 insert");
+    userTables.forEach((element) {
+      print(element.id);
+    });
     await _userTableInsertionAdapter.insertList(
-        userTable, OnConflictStrategy.replace);
+        userTables, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<List<UserTable>> getAll() async {
+    return _queryAdapter.queryList(
+      'SELECT * FROM ${UserTable.tableName}',
+      mapper: (Map<String, Object?> row) =>
+          UserTable.fromMap(Map<String, dynamic>.from(row)),
+    );
+  }
+
+  @override
+  Future<void> deleteAllRows() async{
+    await _queryAdapter.queryNoReturn("DELETE FROM ${UserTable.tableName}");
   }
 }
 

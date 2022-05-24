@@ -22,6 +22,11 @@ class SettingsScreen extends GetView<SettingsController> {
               _buildTitle(),
               _buildProfile(),
               _buildSettings(),
+              TextButton(
+                  onPressed: () {
+                    controller.dropDb();
+                  },
+                  child: Text("Drop DB")),
             ],
           ),
         ),

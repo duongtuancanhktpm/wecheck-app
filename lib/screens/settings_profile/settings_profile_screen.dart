@@ -8,6 +8,7 @@ import 'package:wecheck/theme/text_styles.dart';
 
 class SettingsProfileScreen extends GetView<SettingsProfileController> {
   const SettingsProfileScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +41,7 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
             ),
             const Spacer(),
             TextButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               child: const Icon(
                 Icons.arrow_forward_ios,
                 color: AppColors.lightSlateGrey,
@@ -115,7 +114,7 @@ class SettingsProfileScreen extends GetView<SettingsProfileController> {
               //(controller.userProfile.value.avatar),
             ),
             Text(
-              controller.data.value.name,
+              "${controller.userProfile.value.firstName ?? "loading"} ${controller.userProfile.value.lastName ?? ""}",
               style: AppTextStyle.t22w700(AppColors.regalBlue),
             ),
             TextButton(

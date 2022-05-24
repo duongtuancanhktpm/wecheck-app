@@ -11,4 +11,10 @@ abstract class UserTableDao{
 
   @Query("DELETE FROM ${UserTable.tableName} WHERE id = :id")
   Future<void> deleteUserTableById(String id);
+
+  @Query("SELECT * FROM ${UserTable.tableName}")
+  Future<List<UserTable>> getAll();
+
+  @Query("DELETE FROM ${UserTable.tableName}")
+  Future deleteAllRows();
 }
