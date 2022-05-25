@@ -11,12 +11,16 @@ class SettingsController extends GetxController {
   var settingsRepository = SettingsRepository();
   var userProfile =
       UserProfile(AppImages.defaultImage, "name", "abc@imail.com").obs;
+  var profile = UserTable().obs;
 
   @override
   void onInit() {
     settingsRepository.doGetUserProfile().then((value) {
       userProfile.value = value;
     });
+    settingsRepository
+        .doGetSettingsData()
+        .then((value) => profile.value = value.userProfile);
     super.onInit();
   }
 
@@ -25,45 +29,34 @@ class SettingsController extends GetxController {
   }
 
   void goto(String name) {
-    //this(insertDefaultUser()) is to test, need to del after test done
-    insertDefaultUser();
-    //delete();
+    ///those (insertDefaultUser() and delete()) are to test, need to del after test done
+    ///insertDefaultUser();
+    ///delete();
     Get.toNamed(name);
   }
-  void dropDb(){
+
+  ///this function is for testing, need to del lately
+  void dropDb() {
     DatabaseHelper dbHelper = DatabaseHelper();
     dbHelper.dropDB();
   }
-  void delete(){
+
+  ///this function is for testing, need to del lately
+  void delete() {
     print("canhdt1 delete all");
     DatabaseHelper dbHelper = DatabaseHelper();
     UserTableDao userTableDao = dbHelper.userTableDao;
     userTableDao.deleteAllRows();
   }
+
+  ///this function is for testing, need to del lately
   void insertDefaultUser() {
     print("canhdt1 instert default");
     DatabaseHelper dbHelper = DatabaseHelper();
     UserTableDao userTableDao = dbHelper.userTableDao;
     userTableDao.insert([
       UserTable(
-        id: "1",
-        firstName: "first",
-        lastName: "last",
-        birthDay: "birth day",
-        sex: 0,
-        country: "dong lao",
-        heigh: 111,
-        weight: 111,
-        phone: "phone",
-        syncedTime: "time",
-        image: "image",
-        diabete: "nes",
-        isSynced: 0,
-        updatedAt: "string",
-        createdAt: "string"
-      ),
-      UserTable(
-          id: "2",
+          id: "1",
           firstName: "first",
           lastName: "last",
           birthDay: "birth day",
@@ -77,8 +70,23 @@ class SettingsController extends GetxController {
           diabete: "nes",
           isSynced: 0,
           updatedAt: "string",
-          createdAt: "string"
-      ),
+          createdAt: "string"),
+      UserTable(
+          id: "2",
+          firstName: "first 2",
+          lastName: "last 2",
+          birthDay: "birth day",
+          sex: 0,
+          country: "dong lao",
+          heigh: 111,
+          weight: 111,
+          phone: "phone",
+          syncedTime: "time",
+          image: "image",
+          diabete: "nes",
+          isSynced: 0,
+          updatedAt: "string",
+          createdAt: "string"),
     ]);
   }
 }

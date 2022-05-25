@@ -22,11 +22,6 @@ class SettingsScreen extends GetView<SettingsController> {
               _buildTitle(),
               _buildProfile(),
               _buildSettings(),
-              TextButton(
-                  onPressed: () {
-                    controller.dropDb();
-                  },
-                  child: Text("Drop DB")),
             ],
           ),
         ),
@@ -81,11 +76,11 @@ class SettingsScreen extends GetView<SettingsController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.userProfile.value.name,
+                      "${controller.profile.value.firstName} ${controller.profile.value.lastName}",
                       style: AppTextStyle.t18w700(AppColors.regalBlue),
                     ),
                     Text(
-                      controller.userProfile.value.email,
+                      controller.profile.value.email ?? "loading",
                       style: AppTextStyle.t16w700(AppColors.lightSlateGrey),
                     ),
                   ],

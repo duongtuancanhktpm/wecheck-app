@@ -8,14 +8,17 @@ import 'package:wecheck/utils/database_helper.dart';
 class SettingsProfileRepository {
   DatabaseHelper dbHelper = DatabaseHelper();
 
-
   Future<SettingsProfileData> doGetSettingsProfileData() async {
     UserTableDao userTableDao = dbHelper.userTableDao;
     UserTable? user = UserTable(id: "1", firstName: "loading", lastName: "...");
     user = await userTableDao.getUserTableById("1");
     return Future.value(
       SettingsProfileData(
-        Profile(AppImages.defaultImage, "Geted name", "geted email"),
+        Profile(
+          AppImages.defaultImage,
+          "Geted name",
+          "geted email",
+        ),
         user!,
       ),
     );
